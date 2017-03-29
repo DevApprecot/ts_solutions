@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleDisplayName</key>
-	<string>Ts_Solutions.iOS</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.apprecot.ts</string>
 	<key>CFBundleShortVersionString</key>
@@ -47,6 +45,6 @@
 	<key>XSLaunchImageAssets</key>
 	<string>Resources/Images.xcassets/LaunchImage.launchimage</string>
 	<key>CFBundleName</key>
-	<string>Ts_Solutions.iOS</string>
+	<string>TS Solutions</string>
 </dict>
 </plist>
