@@ -9,7 +9,7 @@ using Android.OS;
 
 namespace Ts_Solutions.Droid
 {
-	[Activity (Label = "Ts_Solutions.Android", MainLauncher = true, Icon = "@drawable/icon")]
+	[Activity (Label = "Ts_Solutions.Android", MainLauncher = true)]
 	public class MainActivity : Activity
 	{
 		int count = 1;
