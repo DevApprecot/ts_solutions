@@ -35,6 +35,8 @@
   <ItemGroup>
     <Compile Include="Network\ApprecotRestService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Presenter\SplashPresenter.cs" />
+    <Compile Include="View\ISplashView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />

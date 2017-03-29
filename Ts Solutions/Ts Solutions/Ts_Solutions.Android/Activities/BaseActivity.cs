@@ -3,6 +3,7 @@ using Android.OS;
 using Android.Support.V4.Content;
 using Android.Support.V7.App;
 using Android.Views;
+using System;
 
 namespace Ts_Solutions.Droid
 {
@@ -24,7 +25,15 @@ namespace Ts_Solutions.Droid
 
             SetContentView(LayoutResource);
         }
-	}
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            Window.DecorView.Dispose();
+            Window.Dispose();
+            base.Dispose();
+        }
+    }
 }
 
 
