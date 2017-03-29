@@ -21,7 +21,7 @@ namespace Ts_Solutions.iOS
 		/// <param name='handle'>
 		/// Handle to Obj-C instance of object
 		/// </param>
-		public BaseController(IntPtr handle) : base(handle)
+		BaseController(IntPtr handle) : base(handle)
 		{
 			//Only do this if required
 			//if (HandlesKeyboardNotifications())
@@ -160,7 +160,7 @@ namespace Ts_Solutions.iOS
 
 		public bool IsOnline()
 		{
-			return Reachability.Reachability.IsHostReachable();
+			return Reachability.IsHostReachable();
 		}
 
 		void InitKeyboardHandling()
@@ -192,5 +192,6 @@ namespace Ts_Solutions.iOS
 		{
 			
 		}
+
 	}
 }

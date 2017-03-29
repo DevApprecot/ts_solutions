@@ -176,6 +176,7 @@
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
+    <None Include="Utils\IMPORTANT_COPY_PASTE.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -190,6 +191,7 @@
     <Compile Include="Utils\BadgeBarButtonItem.cs" />
     <Compile Include="Utils\Reachability.cs" />
     <Compile Include="Utils\ViewExtensions.cs" />
+    <Compile Include="Utils\IViewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Images\" />
