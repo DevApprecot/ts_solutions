@@ -1,5 +1,8 @@
 ﻿using Foundation;
 using UIKit;
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.Azure.Mobile.Crashes;
 
 namespace Ts_Solutions.iOS
 {
@@ -15,10 +18,26 @@ namespace Ts_Solutions.iOS
 			set;
 		}
 
-		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
+		public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
 		{
 			// Override point for customization after application launch.
 			// If not required for your application you can safely delete this method
+			MobileCenter.Start("cd293ebb-d4ee-46aa-9974-04bae163b6db",
+				   typeof(Analytics), typeof(Crashes));
+
+			// create a new window instance based on the screen size
+			Window = new UIWindow(UIScreen.MainScreen.Bounds);
+
+			// Add the Navigation Controller and initialize it
+			var navController = new UINavigationController(new FirstViewController());
+			Window.RootViewController = navController;
+
+			//var RootViewController = (FirstViewController)Storyboard.InstantiateViewController("SplashViewController");
+			var RootViewController = new FirstViewController();
+
+			////// set our root view controller with the sidebar menu as the apps root view controller
+			//Window.RootViewController = RootViewController;
+
 			return true;
 		}
 
