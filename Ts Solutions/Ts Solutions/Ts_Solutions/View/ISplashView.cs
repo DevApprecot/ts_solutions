@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Ts_Solutions
+namespace Ts_Solutions.IViews
 {
 	public interface ISplashView
 	{
