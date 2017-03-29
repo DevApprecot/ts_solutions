@@ -164,11 +164,19 @@
     <Compile Include="ViewControllers\FirstViewController\FirstViewController.designer.cs">
       <DependentUpon>FirstViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\BaseViewController\BaseController.cs" />
+    <Compile Include="Utils\scrollExtension.cs" />
+    <Compile Include="Utils\AnimationManager.cs" />
+    <Compile Include="Utils\BadgeBarButtonItem.cs" />
+    <Compile Include="Utils\Reachability.cs" />
+    <Compile Include="Utils\ViewExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Images\" />
     <Folder Include="ViewControllers\" />
     <Folder Include="ViewControllers\FirstViewController\" />
+    <Folder Include="ViewControllers\BaseViewController\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\TS_Splash.png" />

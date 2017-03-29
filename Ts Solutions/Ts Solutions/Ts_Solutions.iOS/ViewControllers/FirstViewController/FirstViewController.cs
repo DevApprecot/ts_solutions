@@ -4,9 +4,9 @@ using UIKit;
 
 namespace Ts_Solutions.iOS
 {
-	public partial class FirstViewController : UIViewController
+	public partial class FirstViewController : BaseController
 	{
-		public FirstViewController() : base("FirstViewController", null)
+		public FirstViewController() : base("FirstViewController")
 		{
 		}
 
