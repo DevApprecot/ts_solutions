@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Diagnostics;
+using UIKit;
 
 namespace Ts_Solutions.iOS
 {
-	public partial class FirstViewController : BaseController, IViewController
+	public class IMPORTANT_COPY_PASTE : UIViewController
 	{
-		public FirstViewController() : base("FirstViewController")
+		public IMPORTANT_COPY_PASTE()
 		{
 		}
 
@@ -35,11 +35,5 @@ namespace Ts_Solutions.iOS
 		{
 			base.ViewDidDisappear(animated);
 		}
-
-		public void Reachability_ReachabilityChanged(object sender, EventArgs e)
-		{
-			Debug.WriteLine("net changed");
-		}
 	}
 }
-
