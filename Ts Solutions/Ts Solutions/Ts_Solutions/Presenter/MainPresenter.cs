@@ -35,7 +35,11 @@ namespace Ts_Solutions.Presenter
             {
                 _view.SetLoading(false);
 				_servicePoints = response.Data as List<ServicePoint>;
-				_view.SetMarkers(_servicePoints);
+				if (_viewType== ServicePointsViewType.Map)
+					_view.SetMarkers(_servicePoints);
+				else
+					_view.SetList(_servicePoints);
+					                                 
             }
             else
                 OnError(response.GetFailureCode());
