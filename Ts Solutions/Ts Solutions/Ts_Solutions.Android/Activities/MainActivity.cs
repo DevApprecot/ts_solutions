@@ -143,6 +143,15 @@ namespace Ts_Solutions.Droid.Activities
                 _mapFragment?.GetMapAsync(this);
             });
         }
-        
+
+        public void CallClicked(string phone)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CallNumber(string phone)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

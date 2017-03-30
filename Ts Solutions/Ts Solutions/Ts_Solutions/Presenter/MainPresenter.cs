@@ -41,6 +41,11 @@ namespace Ts_Solutions.Presenter
                 OnError(response.GetFailureCode());
         }
 
+        public void Call(string phone)
+        {
+            _view.CallNumber(phone);
+        }
+
 		public void ChangeViewTypeClicked()
 		{
 			if (_viewType == ServicePointsViewType.List)
