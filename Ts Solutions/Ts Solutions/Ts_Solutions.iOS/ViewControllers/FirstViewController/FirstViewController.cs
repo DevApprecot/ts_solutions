@@ -138,6 +138,7 @@ namespace Ts_Solutions.iOS
 			TablePoints.ReloadData();
 			var noItemsView = NoItemsView.Create(this);
 			TablePoints.BackgroundView = noItemsView;
+			TablePoints.SeparatorStyle = UITableViewCellSeparatorStyle.None;
 		}
 
 		public void SetLoading(bool isLoading)
@@ -165,6 +166,16 @@ namespace Ts_Solutions.iOS
 		{
 			if (ViewStatus.Alpha == 1)
 				ViewStatus.SlideOutFromBottom();
+		}
+
+		public void CallClicked(string phone)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void CallNumber(string phone)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }
