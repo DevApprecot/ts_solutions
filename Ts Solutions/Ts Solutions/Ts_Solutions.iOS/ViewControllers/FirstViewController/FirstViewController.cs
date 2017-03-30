@@ -125,8 +125,7 @@ namespace Ts_Solutions.iOS
             SetNavBar("Icons/ic_map");
 			TablePoints.Alpha = 1;
 			MapPoints.Alpha = 0;
-			var source = new StoresTableSource();
-			source.ServicePoints = points;
+			var source = new StoresTableSource(points, this);
 			TablePoints.Source = source;
 			TablePoints.ReloadData();
 		}

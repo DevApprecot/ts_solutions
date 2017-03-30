@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Foundation;
 using Ts_Solutions.Model;
 using UIKit;
@@ -21,7 +20,7 @@ namespace Ts_Solutions.iOS
 			// Note: this .ctor should not contain any initialization logic.
 		}
 
-		public void Update(ServicePoint point)
+		public void Update(ServicePoint point, BaseController owner)
 		{
 			ImageStore.Image = UIImage.FromBundle("Icons/ic_navbar_icon");
 			ImageStore.Layer.CornerRadius = ImageStore.Frame.Size.Width / 2;
@@ -35,6 +34,12 @@ namespace Ts_Solutions.iOS
 			LabelName.Font = UIFont.BoldSystemFontOfSize(18);
 			LabelAddress.TextColor = UIColor.FromRGB(100, 100, 100);
 			LabelTelephone.TextColor = UIColor.FromRGB(100, 100, 100);
+
+			LabelTelephone.AddGestureRecognizer(new UITapGestureRecognizer(() =>
+			{
+				owner.Call(LabelTelephone.Text);
+			}));
+
 		}
 	}
 }
