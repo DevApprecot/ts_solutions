@@ -149,8 +149,10 @@
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\SplashActivity.cs" />
     <Compile Include="Adapters\ServicePointsAdapter.cs" />
+    <Compile Include="ItemDecorators\ItemDecorator.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicePointViewHolder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

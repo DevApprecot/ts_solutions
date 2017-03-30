@@ -15,7 +15,7 @@
     android:layout_marginRight="16dp"
     android:src="@drawable/ic_toolbar_logo" />
 
-  <LinearLayoyt
+  <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -43,6 +43,6 @@
       android:alpha="0.62"
       android:gravity="left" />
     
-  </LinearLayoyt>
+  </LinearLayout>
   
 </LinearLayout>
