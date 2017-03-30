@@ -9,6 +9,8 @@ namespace Ts_Solutions.View
 {
     public interface IMainView
     {
+        void ShowLoading();
+        void HideLoading();
         void SetMarkers(List<ServicePoint> points);
         void ShowStatus();
         void SwitchView();
