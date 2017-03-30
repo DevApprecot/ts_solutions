@@ -2,10 +2,7 @@ using System;
 using System.Collections.Generic;
 using Android.App;
 using Android.OS;
-using Ts_Solutions.Model;
-using Ts_Solutions.Presenter;
 using System.Threading.Tasks;
-using Ts_Solutions.IView;
 using Android.Gms.Maps;
 using Android.Support.V7.Widget;
 using Ts_Solutions.Droid.ItemDecorators;
@@ -13,6 +10,9 @@ using Ts_Solutions.Droid.Adapters;
 using Android.Views;
 using Android.Gms.Maps.Model;
 using Java.Lang;
+using Ts_Solutions.IView;
+using Ts_Solutions.Presenter;
+using Ts_Solutions.Model;
 
 namespace Ts_Solutions.Droid.Activities
 {
@@ -48,8 +48,18 @@ namespace Ts_Solutions.Droid.Activities
 
         protected override void OnDestroy()
         {
-            _presenter = null;
+            DisposeItems();
             base.OnDestroy();
+        }
+
+        private void DisposeItems()
+        {
+            _presenter = null;
+            _servicePoints = null;
+            _spRecyclerView.Dispose();
+            _spRecyclerView = null;
+            _mapFragment.Dispose();
+            _mapFragment = null;
         }
 
         public void CreatePresenter()
@@ -62,24 +72,19 @@ namespace Ts_Solutions.Droid.Activities
             Console.WriteLine("Loading " + isLoading);
         }
 
-        public void SetMarkers(List<ServicePoint> points)
+        public void SetList(List<ServicePoint> points)
         {
             _servicePoints = points;
             RunOnUiThread(() =>
             {
-                //var adapter = new ServicePointsAdapter(points);
-                //_spRecyclerView.SetAdapter(adapter);
-                _mapFragment?.GetMapAsync(this);
+                var adapter = new ServicePointsAdapter(points);
+                _spRecyclerView.SetAdapter(adapter);
             });
         }
 
         public void ShowMessage(string message)
         {
             Console.WriteLine(message);
-        }
-
-        public void ShowNoNet()
-        {
         }
 
         public void ShowStatus()
@@ -129,5 +134,15 @@ namespace Ts_Solutions.Droid.Activities
                 }
             }
         }
+
+        public void SetMarkers(List<ServicePoint> points)
+        {
+            _servicePoints = points;
+            RunOnUiThread(() =>
+            {
+                _mapFragment?.GetMapAsync(this);
+            });
+        }
+        
     }
 }
