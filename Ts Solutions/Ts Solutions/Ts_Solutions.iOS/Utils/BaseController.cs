@@ -10,7 +10,6 @@ namespace Ts_Solutions.iOS
 	public abstract class BaseController : UIViewController, IBaseView
 	{
 
-		protected NSBundle languageBundle;
 		protected UIView ViewToCenterOnKeyboardShown;
 		protected UIScrollView ScrollToCenterOnKeyboardShown;
 		ReconnectingView _reconnect;
