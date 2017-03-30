@@ -11,16 +11,19 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V7.Widget;
 using Ts_Solutions.Model;
+using Ts_Solutions.IView;
 
 namespace Ts_Solutions.Droid.Adapters
 {
     public class ServicePointsAdapter : RecyclerView.Adapter
     {
         private List<ServicePoint> _servicePoints;
+        private IMainView _parentView;
 
-        public ServicePointsAdapter(List<ServicePoint> servicePoints)
+        public ServicePointsAdapter(List<ServicePoint> servicePoints, IMainView parentView)
         {
             _servicePoints = servicePoints;
+            _parentView = parentView;
         }
 
         public override int ItemCount => _servicePoints.Count;
@@ -39,7 +42,7 @@ namespace Ts_Solutions.Droid.Adapters
         {
             var view = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.element_rv_servicepoints, parent, false);
 
-            var vh = new ServicePointViewHolder(view);
+            var vh = new ServicePointViewHolder(view, _parentView);
             return vh;
         }
     }
