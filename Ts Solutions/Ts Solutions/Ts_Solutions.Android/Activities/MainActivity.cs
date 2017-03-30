@@ -78,10 +78,6 @@ namespace Ts_Solutions.Droid.Activities
             Console.WriteLine(message);
         }
 
-        public void ShowNoNet()
-        {
-        }
-
         public void ShowStatus()
         {
         }
