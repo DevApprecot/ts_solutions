@@ -33,9 +33,7 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IConnectionManager.cs" />
     <Compile Include="Model\ServicePoint.cs" />
-    <Compile Include="Model\ServiceResponse.cs" />
     <Compile Include="Network\Api.cs" />
     <Compile Include="Network\ApprecotRestService.cs" />
     <Compile Include="Presenter\MainPresenter.cs" />
@@ -44,10 +42,6 @@
     <Compile Include="View\IMainView.cs" />
     <Compile Include="View\ISplashView.cs" />
     <Compile Include="Interfaces\IConnectionManager.cs" />
-    <Compile Include="Presenter\MainPresenter.cs" />
-    <Compile Include="View\IMainView.cs" />
-    <Compile Include="Network\Api.cs" />
-    <Compile Include="Model\ServicePoint.cs" />
     <Compile Include="Model\ServiceResponse.cs" />
   </ItemGroup>
   <ItemGroup />
