@@ -29,9 +29,12 @@ namespace Ts_Solutions.Presenter
 			_view.SetLoading(true);
 			var response = await(new Api().GetServicePoints(_cancelTokenSource.Token));
 
-			if (response.EnsureSuccess())
-				_view.SetMarkers(response.Data as List<ServicePoint>);
-			else
+            if (response.EnsureSuccess())
+            {
+                _view.SetLoading(false);
+                _view.SetMarkers(response.Data as List<ServicePoint>);
+            }
+            else
                 OnError(response.GetFailureCode());
         }
     }
