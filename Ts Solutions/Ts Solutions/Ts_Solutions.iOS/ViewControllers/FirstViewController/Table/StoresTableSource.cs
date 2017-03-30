@@ -10,11 +10,15 @@ namespace Ts_Solutions.iOS
 	public class StoresTableSource : UITableViewSource
 	{
 		string CellIdentifier = "StoresTableViewCell";
-		public List<ServicePoint> ServicePoints { get; set; }
+		List<ServicePoint> _servicePoints { get; set; }
+		BaseController _owner;
+
 		//public WeakReference Owner { get; set; }
 
-		public StoresTableSource()
+		public StoresTableSource(List<ServicePoint> servicePoints, BaseController owner)
 		{
+			_servicePoints = servicePoints;
+			_owner = owner;
 		}
 
 		public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
@@ -36,7 +40,7 @@ namespace Ts_Solutions.iOS
 				cell.SelectionStyle = UITableViewCellSelectionStyle.None;
 				//_height = cell.UpdateCell(Stores[indexPath.Row], GrandOwner.Target as BaseController);
 				//GetHeightForRow(tableView, indexPath);
-				cell.Update(ServicePoints[indexPath.Row]);
+				cell.Update(_servicePoints[indexPath.Row], _owner);
 				return cell;
 			}
 			catch (Exception exp)
@@ -47,7 +51,7 @@ namespace Ts_Solutions.iOS
 
 		public override nint RowsInSection(UITableView tableview, nint section)
 		{
-			return ServicePoints.Count;
+			return _servicePoints.Count;
 		}
 	}
 }
