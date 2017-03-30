@@ -9,7 +9,7 @@ using UIKit;
 
 namespace Ts_Solutions.iOS
 {
-	public partial class FirstViewController : BaseController, IViewController, IMainView
+	public partial class FirstViewController : BaseController, IMainView
 	{
 		MainPresenter _presenter;
 		UIBarButtonItem[] _rightIcons;
@@ -66,6 +66,7 @@ namespace Ts_Solutions.iOS
 			Reachability.ResetInternetEvents();
 			Reachability.ReachabilityChanged += Reachability_ReachabilityChanged;
 			CreatePresenter();
+            AddHandlers();
 			await _presenter.LoadServicePoints();
 		}
 
@@ -73,8 +74,6 @@ namespace Ts_Solutions.iOS
 		{
 			base.ViewDidAppear(animated);
             ToggleConnectionIndicator(IsOnline());
-			ButtonCheck.TouchUpInside += ButtonCheck_TouchUpInside;
-			ButtonClose.TouchUpInside += ButtonClose_TouchUpInside;
 		}
 
 		public override void ViewWillLayoutSubviews()
@@ -85,8 +84,7 @@ namespace Ts_Solutions.iOS
 		public override void ViewDidDisappear(bool animated)
 		{
 			base.ViewDidDisappear(animated);
-			ButtonCheck.TouchUpInside -= ButtonCheck_TouchUpInside;
-			ButtonClose.TouchUpInside -= ButtonClose_TouchUpInside;
+			RemoveHandlers();
 		}
 
 		private void CreatePresenter()
@@ -134,16 +132,6 @@ namespace Ts_Solutions.iOS
 			TablePoints.ReloadData();
 		}
 
-		public void SetLoading(bool isLoading)
-		{
-			Debug.WriteLine("loading " + isLoading);
-		}
-
-		public void ShowMessage(string message)
-		{
-			Debug.WriteLine("message " + message);
-		}
-
 		void SetNavBar(string imageName)
 		{
 			_rightIcons[0].Image = UIImage.FromBundle(imageName).ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
@@ -160,6 +148,28 @@ namespace Ts_Solutions.iOS
 		{
 			if (ViewStatus.Alpha == 1)
 				ViewStatus.SlideOutFromBottom();
+		}
+
+		public void CallClicked(string phone)
+		{
+			_presenter.Call(phone);
+		}
+
+		public void CallNumber(string phone)
+		{
+			this.Call(phone);
+		}
+
+		public void AddHandlers()
+		{
+			ButtonCheck.TouchUpInside += ButtonCheck_TouchUpInside;
+			ButtonClose.TouchUpInside += ButtonClose_TouchUpInside;
+		}
+
+		public void RemoveHandlers()
+		{
+			ButtonCheck.TouchUpInside -= ButtonCheck_TouchUpInside;
+			ButtonClose.TouchUpInside -= ButtonClose_TouchUpInside;
 		}
 	}
 }
