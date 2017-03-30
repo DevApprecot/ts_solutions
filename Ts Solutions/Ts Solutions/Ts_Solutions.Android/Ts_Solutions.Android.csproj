@@ -14,7 +14,7 @@
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidApplication>True</AndroidApplication>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AssemblyName>Ts_Solutions.Android</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <NuGetPackageImportStamp>
@@ -141,6 +141,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Ts_Solutions\Ts_Solutions.csproj">
       <Name>Ts_Solutions</Name>
+      <Project>{72F56C16-C052-4BEB-9B95-747ACBCC650F}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -191,7 +192,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_toolbar_logo.png" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
