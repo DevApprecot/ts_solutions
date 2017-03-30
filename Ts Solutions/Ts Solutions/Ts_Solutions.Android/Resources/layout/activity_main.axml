@@ -25,20 +25,13 @@
             android:layout_marginLeft="56dp"
             android:layout_marginRight="56dp"
             android:layout_height="0dp"
-            android:layout_weight="20"
+            android:layout_weight="10"
             android:layout_margin="16dp">
       <LinearLayout
            android:orientation="vertical"
            android:layout_width="match_parent"
            android:layout_height="match_parent">
-        <TextView
-             android:layout_height="wrap_content"
-             android:layout_width="match_parent"
-             android:layout_margin= "8dp"
-             android:textSize="@dimen/abc_text_size_small_material"
-             android:textColor ="@android:color/black"
-             android:textStyle="bold"
-             android:text="@string/work_order"/>
+   
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -46,7 +39,9 @@
             android:layout_marginLeft ="8dp"
           android:layout_marginRight="8dp">
           <EditText
+              android:hint="@string/work_order"
               android:layout_height="match_parent"
+              android:textSize="@dimen/abc_text_size_small_material"
               android:layout_width="0dp"
               android:layout_weight="65" />
           <Button
@@ -65,6 +60,6 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:layout_height="0dp"
-        android:layout_weight="80"
+        android:layout_weight="90"
         class="com.google.android.gms.maps.SupportMapFragment" />
 </LinearLayout>
