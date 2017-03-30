@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FirstViewController">
             <connections>
                 <outlet property="ButtonCheck" destination="3q3-EW-MSo" id="sXg-PD-cC9"/>
+                <outlet property="ButtonClose" destination="6Ks-cQ-33f" id="dJp-8t-PFz"/>
                 <outlet property="ConstTopText" destination="Zez-5g-5I8" id="mLx-gV-F4V"/>
                 <outlet property="LableStatus" destination="PDG-wj-qbk" id="AOe-QG-Zb6"/>
                 <outlet property="MapPoints" destination="y7O-4t-cqC" id="vMl-dm-ris"/>
@@ -59,7 +60,7 @@
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="y7O-4t-cqC">
                     <rect key="frame" x="0.0" y="59" width="375" height="608"/>
                 </mapView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="an6-RF-4lN">
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="an6-RF-4lN">
                     <rect key="frame" x="-0.5" y="59" width="375" height="608"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDG-wj-qbk">

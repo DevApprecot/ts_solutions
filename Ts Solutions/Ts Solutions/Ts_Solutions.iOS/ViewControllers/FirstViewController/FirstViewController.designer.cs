@@ -16,6 +16,9 @@ namespace Ts_Solutions.iOS
 		UIKit.UIButton ButtonCheck { get; set; }
 
 		[Outlet]
+		UIKit.UIButton ButtonClose { get; set; }
+
+		[Outlet]
 		UIKit.NSLayoutConstraint ConstTopText { get; set; }
 
 		[Outlet]
@@ -45,6 +48,11 @@ namespace Ts_Solutions.iOS
 				ConstTopText = null;
 			}
 
+			if (LableStatus != null) {
+				LableStatus.Dispose ();
+				LableStatus = null;
+			}
+
 			if (MapPoints != null) {
 				MapPoints.Dispose ();
 				MapPoints = null;
@@ -65,9 +73,9 @@ namespace Ts_Solutions.iOS
 				ViewStatus = null;
 			}
 
-			if (LableStatus != null) {
-				LableStatus.Dispose ();
-				LableStatus = null;
+			if (ButtonClose != null) {
+				ButtonClose.Dispose ();
+				ButtonClose = null;
 			}
 		}
 	}

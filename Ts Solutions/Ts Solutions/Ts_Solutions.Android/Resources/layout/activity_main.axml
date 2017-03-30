@@ -29,7 +29,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_alignParentRight="true"
                 android:tint="@color/primary"
-                android:src="@drawable/ic_map" />
+                android:src="@drawable/ic_list" />
         </RelativeLayout>
     </android.support.design.widget.AppBarLayout>
     <LinearLayout

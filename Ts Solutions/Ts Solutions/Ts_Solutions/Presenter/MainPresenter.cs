@@ -59,5 +59,12 @@ namespace Ts_Solutions.Presenter
 				_viewType = ServicePointsViewType.List;
 			}
 		}
+
+		public void ButtonCheckTapped(string code)
+		{
+			//api service call
+			var result="Here the status from service";
+			_view.ShowStatus(result);
+		}
     }
 }
