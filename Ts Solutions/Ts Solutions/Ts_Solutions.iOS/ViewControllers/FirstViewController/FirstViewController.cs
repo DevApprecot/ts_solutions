@@ -11,7 +11,6 @@ namespace Ts_Solutions.iOS
 {
 	public partial class FirstViewController : BaseController, IViewController, IMainView
 	{
-		ReconnectingView _reconnect;
 		MainPresenter _presenter;
 		UIBarButtonItem[] _rightIcons;
 
@@ -72,6 +71,7 @@ namespace Ts_Solutions.iOS
 		public override void ViewDidAppear(bool animated)
 		{
 			base.ViewDidAppear(animated);
+            ToggleConnectionIndicator(IsOnline());
 		}
 
 		public override void ViewWillLayoutSubviews()
@@ -82,7 +82,6 @@ namespace Ts_Solutions.iOS
 		public override void ViewDidDisappear(bool animated)
 		{
 			base.ViewDidDisappear(animated);
-			ToggleConnectionIndicator(IsOnline());
 		}
 
 		private void CreatePresenter()
@@ -94,26 +93,6 @@ namespace Ts_Solutions.iOS
 		public void Reachability_ReachabilityChanged(object sender, EventArgs e)
 		{
 			ToggleConnectionIndicator(IsOnline());
-		}
-
-
-		public void ToggleConnectionIndicator(bool internetState)
-		{
-			if (!internetState)
-			{
-				if (_reconnect == null)
-				{
-					_reconnect = ReconnectingView.Create(NavigationController.NavigationBarHidden);
-					_reconnect.Alpha = 0;
-				}
-				if (_reconnect.Alpha == 1) return;
-
-				View.Add(_reconnect);
-				_reconnect.FadeIn();
-			}
-			else
-				_reconnect?.Hide();
-
 		}
 
 		public void SetMarkers(List<ServicePoint> points)
@@ -149,11 +128,6 @@ namespace Ts_Solutions.iOS
 			source.ServicePoints = points;
 			TablePoints.Source = source;
 			TablePoints.ReloadData();
-		}
-
-		public void ShowNoNet()
-		{
-			throw new NotImplementedException();
 		}
 
 		public void SetLoading(bool isLoading)

@@ -12,6 +12,5 @@ namespace Ts_Solutions.IView
         void SetMarkers(List<ServicePoint> points);
 		void SetList(List<ServicePoint> points);
         void ShowStatus();
-        void ShowNoNet();
     }
 }
