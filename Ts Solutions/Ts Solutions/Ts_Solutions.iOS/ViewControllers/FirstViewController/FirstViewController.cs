@@ -93,9 +93,11 @@ namespace Ts_Solutions.iOS
 				_presenter = new MainPresenter(this);
 		}
 
-		public void Reachability_ReachabilityChanged(object sender, EventArgs e)
+		public async void Reachability_ReachabilityChanged(object sender, EventArgs e)
 		{
 			ToggleConnectionIndicator(IsOnline());
+			if (IsOnline())
+				await _presenter.LoadServicePoints();
 		}
 
 		public void SetMarkers(List<ServicePoint> points)
