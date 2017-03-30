@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ts_Solutions.Interfaces;
+using Ts_Solutions.Model;
 using Ts_Solutions.Network;
 using Ts_Solutions.View;
 
@@ -34,9 +35,14 @@ namespace Ts_Solutions.Presenter
             await GetServicePoints();
         }
 
-		private async Task GetServicePoints()
+		private async Task<List<ServicePoint>> GetServicePoints()
         {
 			var response = await(new Api().GetServicePoints());
+
+			if (response.EnsureSuccess()) 
+				return response.Data as List<ServicePoint>;
+
+			return new List<ServicePoint>(); /// error view?
 
         }
     }
