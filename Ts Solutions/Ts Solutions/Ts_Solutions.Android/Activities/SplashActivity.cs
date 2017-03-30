@@ -4,6 +4,7 @@ using Android.Widget;
 using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
 using Microsoft.Azure.Mobile.Crashes;
+using System.Threading.Tasks;
 
 namespace Ts_Solutions.Droid.Activities
 {
@@ -20,6 +21,15 @@ namespace Ts_Solutions.Droid.Activities
                    typeof(Analytics), typeof(Crashes));
 
             StrictMode.SetVmPolicy(new StrictMode.VmPolicy.Builder().DetectActivityLeaks().PenaltyLog().Build());
+
+            Task.Run(async () =>
+            {
+                await Task.Delay(1000);
+                
+            }).ContinueWith((t)=> {
+                StartActivity(new Android.Content.Intent(this, typeof(MainActivity)));
+                Finish();
+            }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
         protected override void OnDestroy()
