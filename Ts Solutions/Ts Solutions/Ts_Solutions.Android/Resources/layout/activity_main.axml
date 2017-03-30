@@ -40,6 +40,10 @@
             android:background="@android:color/transparent"
             android:textColor="@color/primary" />
     </LinearLayout>
+  <View 
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="@color/divider_background"/>
   <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -52,7 +56,6 @@
       android:id="@+id/rv_service_points"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:background="@android:color/black"
-      android:alpha="0.13" />
+      android:background="@color/divider_background" />
   </FrameLayout>
 </LinearLayout>

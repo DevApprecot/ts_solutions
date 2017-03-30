@@ -12,6 +12,7 @@ namespace Ts_Solutions.iOS
 		protected NSBundle languageBundle;
 		protected UIView ViewToCenterOnKeyboardShown;
 		protected UIScrollView ScrollToCenterOnKeyboardShown;
+		ReconnectingView _reconnect;
 		NSObject _keyboardShowObserver;
 		NSObject _keyboardHideObserver;
 
@@ -191,6 +192,24 @@ namespace Ts_Solutions.iOS
 		public void ShowToast(string message, bool success = false, bool withButton = false, BaseController owner = null, int delay = 2000)
 		{
 			
+		}
+
+		public void ToggleConnectionIndicator(bool internetState)
+		{
+			if (!internetState)
+			{
+				if (_reconnect == null)
+				{
+					_reconnect = ReconnectingView.Create(NavigationController.NavigationBarHidden);
+					_reconnect.Alpha = 0;
+				}
+				if (_reconnect.Alpha == 1) return;
+
+				View.Add(_reconnect);
+				_reconnect.FadeIn();
+			}
+			else
+				_reconnect?.Hide();
 		}
 
 	}
