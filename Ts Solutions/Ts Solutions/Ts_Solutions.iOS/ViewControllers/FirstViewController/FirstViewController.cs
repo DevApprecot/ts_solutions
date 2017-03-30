@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using UIKit;
 
 namespace Ts_Solutions.iOS
 {
@@ -12,6 +13,22 @@ namespace Ts_Solutions.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+			ConstTopText.Constant = 16 + NavigationController.NavigationBar.Frame.Height + 20;
+			ButtonCheck.BackgroundColor = UIColor.FromRGB(239, 60, 57);
+			ButtonCheck.SetTitleColor(UIColor.White, UIControlState.Normal);
+			var leftIcon = new UIBarButtonItem[1]
+			{
+				new UIBarButtonItem(UIImage.FromBundle("Icons/ic_navbar_icon").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+						, UIBarButtonItemStyle.Plain
+						, (sender, args) =>
+						{
+
+				})
+				{
+					Enabled=false
+				}
+			};
+			NavigationItem.LeftBarButtonItems = leftIcon;
 		}
 
 		public override void ViewWillAppear(bool animate)
@@ -29,6 +46,7 @@ namespace Ts_Solutions.iOS
 		public override void ViewWillLayoutSubviews()
 		{
 			base.ViewWillLayoutSubviews();
+			ConstTopText.Constant = 16 + NavigationController.NavigationBar.Frame.Height + 20;
 		}
 
 		public override void ViewDidDisappear(bool animated)
