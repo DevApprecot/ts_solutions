@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Ts_Solutions.Model;
 
-namespace Ts_Solutions.View
+namespace Ts_Solutions.IView
 {
 	public interface IMainView : IBaseView
     {

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Ts_Solutions.Interfaces;
+using Ts_Solutions.IView;
 using Ts_Solutions.Model;
 using Ts_Solutions.Network;
-using Ts_Solutions.View;
 
 namespace Ts_Solutions.Presenter
 {

@@ -1,4 +1,4 @@
-﻿namespace Ts_Solutions.View
+﻿namespace Ts_Solutions.IView
 {
     public interface IBaseView
 	{

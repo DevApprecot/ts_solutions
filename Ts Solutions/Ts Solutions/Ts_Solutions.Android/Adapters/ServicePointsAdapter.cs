@@ -10,18 +10,20 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Support.V7.Widget;
+using Ts_Solutions.Model;
 
 namespace Ts_Solutions.Droid.Adapters
 {
     public class ServicePointsAdapter : RecyclerView.Adapter
     {
-        public override int ItemCount
+        private List<ServicePoint> _servicePoints;
+
+        public ServicePointsAdapter(List<ServicePoint> servicePoints)
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            _servicePoints = servicePoints;
         }
+
+        public override int ItemCount => _servicePoints.Count;
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
@@ -30,7 +32,10 @@ namespace Ts_Solutions.Droid.Adapters
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
-            throw new NotImplementedException();
+            var view = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.element_rv_servicepoints, parent, false);
+
+            var vh = new ServicePointViewHolder(view);
+            return vh;
         }
     }
 }
