@@ -13,6 +13,7 @@ namespace Ts_Solutions.iOS
 	{
 		ReconnectingView _reconnect;
 		MainPresenter _presenter;
+		UIBarButtonItem[] _rightIcons;
 
 		public FirstViewController() : base("FirstViewController")
 		{
@@ -35,25 +36,25 @@ namespace Ts_Solutions.iOS
 						, UIBarButtonItemStyle.Plain
 						, (sender, args) =>
 						{
-					_presenter?.ChangeViewTypeClicked();
+
 				})
 				{
 					Enabled=false
 				}
 			};
-			var rightIcons = new UIBarButtonItem[1]
+			_rightIcons = new UIBarButtonItem[1]
 			{
 				new UIBarButtonItem(UIImage.FromBundle("Icons/ic_list").ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
 						, UIBarButtonItemStyle.Plain
 						, (sender, args) =>
 						{
-
+					_presenter?.ChangeViewTypeClicked();
 				})
 				{
 					TintColor=UIColor.FromRGB(239, 60, 57)
 				}
 			};
-			NavigationItem.RightBarButtonItems = rightIcons;
+			NavigationItem.RightBarButtonItems = _rightIcons;
 			NavigationItem.LeftBarButtonItems = leftIcon;
 			DismissKeyboardOnBackgroundTap();
 			TextCode.ShouldReturn += (textField) => textField.ResignFirstResponder();
@@ -64,7 +65,7 @@ namespace Ts_Solutions.iOS
 			base.ViewWillAppear(animate);
 			Reachability.ResetInternetEvents();
 			Reachability.ReachabilityChanged += Reachability_ReachabilityChanged;
-            CreatePresenter();
+			CreatePresenter();
 			await _presenter.LoadServicePoints();
 		}
 
@@ -112,12 +113,12 @@ namespace Ts_Solutions.iOS
 			}
 			else
 				_reconnect?.Hide();
-			
+
 		}
 
 		public void SetMarkers(List<ServicePoint> points)
 		{
-			//SetNavBar("Icons/ic_list", searchedKeywords);
+			SetNavBar("Icons/ic_list");
 			TablePoints.Alpha = 0;
 			MapPoints.Alpha = 1;
 			var mapDelegate = new MapDelegate(points);//stores, this, owner);
@@ -141,7 +142,13 @@ namespace Ts_Solutions.iOS
 
 		public void SetList(List<ServicePoint> points)
 		{
-			Debug.WriteLine("switching ");
+            SetNavBar("Icons/ic_map");
+			TablePoints.Alpha = 1;
+			MapPoints.Alpha = 0;
+			var source = new StoresTableSource();
+			source.ServicePoints = points;
+			TablePoints.Source = source;
+			TablePoints.ReloadData();
 		}
 
 		public void ShowNoNet()
@@ -157,6 +164,11 @@ namespace Ts_Solutions.iOS
 		public void ShowMessage(string message)
 		{
 			Debug.WriteLine("message " + message);
+		}
+
+		void SetNavBar(string imageName)
+		{
+			_rightIcons[0].Image = UIImage.FromBundle(imageName).ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
 		}
 	}
 }
