@@ -171,6 +171,7 @@
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <InterfaceDefinition Include="ViewControllers\FirstViewController\FirstViewController.xib" />
+    <InterfaceDefinition Include="Views\Reconnect\ReconnectingView.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -192,12 +193,15 @@
     <Compile Include="Utils\ViewExtensions.cs" />
     <Compile Include="Utils\IViewController.cs" />
     <Compile Include="Utils\BaseController.cs" />
+    <Compile Include="Views\Reconnect\ReconnectingView.cs" />
+    <Compile Include="Views\Reconnect\ReconnectingView.designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Images\" />
     <Folder Include="ViewControllers\" />
     <Folder Include="ViewControllers\FirstViewController\" />
     <Folder Include="Utils\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\TS_Splash.png" />
