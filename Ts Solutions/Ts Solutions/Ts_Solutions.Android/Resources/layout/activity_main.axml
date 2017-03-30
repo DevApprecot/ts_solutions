@@ -52,7 +52,7 @@
       android:id="@+id/rv_service_points"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:background="android:color/black"
+      android:background="@android:color/black"
       android:alpha="0.13" />
   </FrameLayout>
 </LinearLayout>

@@ -13,6 +13,7 @@ namespace Ts_Solutions.Network
         {
             var serviceResponse = new ServiceResponse();
 
+                
             var response =
                 await
                     ApprecotRestService.Instance.GetAsync("").ConfigureAwait(false);
