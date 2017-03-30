@@ -201,6 +201,7 @@
     <Compile Include="ViewControllers\FirstViewController\StoreAnnotationView\StoreAnnotationView.designer.cs">
       <DependentUpon>StoreAnnotationView.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\FirstViewController\Delegate\MapDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Images\" />
