@@ -39,7 +39,7 @@ namespace Ts_Solutions.iOS
 
 			////// set our root view controller with the sidebar menu as the apps root view controller
 			//Window.RootViewController = RootViewController;
-
+			Reachability.RemoteHostStatus();
 			return true;
 		}
 
