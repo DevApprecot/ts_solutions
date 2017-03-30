@@ -73,6 +73,8 @@ namespace Ts_Solutions.iOS
 		{
 			base.ViewDidAppear(animated);
             ToggleConnectionIndicator(IsOnline());
+			ButtonCheck.TouchUpInside += ButtonCheck_TouchUpInside;
+			ButtonClose.TouchUpInside += ButtonClose_TouchUpInside;
 		}
 
 		public override void ViewWillLayoutSubviews()
@@ -83,6 +85,8 @@ namespace Ts_Solutions.iOS
 		public override void ViewDidDisappear(bool animated)
 		{
 			base.ViewDidDisappear(animated);
+			ButtonCheck.TouchUpInside -= ButtonCheck_TouchUpInside;
+			ButtonClose.TouchUpInside -= ButtonClose_TouchUpInside;
 		}
 
 		private void CreatePresenter()
@@ -144,6 +148,18 @@ namespace Ts_Solutions.iOS
 		void SetNavBar(string imageName)
 		{
 			_rightIcons[0].Image = UIImage.FromBundle(imageName).ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
+		}
+
+		void ButtonCheck_TouchUpInside(object sender, EventArgs e)
+		{
+			if (ViewStatus.Alpha == 0)
+				ViewStatus.SlideInFromBottom();
+		}
+
+		void ButtonClose_TouchUpInside(object sender, EventArgs e)
+		{
+			if (ViewStatus.Alpha == 1)
+				ViewStatus.SlideOutFromBottom();
 		}
 	}
 }
