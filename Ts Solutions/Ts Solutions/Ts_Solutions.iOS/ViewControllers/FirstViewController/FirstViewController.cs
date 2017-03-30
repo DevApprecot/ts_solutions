@@ -119,7 +119,7 @@ namespace Ts_Solutions.iOS
 			}
 		}
 
-		public void ShowStatus()
+		public void ShowStatus(string status)
 		{
 			Debug.WriteLine("show status ");
 		}
@@ -152,6 +152,7 @@ namespace Ts_Solutions.iOS
 
 		void ButtonCheck_TouchUpInside(object sender, EventArgs e)
 		{
+			
 			if (ViewStatus.Alpha == 0)
 				ViewStatus.SlideInFromBottom();
 		}
