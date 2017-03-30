@@ -20,10 +20,9 @@ namespace Ts_Solutions.iOS
 			{
 				// Do Something
 			});
-
 			animation.Frame = frame;
 
-			BackgroundColor = UIColor.White;
+			BackgroundColor = UIColor.FromWhiteAlpha(0, 0.2f);
 
 			Alpha = 0.75f;
 			
@@ -77,7 +76,7 @@ namespace Ts_Solutions.iOS
 			UIView.Animate(
 				0.5, // duration
 				() => { Alpha = 0; },
-				() => { RemoveFromSuperview();}
+				() => { RemoveFromSuperview(); Alpha = 0.75f; }
 			);
 		}
 	}

@@ -29,8 +29,10 @@ namespace Ts_Solutions.iOS
 			ButtonCheck.Layer.CornerRadius = 5;
 			ButtonCheck.ClipsToBounds = true;
 			TextCode.Placeholder = "Write your work order here";
-			var leftIcon = new UIBarButtonItem[1]
-			{
+			var noItemsView = NoItemsView.Create(this);
+			TablePoints.BackgroundView = noItemsView;
+			TablePoints.SeparatorStyle = UITableViewCellSeparatorStyle.None; var leftIcon = new UIBarButtonItem[1]
+			 {
 				new UIBarButtonItem(UIImage.FromBundle("Icons/ic_navbar_icon").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
 						, UIBarButtonItemStyle.Plain
 						, (sender, args) =>
@@ -40,7 +42,7 @@ namespace Ts_Solutions.iOS
 				{
 					Enabled=false
 				}
-			};
+			 };
 			_rightIcons = new UIBarButtonItem[1]
 			{
 				new UIBarButtonItem(UIImage.FromBundle("Icons/ic_list").ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
@@ -128,7 +130,7 @@ namespace Ts_Solutions.iOS
 
 		public void SetList(List<ServicePoint> points)
 		{
-            SetNavBar("Icons/ic_map");
+			SetNavBar("Icons/ic_map");
 			TablePoints.Alpha = 1;
 			MapPoints.Alpha = 0;
 			var source = new StoresTableSource(points, this);
