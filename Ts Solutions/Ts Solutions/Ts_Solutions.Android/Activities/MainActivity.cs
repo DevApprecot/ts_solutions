@@ -2,10 +2,7 @@ using System;
 using System.Collections.Generic;
 using Android.App;
 using Android.OS;
-using Ts_Solutions.Model;
-using Ts_Solutions.Presenter;
 using System.Threading.Tasks;
-using Ts_Solutions.IView;
 using Android.Gms.Maps;
 using Android.Support.V7.Widget;
 using Ts_Solutions.Droid.ItemDecorators;
@@ -13,6 +10,9 @@ using Ts_Solutions.Droid.Adapters;
 using Android.Views;
 using Android.Gms.Maps.Model;
 using Java.Lang;
+using Ts_Solutions.IView;
+using Ts_Solutions.Presenter;
+using Ts_Solutions.Model;
 
 namespace Ts_Solutions.Droid.Activities
 {

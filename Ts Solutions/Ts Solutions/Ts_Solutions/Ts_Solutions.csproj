@@ -48,7 +48,6 @@
     <Compile Include="Utils\HelperClass.cs" />
     <Compile Include="Presenter\BasePresenter.cs" />
     <Compile Include="IView\IBaseView.cs" />
-    <Compile Include="Model\ServicePointsViewType.cs" />
     <Compile Include="Model\StatusCode.cs" />
   </ItemGroup>
   <ItemGroup />
