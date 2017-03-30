@@ -173,6 +173,7 @@
     <InterfaceDefinition Include="ViewControllers\FirstViewController\FirstViewController.xib" />
     <InterfaceDefinition Include="Views\Reconnect\ReconnectingView.xib" />
     <InterfaceDefinition Include="ViewControllers\FirstViewController\StoreAnnotationView\StoreAnnotationView.xib" />
+    <InterfaceDefinition Include="ViewControllers\FirstViewController\Table\StoresTableViewCell.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -202,6 +203,11 @@
       <DependentUpon>StoreAnnotationView.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewControllers\FirstViewController\Delegate\MapDelegate.cs" />
+    <Compile Include="ViewControllers\FirstViewController\Table\StoresTableSource.cs" />
+    <Compile Include="ViewControllers\FirstViewController\Table\StoresTableViewCell.cs" />
+    <Compile Include="ViewControllers\FirstViewController\Table\StoresTableViewCell.designer.cs">
+      <DependentUpon>StoresTableViewCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Images\" />
@@ -212,6 +218,7 @@
     <Folder Include="ViewControllers\FirstViewController\StoreAnnotation\" />
     <Folder Include="ViewControllers\FirstViewController\StoreAnnotationView\" />
     <Folder Include="ViewControllers\FirstViewController\Delegate\" />
+    <Folder Include="ViewControllers\FirstViewController\Table\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\TS_Splash.png" />
