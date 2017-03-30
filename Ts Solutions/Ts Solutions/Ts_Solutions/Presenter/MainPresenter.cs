@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Ts_Solutions.Interfaces;
 using Ts_Solutions.Model;
@@ -10,40 +11,30 @@ using Ts_Solutions.View;
 
 namespace Ts_Solutions.Presenter
 {
-    public class MainPresenter
+	public class MainPresenter : BasePresenter
     {
         private IMainView _view;
         private IConnectionManager _connectionManager;
+		CancellationTokenSource _cancelTokenSource;
 
-        public MainPresenter(IMainView view, IConnectionManager connectionManager)
+		public MainPresenter(IMainView view):base(view)
         {
             _view = view;
-            _connectionManager = connectionManager;
+            //_connectionManager = connectionManager;
         }
 
-		public async Task Start()
+		public async Task GetServicePoints()
         {
-            _view.ShowLoading();
+			if (_cancelTokenSource == null)
+				_cancelTokenSource = new CancellationTokenSource();
+			
+			_view.SetLoading(true);
+			var response = await(new Api().GetServicePoints(_cancelTokenSource.Token));
 
-            if(!_connectionManager.IsNetworkAvailable())
-            {
-                _view.HideLoading();
-                _view.ShowNoNet();
-                return;
-            }
-
-            await GetServicePoints();
-        }
-
-		private async Task<List<ServicePoint>> GetServicePoints()
-        {
-			var response = await(new Api().GetServicePoints());
-
-			if (response.EnsureSuccess()) 
-				return response.Data as List<ServicePoint>;
-
-			return new List<ServicePoint>(); /// error view?
-
+			if (response.EnsureSuccess())
+				_view.SetMarkers(response.Data as List<ServicePoint>);
+			else
+                OnError(response.GetFailureCode());
         }
     }
 }

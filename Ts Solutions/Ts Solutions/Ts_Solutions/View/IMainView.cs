@@ -7,10 +7,8 @@ using Ts_Solutions.Model;
 
 namespace Ts_Solutions.View
 {
-    public interface IMainView
+	public interface IMainView : IBaseView
     {
-        void ShowLoading();
-        void HideLoading();
         void SetMarkers(List<ServicePoint> points);
         void ShowStatus();
         void SwitchView();
