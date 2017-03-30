@@ -202,10 +202,13 @@
     <Folder Include="ViewControllers\FirstViewController\" />
     <Folder Include="Utils\" />
     <Folder Include="Resources\Icons\" />
+    <Folder Include="ViewControllers\FirstViewController\New Folder\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\TS_Splash.png" />
     <BundleResource Include="Resources\Icons\ic_navbar_icon%403x.png" />
+    <BundleResource Include="Resources\Icons\ic_list%403x.png" />
+    <BundleResource Include="Resources\Icons\ic_map%403x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
