@@ -48,6 +48,7 @@ namespace Ts_Solutions.iOS
 						, (sender, args) =>
 						{
 					_presenter?.ChangeViewTypeClicked();
+					TextCode.ResignFirstResponder();
 				})
 				{
 					TintColor=UIColor.FromRGB(239, 60, 57)
