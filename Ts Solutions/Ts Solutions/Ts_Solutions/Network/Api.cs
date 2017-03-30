@@ -13,32 +13,32 @@ namespace Ts_Solutions.Network
         {
             var serviceResponse = new ServiceResponse();
 
-            var response =
-                await
-                    ApprecotRestService.Instance.GetAsync("").ConfigureAwait(false);
+            //var response =
+            //    await
+            //        ApprecotRestService.Instance.GetAsync("").ConfigureAwait(false);
 
-            if (!response.IsValidString())
-                return ErrorStatusCode(serviceResponse);
-            try
-            {
-                var obj = JObject.Parse(response);
+            //if (!response.IsValidString())
+            //    return ErrorStatusCode(serviceResponse);
+            //try
+            //{
+            //    var obj = JObject.Parse(response);
 
-                serviceResponse.StatusCode = (int)obj["rs"];
+            //    serviceResponse.StatusCode = (int)obj["rs"];
 
-                //if (serviceResponse.StatusCode != (int)ServiceStatusCode.Success) return serviceResponse;
+            //    //if (serviceResponse.StatusCode != (int)ServiceStatusCode.Success) return serviceResponse;
 
-                var stores = JsonConvert.DeserializeObject<List<ServicePoint>>(obj["stores"].ToString());
+            //    var stores = JsonConvert.DeserializeObject<List<ServicePoint>>(obj["stores"].ToString());
 
-                if (stores != null) serviceResponse.Data = stores;
-            }
-            catch (FormatException)
-            {
-                //serviceResponse.StatusCode = (int)ServiceStatusCode.NotValidJson;
-            }
-            catch (Exception)
-            {
-                //serviceResponse.StatusCode = (int)ServiceStatusCode.GenericError;
-            }
+            //    if (stores != null) serviceResponse.Data = stores;
+            //}
+            //catch (FormatException)
+            //{
+            //    //serviceResponse.StatusCode = (int)ServiceStatusCode.NotValidJson;
+            //}
+            //catch (Exception)
+            //{
+            //    //serviceResponse.StatusCode = (int)ServiceStatusCode.GenericError;
+            //}
             return serviceResponse;
         }
 

@@ -57,12 +57,13 @@ namespace Ts_Solutions.iOS
 			TextCode.ShouldReturn += (textField) => textField.ResignFirstResponder();
 		}
 
-		public override void ViewWillAppear(bool animate)
+		public override async void ViewWillAppear(bool animate)
 		{
 			base.ViewWillAppear(animate);
 			Reachability.ResetInternetEvents();
 			Reachability.ReachabilityChanged += Reachability_ReachabilityChanged;
             CreatePresenter();
+			await _presenter?.Start();
 		}
 
 		public override void ViewDidAppear(bool animated)
@@ -79,6 +80,7 @@ namespace Ts_Solutions.iOS
 		{
 			base.ViewDidDisappear(animated);
 			ToggleConnectionIndicator(IsOnline());
+			_presenter = null;
 		}
 
 		private void CreatePresenter()

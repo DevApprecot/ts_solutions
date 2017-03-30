@@ -208,6 +208,7 @@
     <Compile Include="ViewControllers\FirstViewController\Table\StoresTableViewCell.designer.cs">
       <DependentUpon>StoresTableViewCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Managers\ConnectionManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Images\" />
@@ -219,6 +220,7 @@
     <Folder Include="ViewControllers\FirstViewController\StoreAnnotationView\" />
     <Folder Include="ViewControllers\FirstViewController\Delegate\" />
     <Folder Include="ViewControllers\FirstViewController\Table\" />
+    <Folder Include="Managers\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\TS_Splash.png" />

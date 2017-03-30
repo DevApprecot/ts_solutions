@@ -45,6 +45,8 @@
     <Compile Include="Model\ServiceResponse.cs" />
     <Compile Include="Model\ServiceStatusCode.cs" />
     <Compile Include="Utils\HelperClass.cs" />
+    <Compile Include="Model\StatusCode.cs" />
+    <Compile Include="Model\Store.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
