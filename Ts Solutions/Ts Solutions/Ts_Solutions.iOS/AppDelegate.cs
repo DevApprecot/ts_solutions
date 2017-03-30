@@ -25,15 +25,17 @@ namespace Ts_Solutions.iOS
 			MobileCenter.Start("cd293ebb-d4ee-46aa-9974-04bae163b6db",
 				   typeof(Analytics), typeof(Crashes));
 
+			UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, true);
+			UINavigationBar.Appearance.BarTintColor = UIColor.Red;
+			UINavigationBar.Appearance.TintColor = UIColor.White;
+			UINavigationBar.Appearance.ShadowImage = null;
+
 			// create a new window instance based on the screen size
 			Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
 			// Add the Navigation Controller and initialize it
 			var navController = new UINavigationController(new FirstViewController());
 			Window.RootViewController = navController;
-
-			//var RootViewController = (FirstViewController)Storyboard.InstantiateViewController("SplashViewController");
-			var RootViewController = new FirstViewController();
 
 			////// set our root view controller with the sidebar menu as the apps root view controller
 			//Window.RootViewController = RootViewController;
