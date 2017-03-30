@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Ts_Solutions.Model;
 using Ts_Solutions.Presenter;
 using Ts_Solutions.View;
@@ -63,7 +64,7 @@ namespace Ts_Solutions.iOS
 			Reachability.ResetInternetEvents();
 			Reachability.ReachabilityChanged += Reachability_ReachabilityChanged;
             CreatePresenter();
-			await _presenter?.Start();
+			await _presenter.GetServicePoints();
 		}
 
 		public override void ViewDidAppear(bool animated)
@@ -80,13 +81,12 @@ namespace Ts_Solutions.iOS
 		{
 			base.ViewDidDisappear(animated);
 			ToggleConnectionIndicator(IsOnline());
-			_presenter = null;
 		}
 
 		private void CreatePresenter()
 		{
 			if (_presenter == null)
-				_presenter = new MainPresenter(this, new ConnectionManager(this));
+				_presenter = new MainPresenter(this);
 		}
 
 		public void Reachability_ReachabilityChanged(object sender, EventArgs e)
@@ -114,34 +114,34 @@ namespace Ts_Solutions.iOS
 			
 		}
 
-		public void ShowLoading()
-		{
-			//throw new NotImplementedException();
-		}
-
-		public void HideLoading()
-		{
-			//throw new NotImplementedException();
-		}
-
 		public void SetMarkers(List<ServicePoint> points)
 		{
-			throw new NotImplementedException();
+			Debug.WriteLine("markers " + points.Count);
 		}
 
 		public void ShowStatus()
 		{
-			throw new NotImplementedException();
+			Debug.WriteLine("show status ");
 		}
 
 		public void SwitchView()
 		{
-			throw new NotImplementedException();
+			Debug.WriteLine("switching ");
 		}
 
 		public void ShowNoNet()
 		{
 			throw new NotImplementedException();
+		}
+
+		public void SetLoading(bool isLoading)
+		{
+			Debug.WriteLine("loading " + isLoading);
+		}
+
+		public void ShowMessage(string message)
+		{
+			Debug.WriteLine("message " + message);
 		}
 	}
 }

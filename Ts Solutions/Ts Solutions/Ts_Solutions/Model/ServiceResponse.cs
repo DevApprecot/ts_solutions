@@ -14,5 +14,6 @@ namespace Ts_Solutions.Model
         [JsonProperty(PropertyName = "rm")]
         public string Message { get; set; }
         public object Data { get; set; }
+		public string Json { get; set;}
     }
 }

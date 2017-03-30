@@ -4,6 +4,9 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Ts_Solutions.Model;
+using System.Diagnostics;
+using Newtonsoft.Json.Linq;
 
 namespace Ts_Solutions.Network
 {
@@ -25,32 +28,46 @@ namespace Ts_Solutions.Network
 
         public static ApprecotRestService Instance => _instance;
 
-        public async Task<string> GetAsync(string url, CancellationToken cancelToken)
+        public async Task<ServiceResponse> GetAsync(string url, CancellationToken cancelToken)
         {
-            string json;
+			string json = string.Empty;
+			var serviceResponse = new ServiceResponse();
 
             try
             {
-                using (var response = await Client.GetAsync(url).ConfigureAwait(false))
+				using (var response = await Client.GetAsync(url, cancelToken).ConfigureAwait(false))
                 {
                     response.EnsureSuccessStatusCode();
                     json = await response.Content.ReadAsStringAsync();
+
+					var obj = JObject.Parse(json);
+					serviceResponse.StatusCode = (int)obj["rs"];
                 }
             }
-            catch (HttpRequestException)
+			catch(TaskCanceledException e)
+			{
+				Debug.WriteLine(e.Message);
+				serviceResponse.StatusCode = (int)ServiceStatusCode.Cancelled;
+			}
+            catch (HttpRequestException e)
             {
-                json = string.Empty;
+				Debug.WriteLine(e.Message);
+				serviceResponse.StatusCode = (int)ServiceStatusCode.MissingParameters;
             }
-            catch (WebException)
+            catch (WebException e)
             {
-                json = string.Empty;
+				Debug.WriteLine(e.Message);
+				serviceResponse.StatusCode = (int)ServiceStatusCode.MissingParameters;
             }
-            catch (Exception)
+			catch (Exception e)
             {
-                json = string.Empty;
+				Debug.WriteLine(e.Message);
+				serviceResponse.StatusCode = (int)ServiceStatusCode.MissingParameters;
             }
 
-            return json;
+
+			serviceResponse.Json = json;
+			return serviceResponse;
         }
     }
 }
