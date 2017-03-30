@@ -52,7 +52,7 @@ namespace Ts_Solutions.Network
             catch (HttpRequestException e)
             {
 				Debug.WriteLine(e.Message);
-				serviceResponse.StatusCode = (int)ServiceStatusCode.MissingParameters;
+				serviceResponse.StatusCode = (int)ServiceStatusCode.Offline;
             }
             catch (WebException e)
             {

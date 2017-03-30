@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using CoreLocation;
 using Ts_Solutions.Model;
 using Ts_Solutions.Presenter;
@@ -29,7 +28,7 @@ namespace Ts_Solutions.iOS
 			ButtonCheck.Layer.CornerRadius = 5;
 			ButtonCheck.ClipsToBounds = true;
 			TextCode.Placeholder = "Write your work order here";
-			var noItemsView = NoItemsView.Create(this);
+			var noItemsView = NoItemsView.Create(TablePoints);
 			TablePoints.BackgroundView = noItemsView;
 			TablePoints.SeparatorStyle = UITableViewCellSeparatorStyle.None; var leftIcon = new UIBarButtonItem[1]
 			 {
