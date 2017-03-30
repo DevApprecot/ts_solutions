@@ -48,8 +48,18 @@ namespace Ts_Solutions.Droid.Activities
 
         protected override void OnDestroy()
         {
-            _presenter = null;
+            DisposeItems();
             base.OnDestroy();
+        }
+
+        private void DisposeItems()
+        {
+            _presenter = null;
+            _servicePoints = null;
+            _spRecyclerView.Dispose();
+            _spRecyclerView = null;
+            _mapFragment.Dispose();
+            _mapFragment = null;
         }
 
         public void CreatePresenter()
@@ -62,14 +72,13 @@ namespace Ts_Solutions.Droid.Activities
             Console.WriteLine("Loading " + isLoading);
         }
 
-        public void SetMarkers(List<ServicePoint> points)
+        public void SetList(List<ServicePoint> points)
         {
             _servicePoints = points;
             RunOnUiThread(() =>
             {
-                //var adapter = new ServicePointsAdapter(points);
-                //_spRecyclerView.SetAdapter(adapter);
-                _mapFragment?.GetMapAsync(this);
+                var adapter = new ServicePointsAdapter(points);
+                _spRecyclerView.SetAdapter(adapter);
             });
         }
 
@@ -125,5 +134,15 @@ namespace Ts_Solutions.Droid.Activities
                 }
             }
         }
+
+        public void SetMarkers(List<ServicePoint> points)
+        {
+            _servicePoints = points;
+            RunOnUiThread(() =>
+            {
+                _mapFragment?.GetMapAsync(this);
+            });
+        }
+        
     }
 }
