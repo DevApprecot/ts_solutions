@@ -26,7 +26,7 @@ namespace Ts_Solutions.iOS
 				   typeof(Analytics), typeof(Crashes));
 
 			UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, true);
-			UINavigationBar.Appearance.BarTintColor = UIColor.Red;
+			UINavigationBar.Appearance.BarTintColor = UIColor.White;
 			UINavigationBar.Appearance.TintColor = UIColor.White;
 			UINavigationBar.Appearance.ShadowImage = null;
 
