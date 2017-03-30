@@ -119,7 +119,9 @@ namespace Ts_Solutions.iOS
 
 		public void ShowStatus(string status)
 		{
-			Debug.WriteLine("show status ");
+			LableStatus.Text = status;
+			if (ViewStatus.Alpha == 0)
+				ViewStatus.SlideInFromBottom();
 		}
 
 		public void SetList(List<ServicePoint> points)
@@ -139,9 +141,8 @@ namespace Ts_Solutions.iOS
 
 		void ButtonCheck_TouchUpInside(object sender, EventArgs e)
 		{
-			
-			if (ViewStatus.Alpha == 0)
-				ViewStatus.SlideInFromBottom();
+			TextCode.ResignFirstResponder();
+			_presenter.ButtonCheckTapped(TextCode.Text);
 		}
 
 		void ButtonClose_TouchUpInside(object sender, EventArgs e)
