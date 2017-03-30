@@ -98,6 +98,8 @@ namespace Ts_Solutions.Droid.Activities
 
         public void SetList(List<ServicePoint> points)
         {
+            _spRecyclerView.Visibility = ViewStates.Visible; 
+            _mapFragment.View.Visibility = ViewStates.Gone;
             _servicePoints = points;
             RunOnUiThread(() =>
             {
@@ -120,7 +122,6 @@ namespace Ts_Solutions.Droid.Activities
         {
             using (var builder = new LatLngBounds.Builder())
             {
-
                 for (var i = 0; i < _servicePoints.Count; i++)
                 {
                     var coordinate1 = new LatLng(_servicePoints[i].Lat, _servicePoints[i].Lon);
@@ -158,6 +159,8 @@ namespace Ts_Solutions.Droid.Activities
 
         public void SetMarkers(List<ServicePoint> points)
         {
+            _spRecyclerView.Visibility = ViewStates.Gone;
+            _mapFragment.View.Visibility = ViewStates.Visible;
             _servicePoints = points;
             RunOnUiThread(() =>
             {
