@@ -1,7 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:padding="16dp">
 
+  <ImageView
+    android:layout_width="56dp"
+    android:layout_height="56dp"
+    android:scaleType="fitCenter"
+    android:adjustViewBounds="true"
+    android:layout_marginRight="16dp"
+    android:src="@drawable/ic_toolbar_logo" />
+
+  <LinearLayoyt
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView 
+      android:id="@+id/tv_name"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textColor="@android:color/black"
+      android:gravity="left" />
+
+    <TextView
+      android:id="@+id/tv_address"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textColor="@android:color/black"
+      android:alpha="0.62"
+      android:gravity="left" />
+
+    <TextView
+      android:id="@+id/tv_phone"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textColor="@android:color/black"
+      android:alpha="0.62"
+      android:gravity="left" />
+    
+  </LinearLayoyt>
+  
 </LinearLayout>
