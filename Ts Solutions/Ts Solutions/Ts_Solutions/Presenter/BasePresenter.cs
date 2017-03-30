@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Ts_Solutions.Interfaces;
-using Ts_Solutions.View;
+using Ts_Solutions.IView;
 
 namespace Ts_Solutions.Presenter
 {
