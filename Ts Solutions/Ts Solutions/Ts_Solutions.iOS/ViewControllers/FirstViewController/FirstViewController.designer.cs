@@ -1,29 +1,58 @@
 // WARNING
 //
-// This file has been generated automatically by Xamarin Studio from the outlets and
-// actions declared in your storyboard file.
-// Manual changes to this file will not be maintained.
+// This file has been generated automatically by Xamarin Studio to store outlets and
+// actions made in the UI designer. If it is removed, they will be lost.
+// Manual changes to this file may not be handled correctly.
 //
 using Foundation;
-using System;
 using System.CodeDom.Compiler;
-using UIKit;
 
 namespace Ts_Solutions.iOS
 {
-    [Register ("FirstViewController")]
-    partial class FirstViewController
-    {
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton ButtonTemp { get; set; }
+	[Register ("FirstViewController")]
+	partial class FirstViewController
+	{
+		[Outlet]
+		UIKit.UIButton ButtonCheck { get; set; }
 
-        void ReleaseDesignerOutlets ()
-        {
-            if (ButtonTemp != null) {
-                ButtonTemp.Dispose ();
-                ButtonTemp = null;
-            }
-        }
-    }
+		[Outlet]
+		UIKit.NSLayoutConstraint ConstTopText { get; set; }
+
+		[Outlet]
+		MapKit.MKMapView MapPoints { get; set; }
+
+		[Outlet]
+		UIKit.UITableView TablePoints { get; set; }
+
+		[Outlet]
+		UIKit.UITextField TextCode { get; set; }
+		
+		void ReleaseDesignerOutlets ()
+		{
+			if (ButtonCheck != null) {
+				ButtonCheck.Dispose ();
+				ButtonCheck = null;
+			}
+
+			if (MapPoints != null) {
+				MapPoints.Dispose ();
+				MapPoints = null;
+			}
+
+			if (TablePoints != null) {
+				TablePoints.Dispose ();
+				TablePoints = null;
+			}
+
+			if (TextCode != null) {
+				TextCode.Dispose ();
+				TextCode = null;
+			}
+
+			if (ConstTopText != null) {
+				ConstTopText.Dispose ();
+				ConstTopText = null;
+			}
+		}
+	}
 }
