@@ -6,5 +6,6 @@
 
 
   <!-- Main Activity -->
+  <string name="edt_order_id">Order id</string>
   <string name="button_check">Check</string>
 </resources>
