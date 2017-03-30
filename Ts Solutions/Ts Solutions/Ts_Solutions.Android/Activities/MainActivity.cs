@@ -15,6 +15,7 @@ using Ts_Solutions.Presenter;
 using Ts_Solutions.Model;
 using Android.Widget;
 using Android.Support.V4.Content;
+using Com.Airbnb.Lottie;
 
 namespace Ts_Solutions.Droid.Activities
 {
@@ -26,6 +27,8 @@ namespace Ts_Solutions.Droid.Activities
         RecyclerView _spRecyclerView;
         List<ServicePoint> _servicePoints;
         ImageView _viewIcon;
+        LottieAnimationView _animationView;
+
 
         protected override int LayoutResource => Resource.Layout.activity_main;
 
@@ -54,13 +57,12 @@ namespace Ts_Solutions.Droid.Activities
 
         private void InitViews()
         {
+            _animationView = FindViewById<LottieAnimationView>(Resource.Id.animation_view);
             _viewIcon = FindViewById<ImageView>(Resource.Id.iv_map);
             _mapFragment = SupportFragmentManager.FindFragmentById(Resource.Id.frm_map) as SupportMapFragment;
-
             _spRecyclerView = FindViewById<RecyclerView>(Resource.Id.rv_service_points);
             _spRecyclerView.SetLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.Vertical, false));
             _spRecyclerView.AddItemDecoration(new ItemDecorator(1));
-            _spRecyclerView.Visibility = ViewStates.Gone;
         }
 
         private void AddEventHandlers()
@@ -78,6 +80,7 @@ namespace Ts_Solutions.Droid.Activities
             _mapFragment = null;
             _viewIcon.SetImageDrawable(null);
             _viewIcon.Dispose();
+            _animationView.Dispose();
         }
 
         private void RemoveEventHandlers()
@@ -93,7 +96,17 @@ namespace Ts_Solutions.Droid.Activities
 
         public void SetLoading(bool isLoading)
         {
-            Console.WriteLine("Loading " + isLoading);
+            RunOnUiThread(() =>
+            {
+                if (isLoading)
+                {
+                    _animationView.Visibility = ViewStates.Visible;
+                    _spRecyclerView.Visibility = ViewStates.Gone;
+                    _mapFragment.View.Visibility = ViewStates.Gone;
+                 }
+             else
+                 _animationView.Visibility = ViewStates.Gone;
+            });
         }
 
         public void SetList(List<ServicePoint> points)
@@ -101,6 +114,8 @@ namespace Ts_Solutions.Droid.Activities
             _servicePoints = points;
             RunOnUiThread(() =>
             {
+                _mapFragment.View.Visibility = ViewStates.Gone;
+                _spRecyclerView.Visibility = ViewStates.Visible;
                 _viewIcon.SetImageDrawable(ContextCompat.GetDrawable(ApplicationContext, Resource.Drawable.ic_map));
                 var adapter = new ServicePointsAdapter(points);
                 _spRecyclerView.SetAdapter(adapter);
@@ -120,7 +135,6 @@ namespace Ts_Solutions.Droid.Activities
         {
             using (var builder = new LatLngBounds.Builder())
             {
-
                 for (var i = 0; i < _servicePoints.Count; i++)
                 {
                     var coordinate1 = new LatLng(_servicePoints[i].Lat, _servicePoints[i].Lon);
@@ -161,10 +175,16 @@ namespace Ts_Solutions.Droid.Activities
             _servicePoints = points;
             RunOnUiThread(() =>
             {
+                _spRecyclerView.Visibility = ViewStates.Gone;
+                _mapFragment.View.Visibility = ViewStates.Visible;
                 _viewIcon.SetImageDrawable(ContextCompat.GetDrawable(ApplicationContext, Resource.Drawable.ic_list));
                 _mapFragment?.GetMapAsync(this);
             });
         }
-        
+
+        public void ShowStatus(string result)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -41,6 +41,10 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Lottie, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Com.Airbnb.Android.Lottie.1.5.3.0\lib\MonoAndroid40\Lottie.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Azure.Mobile, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Azure.Mobile.0.7.0\lib\MonoAndroid403\Microsoft.Azure.Mobile.dll</HintPath>
       <Private>True</Private>
@@ -155,6 +159,7 @@
     <Compile Include="ServicePointViewHolder.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\preloader.json" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml">

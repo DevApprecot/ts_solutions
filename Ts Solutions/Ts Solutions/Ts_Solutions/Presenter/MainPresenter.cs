@@ -29,13 +29,13 @@ namespace Ts_Solutions.Presenter
 				_cancelTokenSource = new CancellationTokenSource();
 			
 			_view.SetLoading(true);
-			var response = await(new Api().GetServicePoints(_cancelTokenSource.Token));
-
+		    var response = await(new Api().GetServicePoints(_cancelTokenSource.Token));
+        
             if (response.EnsureSuccess())
             {
                 _view.SetLoading(false);
-				_servicePoints = response.Data as List<ServicePoint>;
-				_view.SetMarkers(_servicePoints);
+		    	_servicePoints = response.Data as List<ServicePoint>;
+		    	_view.SetMarkers(_servicePoints);
             }
             else
                 OnError(response.GetFailureCode());
