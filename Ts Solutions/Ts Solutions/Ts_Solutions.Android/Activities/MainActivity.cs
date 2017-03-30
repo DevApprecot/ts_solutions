@@ -15,6 +15,7 @@ using Ts_Solutions.Presenter;
 using Ts_Solutions.Model;
 using Android.Widget;
 using Android.Support.V4.Content;
+using Android.Content;
 
 namespace Ts_Solutions.Droid.Activities
 {
@@ -60,7 +61,6 @@ namespace Ts_Solutions.Droid.Activities
             _spRecyclerView = FindViewById<RecyclerView>(Resource.Id.rv_service_points);
             _spRecyclerView.SetLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.Vertical, false));
             _spRecyclerView.AddItemDecoration(new ItemDecorator(1));
-            _spRecyclerView.Visibility = ViewStates.Gone;
         }
 
         private void AddEventHandlers()
@@ -102,7 +102,7 @@ namespace Ts_Solutions.Droid.Activities
             RunOnUiThread(() =>
             {
                 _viewIcon.SetImageDrawable(ContextCompat.GetDrawable(ApplicationContext, Resource.Drawable.ic_map));
-                var adapter = new ServicePointsAdapter(points);
+                var adapter = new ServicePointsAdapter(points, this);
                 _spRecyclerView.SetAdapter(adapter);
             });
         }
@@ -112,7 +112,7 @@ namespace Ts_Solutions.Droid.Activities
             Console.WriteLine(message);
         }
 
-        public void ShowStatus()
+        public void ShowStatus(string status)
         {
         }
 
@@ -168,12 +168,21 @@ namespace Ts_Solutions.Droid.Activities
 
         public void CallClicked(string phone)
         {
-            throw new NotImplementedException();
+            _presenter.Call(phone);
         }
 
         public void CallNumber(string phone)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var intent = new Intent(Intent.ActionDial);
+                intent.SetData(Android.Net.Uri.Parse($"tel:{phone}"));
+                StartActivityForResult(intent, 7000);
+            }
+            catch (ActivityNotFoundException)
+            {
+                Console.WriteLine("Activity not found");
+            }
         }
     }
 }

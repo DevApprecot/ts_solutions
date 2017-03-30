@@ -3,6 +3,7 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using System;
+using Ts_Solutions.IView;
 
 namespace Ts_Solutions.Droid
 {
@@ -12,24 +13,15 @@ namespace Ts_Solutions.Droid
         public TextView Address { get; set; }
         public TextView Phone { get; set; }
 
-        public ServicePointViewHolder(View view) : base (view)
+        public ServicePointViewHolder(View itemView, IMainView view) : base (itemView)
         {
-            Name = view.FindViewById<TextView>(Resource.Id.tv_name);
-            Address = view.FindViewById<TextView>(Resource.Id.tv_address);
-            Phone = view.FindViewById<TextView>(Resource.Id.tv_phone);
+            Name = itemView.FindViewById<TextView>(Resource.Id.tv_name);
+            Address = itemView.FindViewById<TextView>(Resource.Id.tv_address);
+            Phone = itemView.FindViewById<TextView>(Resource.Id.tv_phone);
 
             Phone.Click += (sender, args) =>
             {
-                try
-                {
-                    var intent = new Intent(Intent.ActionDial);
-                    intent.SetData(Android.Net.Uri.Parse($"tel:{Phone.Text}"));
-                    view.Context.StartActivity(intent);
-                }
-                catch (ActivityNotFoundException)
-                {
-                    Console.WriteLine("Activity not found");
-                }
+                view.CallClicked(Phone.Text);
             };
         }
         
