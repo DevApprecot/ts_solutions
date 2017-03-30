@@ -40,9 +40,19 @@
             android:background="@android:color/transparent"
             android:textColor="@color/primary" />
     </LinearLayout>
+  <FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <fragment
         android:id="@+id/frm_map"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         class="com.google.android.gms.maps.SupportMapFragment" />
+    <android.support.v7.widget.RecyclerView
+      android:id="@+id/rv_service_points"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="android:color/black"
+      android:alpha="0.13" />
+  </FrameLayout>
 </LinearLayout>
