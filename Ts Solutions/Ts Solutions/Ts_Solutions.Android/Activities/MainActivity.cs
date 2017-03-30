@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Android.App;
 using Android.OS;
 using Ts_Solutions.Model;
-using Ts_Solutions.View;
 using Ts_Solutions.Presenter;
 using System.Threading.Tasks;
+using Ts_Solutions.IView;
 
 namespace Ts_Solutions.Droid.Activities
 {

@@ -27,7 +27,12 @@ namespace Ts_Solutions.Droid.Adapters
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-            throw new NotImplementedException();
+            var vh = holder as ServicePointViewHolder;
+            if (vh == null) return;
+
+            vh.Name.Text = _servicePoints[position].Name;
+            vh.Address.Text = _servicePoints[position].Address;
+            vh.Phone.Text = _servicePoints[position].Phone;
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
