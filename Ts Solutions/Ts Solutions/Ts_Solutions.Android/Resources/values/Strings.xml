@@ -2,4 +2,8 @@
 <resources>
 	<string name="mobile_center_api_key">5bfbec05-6837-49f4-8539-ee0878d03e93</string>
 	<string name="app_name">TS Solutions</string>
+  
+  <!-- main view-->
+  <string name="check">Check</string>
+  <string name="order_id">Order code</string>
 </resources>

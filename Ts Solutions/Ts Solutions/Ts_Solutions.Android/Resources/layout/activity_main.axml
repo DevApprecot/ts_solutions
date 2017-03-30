@@ -4,12 +4,43 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-  <android.support.design.widget.AppBarLayout 
-      xmlns:app="http://schemas.android.com/apk/res-auto"
-      android:id="@+id/toolbar"
+    <android.support.design.widget.AppBarLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@android:color/white"
+        app:layout_collapseMode="pin" />
+    <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="?attr/actionBarSize"
       android:minHeight="?attr/actionBarSize"
-      android:background="@android:color/white"
-      app:layout_collapseMode="pin" />
+      android:padding="8dp"
+      android:background="@android:color/white" 
+      android:orientation="horizontal" >
+      <EditText
+        android:id="@+id/edt_order_id"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:hint="@string/order_id"
+        android:lines="1"
+        android:imeOptions="actionDone"
+        android:textSize="@dimen/abc_text_size_caption_material" />
+      <Button
+        android:id="@+id/btn_check"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:padding="8dp"
+        android:gravity="center"
+        android:textSize="@dimen/abc_text_size_caption_material"
+        android:textColor="@color/primary"
+        android:text="@string/check"/>
+    </LinearLayout>
+    <fragment 
+        android:id="@+id/frm_map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.google.android.gms.maps.SupportMapFragment" />
 </LinearLayout>
