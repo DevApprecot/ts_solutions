@@ -10,7 +10,7 @@ namespace Ts_Solutions.iOS
 	public class StoresTableSource : UITableViewSource
 	{
 		string CellIdentifier = "StoresTableViewCell";
-		public List<Store> Stores { get; set; }
+		public List<ServicePoint> Stores { get; set; }
 		public WeakReference Owner { get; set; }
 
 		public StoresTableSource()
