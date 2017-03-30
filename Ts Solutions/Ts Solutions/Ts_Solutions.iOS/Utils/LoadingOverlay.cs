@@ -10,25 +10,21 @@ namespace Ts_Solutions.iOS
 		// control declarations
 		UIActivityIndicatorView activitySpinner;
 		UILabel loadingLabel;
+		LOTAnimationView _animation;
 
 		public LoadingOverlay(CGRect frame, string text = "") : base(frame)
 		{
-			// configurable bits
-			var animation = LOTAnimationView.AnimationNamed("Animations/preloader");
-			animation.ContentMode = UIViewContentMode.ScaleAspectFit;
-			animation.PlayWithCompletion((animationFinished) =>
-			{
-				// Do Something
-			});
-			animation.Frame = frame;
-
 			BackgroundColor = UIColor.FromWhiteAlpha(0, 0.2f);
-
+			_animation = LOTAnimationView.AnimationNamed("Animations/preloader");
+			_animation.ContentMode = UIViewContentMode.ScaleAspectFit;
+			_animation.Frame = frame;
+			_animation.LoopAnimation = true;
+			_animation.Play();
 			Alpha = 0.75f;
-			
-			AutoresizingMask = UIViewAutoresizing.All;
+            Add(_animation);
+			Frame = frame;
 
-			this.Add(animation);
+			AutoresizingMask = UIViewAutoresizing.All;
 			//nfloat labelHeight = 22;
 			//nfloat labelWidth = Frame.Width - 20;
 
@@ -76,7 +72,7 @@ namespace Ts_Solutions.iOS
 			UIView.Animate(
 				0.5, // duration
 				() => { Alpha = 0; },
-				() => { RemoveFromSuperview(); Alpha = 0.75f; }
+				() => {  RemoveFromSuperview(); Alpha = 0.75f; }
 			);
 		}
 	}

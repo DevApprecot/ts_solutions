@@ -145,6 +145,7 @@ namespace Ts_Solutions.iOS
 
 		void ButtonCheck_TouchUpInside(object sender, EventArgs e)
 		{
+			if (string.IsNullOrEmpty(TextCode.Text)) return;
 			TextCode.ResignFirstResponder();
 			_presenter.ButtonCheckTapped(TextCode.Text);
 		}
