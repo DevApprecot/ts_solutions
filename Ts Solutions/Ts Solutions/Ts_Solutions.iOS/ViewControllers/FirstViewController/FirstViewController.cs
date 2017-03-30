@@ -164,6 +164,7 @@ namespace Ts_Solutions.iOS
 
 		void ButtonClose_TouchUpInside(object sender, EventArgs e)
 		{
+			TextCode.Text = "";
 			if (ViewStatus.Alpha == 1)
 				ViewStatus.SlideOutFromBottom();
 		}
