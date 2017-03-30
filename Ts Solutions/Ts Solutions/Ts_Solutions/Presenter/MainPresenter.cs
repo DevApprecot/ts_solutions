@@ -14,16 +14,14 @@ namespace Ts_Solutions.Presenter
 	public class MainPresenter : BasePresenter
     {
         private IMainView _view;
-        private IConnectionManager _connectionManager;
 		CancellationTokenSource _cancelTokenSource;
 
 		public MainPresenter(IMainView view):base(view)
         {
             _view = view;
-            //_connectionManager = connectionManager;
         }
 
-		public async Task GetServicePoints()
+		public async Task LoadServicePoints()
         {
 			if (_cancelTokenSource == null)
 				_cancelTokenSource = new CancellationTokenSource();
