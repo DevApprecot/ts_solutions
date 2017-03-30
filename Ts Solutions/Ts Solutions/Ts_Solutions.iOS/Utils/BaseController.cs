@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using CoreGraphics;
 using Foundation;
 using Ts_Solutions.IView;
@@ -229,9 +230,10 @@ namespace Ts_Solutions.iOS
 
 		public void ShowMessage(string message)
 		{
-			//throw new NotImplementedException();
+			Debug.WriteLine(message);
 		}
 
+		//old one
 		public void ShowToast(string message, bool success = false, bool withButton = false, BaseController owner = null, int delay = 2000)
 		{
 
