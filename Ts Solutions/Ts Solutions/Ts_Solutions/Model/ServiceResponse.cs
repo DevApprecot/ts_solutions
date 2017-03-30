@@ -13,7 +13,6 @@ namespace Ts_Solutions.Model
         public int StatusCode { get; set; }
         [JsonProperty(PropertyName = "rm")]
         public string Message { get; set; }
-
         public object Data { get; set; }
     }
 }

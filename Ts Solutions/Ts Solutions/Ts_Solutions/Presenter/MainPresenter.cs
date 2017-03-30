@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ts_Solutions.Interfaces;
+using Ts_Solutions.Model;
+using Ts_Solutions.Network;
 using Ts_Solutions.View;
 
 namespace Ts_Solutions.Presenter
@@ -19,7 +21,7 @@ namespace Ts_Solutions.Presenter
             _connectionManager = connectionManager;
         }
 
-        public void Start()
+		public async Task Start()
         {
             _view.ShowLoading();
 
@@ -30,11 +32,17 @@ namespace Ts_Solutions.Presenter
                 return;
             }
 
-            GetServicePoints();
+            await GetServicePoints();
         }
 
-        private void GetServicePoints()
+		private async Task<List<ServicePoint>> GetServicePoints()
         {
+			var response = await(new Api().GetServicePoints());
+
+			if (response.EnsureSuccess()) 
+				return response.Data as List<ServicePoint>;
+
+			return new List<ServicePoint>(); /// error view?
 
         }
     }

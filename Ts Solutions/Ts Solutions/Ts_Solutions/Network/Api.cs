@@ -17,8 +17,8 @@ namespace Ts_Solutions.Network
                 await
                     ApprecotRestService.Instance.GetAsync("").ConfigureAwait(false);
 
-            //if (!response.IsValidString())
-            //    return ErrorStatusCode(serviceResponse);
+            if (!response.IsValidString())
+                return ErrorStatusCode(serviceResponse);
             try
             {
                 var obj = JObject.Parse(response);
@@ -41,5 +41,11 @@ namespace Ts_Solutions.Network
             }
             return serviceResponse;
         }
+
+		private ServiceResponse ErrorStatusCode(ServiceResponse serviceResponse)
+		{
+			serviceResponse.StatusCode = (int)ServiceStatusCode.MissingParameters;
+			return serviceResponse;
+		}
     }
 }

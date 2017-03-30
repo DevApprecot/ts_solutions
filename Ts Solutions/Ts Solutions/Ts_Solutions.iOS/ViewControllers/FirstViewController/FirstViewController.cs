@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using Ts_Solutions.Model;
+using Ts_Solutions.Presenter;
+using Ts_Solutions.View;
 using UIKit;
 
 namespace Ts_Solutions.iOS
 {
-	public partial class FirstViewController : BaseController, IViewController
+	public partial class FirstViewController : BaseController, IViewController, IMainView
 	{
 		ReconnectingView _reconnect;
+		MainPresenter _presenter;
 
 		public FirstViewController() : base("FirstViewController")
 		{
@@ -57,6 +62,7 @@ namespace Ts_Solutions.iOS
 			base.ViewWillAppear(animate);
 			Reachability.ResetInternetEvents();
 			Reachability.ReachabilityChanged += Reachability_ReachabilityChanged;
+            CreatePresenter();
 		}
 
 		public override void ViewDidAppear(bool animated)
@@ -73,6 +79,12 @@ namespace Ts_Solutions.iOS
 		{
 			base.ViewDidDisappear(animated);
 			ToggleConnectionIndicator(IsOnline());
+		}
+
+		private void CreatePresenter()
+		{
+			if (_presenter == null)
+				_presenter = new MainPresenter(this, new ConnectionManager(this));
 		}
 
 		public void Reachability_ReachabilityChanged(object sender, EventArgs e)
@@ -100,6 +112,35 @@ namespace Ts_Solutions.iOS
 			
 		}
 
+		public void ShowLoading()
+		{
+			//throw new NotImplementedException();
+		}
+
+		public void HideLoading()
+		{
+			//throw new NotImplementedException();
+		}
+
+		public void SetMarkers(List<ServicePoint> points)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void ShowStatus()
+		{
+			throw new NotImplementedException();
+		}
+
+		public void SwitchView()
+		{
+			throw new NotImplementedException();
+		}
+
+		public void ShowNoNet()
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
 
