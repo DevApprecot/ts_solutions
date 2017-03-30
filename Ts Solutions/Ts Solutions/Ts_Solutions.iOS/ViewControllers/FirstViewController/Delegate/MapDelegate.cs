@@ -38,6 +38,7 @@ namespace Ts_Solutions.iOS
 				annotationView.Annotation = annotation;
 				annotationView = myView;
 				annotationView.ContentMode = UIViewContentMode.ScaleAspectFit;
+				annotationView.CanShowCallout = true;
 			}
 			return myView;
 		}

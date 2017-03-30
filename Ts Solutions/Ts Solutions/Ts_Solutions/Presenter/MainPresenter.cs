@@ -15,6 +15,8 @@ namespace Ts_Solutions.Presenter
     {
         private IMainView _view;
 		CancellationTokenSource _cancelTokenSource;
+		ServicePointsViewType _viewType = ServicePointsViewType.Map;
+		List<ServicePoint> _servicePoints;
 
 		public MainPresenter(IMainView view):base(view)
         {
@@ -32,10 +34,25 @@ namespace Ts_Solutions.Presenter
             if (response.EnsureSuccess())
             {
                 _view.SetLoading(false);
-                _view.SetMarkers(response.Data as List<ServicePoint>);
+				_servicePoints = response.Data as List<ServicePoint>;
+				_view.SetMarkers(_servicePoints);
             }
             else
                 OnError(response.GetFailureCode());
         }
+
+		public void ChangeViewTypeClicked()
+		{
+			if (_viewType == ServicePointsViewType.List)
+			{
+				_view.SetMarkers(_servicePoints);
+				_viewType = ServicePointsViewType.Map;
+			}
+			else
+			{
+				_view.SetList(_servicePoints);
+				_viewType = ServicePointsViewType.List;
+			}
+		}
     }
 }

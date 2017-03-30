@@ -47,6 +47,7 @@
     <Compile Include="IView\IBaseView.cs" />
     <Compile Include="IView\IMainView.cs" />
     <Compile Include="IView\ISplashView.cs" />
+    <Compile Include="Model\ServicePointsViewType.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
