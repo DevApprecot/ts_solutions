@@ -13,9 +13,14 @@ namespace Ts_Solutions.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			ConstTopText.Constant = 16 + NavigationController.NavigationBar.Frame.Height + 20;
+			View.BackgroundColor = UIColor.FromRGB(237, 237, 237);
+			ConstTopText.Constant = 8 + NavigationController.NavigationBar.Frame.Height + 20;
 			ButtonCheck.BackgroundColor = UIColor.FromRGB(239, 60, 57);
+			ButtonCheck.SetTitle("Check", UIControlState.Normal);
 			ButtonCheck.SetTitleColor(UIColor.White, UIControlState.Normal);
+			ButtonCheck.Layer.CornerRadius = 5;
+			ButtonCheck.ClipsToBounds = true;
+			TextCode.Placeholder = "Write your work order here";
 			var leftIcon = new UIBarButtonItem[1]
 			{
 				new UIBarButtonItem(UIImage.FromBundle("Icons/ic_navbar_icon").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
@@ -28,6 +33,19 @@ namespace Ts_Solutions.iOS
 					Enabled=false
 				}
 			};
+			var rightIcons = new UIBarButtonItem[1]
+			{
+				new UIBarButtonItem(UIImage.FromBundle("Icons/ic_list").ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+						, UIBarButtonItemStyle.Plain
+						, (sender, args) =>
+						{
+
+				})
+				{
+					TintColor=UIColor.FromRGB(239, 60, 57)
+				}
+			};
+			NavigationItem.RightBarButtonItems = rightIcons;
 			NavigationItem.LeftBarButtonItems = leftIcon;
 		}
 
