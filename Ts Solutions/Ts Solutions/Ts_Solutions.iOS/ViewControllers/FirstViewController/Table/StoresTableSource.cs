@@ -51,7 +51,10 @@ namespace Ts_Solutions.iOS
 
 		public override nint RowsInSection(UITableView tableview, nint section)
 		{
-			return _servicePoints.Count;
+			if (_servicePoints != null)
+				return _servicePoints.Count;
+			else
+				return 0;
 		}
 	}
 }

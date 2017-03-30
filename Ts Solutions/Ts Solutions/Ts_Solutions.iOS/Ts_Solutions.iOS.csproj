@@ -175,6 +175,7 @@
     <InterfaceDefinition Include="Views\Reconnect\ReconnectingView.xib" />
     <InterfaceDefinition Include="ViewControllers\FirstViewController\StoreAnnotationView\StoreAnnotationView.xib" />
     <InterfaceDefinition Include="ViewControllers\FirstViewController\Table\StoresTableViewCell.xib" />
+    <InterfaceDefinition Include="Views\NoItemsView\NoItemsView.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -194,6 +195,7 @@
     <Compile Include="Utils\BadgeBarButtonItem.cs" />
     <Compile Include="Utils\Reachability.cs" />
     <Compile Include="Utils\ViewExtensions.cs" />
+    <Compile Include="Utils\IViewController.cs" />
     <Compile Include="Utils\BaseController.cs" />
     <Compile Include="Views\Reconnect\ReconnectingView.cs" />
     <Compile Include="Views\Reconnect\ReconnectingView.designer.cs" />
@@ -210,7 +212,10 @@
     </Compile>
     <Compile Include="Managers\ConnectionManager.cs" />
     <Compile Include="Utils\Telephone.cs" />
-    <Compile Include="Utils\LoadingOverlay.cs" />
+    <Compile Include="Views\NoItemsView\NoItemsView.cs" />
+    <Compile Include="Views\NoItemsView\NoItemsView.designer.cs">
+      <DependentUpon>NoItemsView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Images\" />
@@ -223,6 +228,7 @@
     <Folder Include="ViewControllers\FirstViewController\Delegate\" />
     <Folder Include="ViewControllers\FirstViewController\Table\" />
     <Folder Include="Managers\" />
+    <Folder Include="Views\NoItemsView\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\TS_Splash.png" />
