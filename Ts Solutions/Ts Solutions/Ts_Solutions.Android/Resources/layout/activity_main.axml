@@ -35,10 +35,10 @@
              android:layout_height="wrap_content"
              android:layout_width="match_parent"
              android:layout_margin= "8dp"
-             android:textSize="@dimen/abc_text_size_medium_material"
+             android:textSize="@dimen/abc_text_size_small_material"
              android:textColor ="@android:color/black"
              android:textStyle="bold"
-             android:text="Καταχώρησε τον κωδικό"/>
+             android:text="@string/work_order"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -61,6 +61,9 @@
   <fragment 
         android:id="@+id/frm_map"
         android:layout_width="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
         android:layout_height="0dp"
         android:layout_weight="80"
         class="com.google.android.gms.maps.SupportMapFragment" />

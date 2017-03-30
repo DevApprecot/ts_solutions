@@ -49,6 +49,7 @@ namespace Ts_Solutions.iOS
 			NavigationItem.RightBarButtonItems = rightIcons;
 			NavigationItem.LeftBarButtonItems = leftIcon;
 			DismissKeyboardOnBackgroundTap();
+			TextCode.ShouldReturn += (textField) => textField.ResignFirstResponder();
 		}
 
 		public override void ViewWillAppear(bool animate)
