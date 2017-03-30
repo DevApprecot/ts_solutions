@@ -3338,6 +3338,9 @@ namespace Ts_Solutions.Droid
 			// aapt resource value: 0x7f070025
 			public const int status_bar_notification_info_overflow = 2131165221;
 			
+			// aapt resource value: 0x7f07003d
+			public const int work_order = 2131165245;
+			
 			static String()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

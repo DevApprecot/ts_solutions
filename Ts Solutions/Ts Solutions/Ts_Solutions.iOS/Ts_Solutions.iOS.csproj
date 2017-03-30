@@ -172,6 +172,7 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <InterfaceDefinition Include="ViewControllers\FirstViewController\FirstViewController.xib" />
     <InterfaceDefinition Include="Views\Reconnect\ReconnectingView.xib" />
+    <InterfaceDefinition Include="ViewControllers\FirstViewController\StoreAnnotationView\StoreAnnotationView.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -195,6 +196,11 @@
     <Compile Include="Utils\BaseController.cs" />
     <Compile Include="Views\Reconnect\ReconnectingView.cs" />
     <Compile Include="Views\Reconnect\ReconnectingView.designer.cs" />
+    <Compile Include="ViewControllers\FirstViewController\StoreAnnotation\StoreAnnotation.cs" />
+    <Compile Include="ViewControllers\FirstViewController\StoreAnnotationView\StoreAnnotationView.cs" />
+    <Compile Include="ViewControllers\FirstViewController\StoreAnnotationView\StoreAnnotationView.designer.cs">
+      <DependentUpon>StoreAnnotationView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Images\" />
@@ -202,7 +208,9 @@
     <Folder Include="ViewControllers\FirstViewController\" />
     <Folder Include="Utils\" />
     <Folder Include="Resources\Icons\" />
-    <Folder Include="ViewControllers\FirstViewController\New Folder\" />
+    <Folder Include="ViewControllers\FirstViewController\StoreAnnotation\" />
+    <Folder Include="ViewControllers\FirstViewController\StoreAnnotationView\" />
+    <Folder Include="ViewControllers\FirstViewController\Delegate\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\TS_Splash.png" />

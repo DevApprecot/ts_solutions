@@ -6,6 +6,10 @@
 
 
   <!-- Main Activity -->
+<<<<<<< HEAD
   <string name="edt_order_id">Order id</string>
+=======
+  <string name="work_order">Δώστε κωδικό work order</string>
+>>>>>>> aad7753fe277799ce10190045eb6c214f95d5871
   <string name="button_check">Check</string>
 </resources>
