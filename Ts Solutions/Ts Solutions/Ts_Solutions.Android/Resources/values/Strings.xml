@@ -6,5 +6,6 @@
 
 
   <!-- Main Activity -->
+  <string name="work_order">Δώστε κωδικό work order</string>
   <string name="button_check">Check</string>
 </resources>

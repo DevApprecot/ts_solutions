@@ -3272,8 +3272,8 @@ namespace Ts_Solutions.Droid
 			// aapt resource value: 0x7f070033
 			public const int bottom_sheet_behavior = 2131165235;
 			
-			// aapt resource value: 0x7f07003d
-			public const int button_check = 2131165245;
+			// aapt resource value: 0x7f07003e
+			public const int button_check = 2131165246;
 			
 			// aapt resource value: 0x7f070034
 			public const int character_counter_pattern = 2131165236;
@@ -3355,6 +3355,9 @@ namespace Ts_Solutions.Droid
 			
 			// aapt resource value: 0x7f070025
 			public const int status_bar_notification_info_overflow = 2131165221;
+			
+			// aapt resource value: 0x7f07003d
+			public const int work_order = 2131165245;
 			
 			static String()
 			{
