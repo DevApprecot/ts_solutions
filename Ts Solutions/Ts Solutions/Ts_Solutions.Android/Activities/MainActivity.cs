@@ -16,6 +16,7 @@ using Ts_Solutions.Model;
 using Android.Widget;
 using Android.Support.V4.Content;
 using Com.Airbnb.Lottie;
+using Android.Content;
 
 namespace Ts_Solutions.Droid.Activities
 {
@@ -117,7 +118,7 @@ namespace Ts_Solutions.Droid.Activities
                 _mapFragment.View.Visibility = ViewStates.Gone;
                 _spRecyclerView.Visibility = ViewStates.Visible;
                 _viewIcon.SetImageDrawable(ContextCompat.GetDrawable(ApplicationContext, Resource.Drawable.ic_map));
-                var adapter = new ServicePointsAdapter(points);
+                var adapter = new ServicePointsAdapter(points, this);
                 _spRecyclerView.SetAdapter(adapter);
             });
         }
@@ -182,9 +183,25 @@ namespace Ts_Solutions.Droid.Activities
             });
         }
 
-        public void ShowStatus(string result)
+        public void CallClicked(string phone)
         {
-            throw new NotImplementedException();
+            _presenter.Call(phone);
+        }
+        public void ShowStatus(string status)
+        {
+        }
+        public void CallNumber(string phone)
+        {
+            try
+            {
+                var intent = new Intent(Intent.ActionDial);
+                intent.SetData(Android.Net.Uri.Parse($"tel:{phone}"));
+                StartActivityForResult(intent, 7000);
+            }
+            catch (ActivityNotFoundException)
+            {
+                Console.WriteLine("Activity not found");
+            }
         }
     }
 }
