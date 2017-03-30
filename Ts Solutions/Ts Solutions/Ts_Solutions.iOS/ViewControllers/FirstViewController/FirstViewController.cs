@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using CoreLocation;
+using Ts_Solutions.IView;
 using Ts_Solutions.Model;
 using Ts_Solutions.Presenter;
-using Ts_Solutions.View;
 using UIKit;
 
 namespace Ts_Solutions.iOS
