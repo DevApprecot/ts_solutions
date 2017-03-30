@@ -64,7 +64,7 @@ namespace Ts_Solutions.iOS
 			Reachability.ResetInternetEvents();
 			Reachability.ReachabilityChanged += Reachability_ReachabilityChanged;
             CreatePresenter();
-			await _presenter.GetServicePoints();
+			await _presenter.LoadServicePoints();
 		}
 
 		public override void ViewDidAppear(bool animated)
