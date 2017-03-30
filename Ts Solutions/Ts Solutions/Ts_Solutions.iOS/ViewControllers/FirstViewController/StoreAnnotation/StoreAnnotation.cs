@@ -1,6 +1,7 @@
 ﻿using System;
 using CoreLocation;
 using MapKit;
+using Ts_Solutions.Model;
 
 namespace Ts_Solutions.iOS
 {
@@ -8,10 +9,13 @@ namespace Ts_Solutions.iOS
 	{
 		string title;
 		CLLocationCoordinate2D coord;
+		public ServicePoint Point { get; set; }
 
-		public StoreAnnotation(string title, CLLocationCoordinate2D coord)//, Store st)
+		public StoreAnnotation(string title, CLLocationCoordinate2D coord, ServicePoint st)
 		{
-			
+            this.title = title;
+			this.coord = coord;
+			Point = st;
 		}
 
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using CoreLocation;
 using Ts_Solutions.Model;
 using Ts_Solutions.Presenter;
 using Ts_Solutions.View;
@@ -116,7 +117,21 @@ namespace Ts_Solutions.iOS
 
 		public void SetMarkers(List<ServicePoint> points)
 		{
-			Debug.WriteLine("markers " + points.Count);
+			//SetNavBar("Icons/ic_list", searchedKeywords);
+			TablePoints.Alpha = 0;
+			MapPoints.Alpha = 1;
+			var mapDelegate = new MapDelegate(points);//stores, this, owner);
+			MapPoints.Delegate = mapDelegate;
+			MapPoints.RemoveAnnotations(MapPoints.Annotations);
+			if (points != null)
+			{
+				var annotations = new List<StoreAnnotation>();
+				foreach (var st in points)
+				{
+					annotations.Add(new StoreAnnotation(st.Name, new CLLocationCoordinate2D(st.Lat, st.Lon), st));
+					MapPoints.AddAnnotations(new StoreAnnotation(st.Name, new CLLocationCoordinate2D(st.Lat, st.Lon), st));
+				};
+			}
 		}
 
 		public void ShowStatus()

@@ -3,6 +3,7 @@ using System;
 using UIKit;
 using ObjCRuntime;
 using MapKit;
+using Ts_Solutions.Model;
 
 namespace Ts_Solutions.iOS
 {
@@ -26,7 +27,7 @@ namespace Ts_Solutions.iOS
 			return v;
 		}
 
-		public void UpdateView()
+		public void UpdateView(ServicePoint point)
 		{
 			BackgroundColor = UIColor.Clear;
 			ImageStore.Image = UIImage.FromBundle("ic_navbar_icon");
