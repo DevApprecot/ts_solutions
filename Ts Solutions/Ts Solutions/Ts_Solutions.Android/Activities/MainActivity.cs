@@ -64,13 +64,13 @@ namespace Ts_Solutions.Droid.Activities
 
         public void SetMarkers(List<ServicePoint> points)
         {
-            _servicePoints = points;
-            RunOnUiThread(() =>
-            {
-                //var adapter = new ServicePointsAdapter(points);
-                //_spRecyclerView.SetAdapter(adapter);
-                _mapFragment?.GetMapAsync(this);
-            });
+          // _servicePoints = points;
+          // RunOnUiThread(() =>
+          // {
+          //     //var adapter = new ServicePointsAdapter(points);
+          //     //_spRecyclerView.SetAdapter(adapter);
+          //     _mapFragment?.GetMapAsync(this);
+          // });
         }
 
         public void ShowMessage(string message)
@@ -128,6 +128,10 @@ namespace Ts_Solutions.Droid.Activities
                     //_myMap.MoveCamera(CameraUpdateFactory.NewLatLngZoom(new LatLng(_searchModel.UserLat, _searchModel.UserLon), 11));
                 }
             }
+        }
+
+        public void SetList(List<ServicePoint> points)
+        {
         }
     }
 }
