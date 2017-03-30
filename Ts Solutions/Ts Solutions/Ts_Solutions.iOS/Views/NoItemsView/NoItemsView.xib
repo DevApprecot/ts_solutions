@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1" customClass="NoItemsView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Images/TS_Splash" translatesAutoresizingMaskIntoConstraints="NO" id="9As-LS-gOc">
+                    <rect key="frame" x="-146.5" y="0.0" width="667" height="667"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="9As-LS-gOc" secondAttribute="height" multiplier="1:1" id="5s6-Hg-jGR"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no Service Points, try again later" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fo2-Nz-7lH">
+                    <rect key="frame" x="8" y="323" width="359" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fo2-Nz-7lH" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="8" id="4d1-de-omY"/>
+                <constraint firstItem="9As-LS-gOc" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="5H4-g4-DGd"/>
+                <constraint firstItem="9As-LS-gOc" firstAttribute="centerY" secondItem="1" secondAttribute="centerY" id="X9A-sE-zmg"/>
+                <constraint firstAttribute="bottom" secondItem="9As-LS-gOc" secondAttribute="bottom" id="XVf-xt-jsm"/>
+                <constraint firstItem="fo2-Nz-7lH" firstAttribute="centerY" secondItem="1" secondAttribute="centerY" id="a22-qt-dIM"/>
+                <constraint firstAttribute="trailing" secondItem="fo2-Nz-7lH" secondAttribute="trailing" constant="8" id="mcv-RF-qdH"/>
+                <constraint firstItem="9As-LS-gOc" firstAttribute="top" secondItem="1" secondAttribute="top" id="yJW-7O-60o"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="Images/TS_Splash" width="16" height="16"/>
+    </resources>
+</document>

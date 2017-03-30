@@ -11,6 +11,8 @@ namespace Ts_Solutions.IView
     {
         void SetMarkers(List<ServicePoint> points);
 		void SetList(List<ServicePoint> points);
-        void ShowStatus(string result);
+        void CallClicked(string phone);
+        void CallNumber(string phone);
+        void ShowStatus(string status);
     }
 }

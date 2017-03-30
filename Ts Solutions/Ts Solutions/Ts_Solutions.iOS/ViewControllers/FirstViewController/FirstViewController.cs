@@ -95,9 +95,11 @@ namespace Ts_Solutions.iOS
 				_presenter = new MainPresenter(this);
 		}
 
-		public void Reachability_ReachabilityChanged(object sender, EventArgs e)
+		public async void Reachability_ReachabilityChanged(object sender, EventArgs e)
 		{
 			ToggleConnectionIndicator(IsOnline());
+			if (IsOnline())
+				await _presenter.LoadServicePoints();
 		}
 
 		public void SetMarkers(List<ServicePoint> points)
@@ -121,17 +123,22 @@ namespace Ts_Solutions.iOS
 
 		public void ShowStatus(string status)
 		{
-			Debug.WriteLine("show status ");
+			LableStatus.Text = status;
+			if (ViewStatus.Alpha == 0)
+				ViewStatus.SlideInFromBottom();
 		}
 
 		public void SetList(List<ServicePoint> points)
 		{
-            SetNavBar("Icons/ic_map");
+			SetNavBar("Icons/ic_map");
 			TablePoints.Alpha = 1;
 			MapPoints.Alpha = 0;
 			var source = new StoresTableSource(points, this);
 			TablePoints.Source = source;
 			TablePoints.ReloadData();
+			var noItemsView = NoItemsView.Create(this);
+			TablePoints.BackgroundView = noItemsView;
+			TablePoints.SeparatorStyle = UITableViewCellSeparatorStyle.None;
 		}
 
 		public void SetLoading(bool isLoading)
@@ -151,15 +158,24 @@ namespace Ts_Solutions.iOS
 
 		void ButtonCheck_TouchUpInside(object sender, EventArgs e)
 		{
-			
-			if (ViewStatus.Alpha == 0)
-				ViewStatus.SlideInFromBottom();
+			TextCode.ResignFirstResponder();
+			_presenter?.ButtonCheckTapped(TextCode.Text);
 		}
 
 		void ButtonClose_TouchUpInside(object sender, EventArgs e)
 		{
 			if (ViewStatus.Alpha == 1)
 				ViewStatus.SlideOutFromBottom();
+		}
+
+		public void CallClicked(string phone)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void CallNumber(string phone)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

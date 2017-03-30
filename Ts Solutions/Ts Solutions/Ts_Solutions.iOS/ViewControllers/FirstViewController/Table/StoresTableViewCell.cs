@@ -34,7 +34,7 @@ namespace Ts_Solutions.iOS
 			LabelName.Font = UIFont.BoldSystemFontOfSize(18);
 			LabelAddress.TextColor = UIColor.FromRGB(100, 100, 100);
 			LabelTelephone.TextColor = UIColor.FromRGB(100, 100, 100);
-
+			LabelTelephone.UserInteractionEnabled = true;
 			LabelTelephone.AddGestureRecognizer(new UITapGestureRecognizer(() =>
 			{
 				owner.Call(LabelTelephone.Text);
