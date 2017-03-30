@@ -11,12 +11,26 @@
         android:minHeight="?attr/actionBarSize"
         android:background="@android:color/white"
         app:layout_collapseMode="pin">
-        <ImageView
-            android:id="@+id/iv_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="16dp"
-            android:src="@drawable/ic_toolbar_logo" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:minHeight="?attr/actionBarSize">
+            <ImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/ic_toolbar_logo" />
+            <ImageView
+                android:id="@+id/iv_map"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="16dp"
+                android:layout_alignParentRight="true"
+                android:tint="@color/primary"
+                android:src="@drawable/ic_map" />
+        </RelativeLayout>
     </android.support.design.widget.AppBarLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -40,22 +54,22 @@
             android:background="@android:color/transparent"
             android:textColor="@color/primary" />
     </LinearLayout>
-  <View 
-    android:layout_width="match_parent"
-    android:layout_height="1dp"
-    android:background="@color/divider_background"/>
-  <FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <fragment
-        android:id="@+id/frm_map"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        class="com.google.android.gms.maps.SupportMapFragment" />
-    <android.support.v7.widget.RecyclerView
-      android:id="@+id/rv_service_points"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:background="@color/divider_background" />
-  </FrameLayout>
+        android:layout_height="1dp"
+        android:background="@color/divider_background" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <fragment
+            android:id="@+id/frm_map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="com.google.android.gms.maps.SupportMapFragment" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_service_points"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/divider_background" />
+    </FrameLayout>
 </LinearLayout>
