@@ -198,7 +198,6 @@
     <Compile Include="Utils\BadgeBarButtonItem.cs" />
     <Compile Include="Utils\Reachability.cs" />
     <Compile Include="Utils\ViewExtensions.cs" />
-    <Compile Include="Utils\IViewController.cs" />
     <Compile Include="Utils\BaseController.cs" />
     <Compile Include="Views\Reconnect\ReconnectingView.cs" />
     <Compile Include="Views\Reconnect\ReconnectingView.designer.cs" />
@@ -219,6 +218,7 @@
     <Compile Include="Views\NoItemsView\NoItemsView.designer.cs">
       <DependentUpon>NoItemsView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\LoadingOverlay.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Images\" />

@@ -9,7 +9,7 @@ using UIKit;
 
 namespace Ts_Solutions.iOS
 {
-	public partial class FirstViewController : BaseController, IViewController, IMainView
+	public partial class FirstViewController : BaseController, IMainView
 	{
 		MainPresenter _presenter;
 		UIBarButtonItem[] _rightIcons;
@@ -66,6 +66,7 @@ namespace Ts_Solutions.iOS
 			Reachability.ResetInternetEvents();
 			Reachability.ReachabilityChanged += Reachability_ReachabilityChanged;
 			CreatePresenter();
+            AddHandlers();
 			await _presenter.LoadServicePoints();
 		}
 
@@ -73,8 +74,6 @@ namespace Ts_Solutions.iOS
 		{
 			base.ViewDidAppear(animated);
             ToggleConnectionIndicator(IsOnline());
-			ButtonCheck.TouchUpInside += ButtonCheck_TouchUpInside;
-			ButtonClose.TouchUpInside += ButtonClose_TouchUpInside;
 		}
 
 		public override void ViewWillLayoutSubviews()
@@ -85,8 +84,7 @@ namespace Ts_Solutions.iOS
 		public override void ViewDidDisappear(bool animated)
 		{
 			base.ViewDidDisappear(animated);
-			ButtonCheck.TouchUpInside -= ButtonCheck_TouchUpInside;
-			ButtonClose.TouchUpInside -= ButtonClose_TouchUpInside;
+			RemoveHandlers();
 		}
 
 		private void CreatePresenter()
@@ -95,11 +93,9 @@ namespace Ts_Solutions.iOS
 				_presenter = new MainPresenter(this);
 		}
 
-		public async void Reachability_ReachabilityChanged(object sender, EventArgs e)
+		public void Reachability_ReachabilityChanged(object sender, EventArgs e)
 		{
 			ToggleConnectionIndicator(IsOnline());
-			if (IsOnline())
-				await _presenter.LoadServicePoints();
 		}
 
 		public void SetMarkers(List<ServicePoint> points)
@@ -123,32 +119,17 @@ namespace Ts_Solutions.iOS
 
 		public void ShowStatus(string status)
 		{
-			LableStatus.Text = status;
-			if (ViewStatus.Alpha == 0)
-				ViewStatus.SlideInFromBottom();
+			Debug.WriteLine("show status ");
 		}
 
 		public void SetList(List<ServicePoint> points)
 		{
-			SetNavBar("Icons/ic_map");
+            SetNavBar("Icons/ic_map");
 			TablePoints.Alpha = 1;
 			MapPoints.Alpha = 0;
 			var source = new StoresTableSource(points, this);
 			TablePoints.Source = source;
 			TablePoints.ReloadData();
-			var noItemsView = NoItemsView.Create(this);
-			TablePoints.BackgroundView = noItemsView;
-			TablePoints.SeparatorStyle = UITableViewCellSeparatorStyle.None;
-		}
-
-		public void SetLoading(bool isLoading)
-		{
-			Debug.WriteLine("loading " + isLoading);
-		}
-
-		public void ShowMessage(string message)
-		{
-			Debug.WriteLine("message " + message);
 		}
 
 		void SetNavBar(string imageName)
@@ -158,8 +139,9 @@ namespace Ts_Solutions.iOS
 
 		void ButtonCheck_TouchUpInside(object sender, EventArgs e)
 		{
-			TextCode.ResignFirstResponder();
-			_presenter?.ButtonCheckTapped(TextCode.Text);
+			
+			if (ViewStatus.Alpha == 0)
+				ViewStatus.SlideInFromBottom();
 		}
 
 		void ButtonClose_TouchUpInside(object sender, EventArgs e)
@@ -171,12 +153,24 @@ namespace Ts_Solutions.iOS
 
 		public void CallClicked(string phone)
 		{
-			throw new NotImplementedException();
+			_presenter.Call(phone);
 		}
 
 		public void CallNumber(string phone)
 		{
-			throw new NotImplementedException();
+			this.Call(phone);
+		}
+
+		public void AddHandlers()
+		{
+			ButtonCheck.TouchUpInside += ButtonCheck_TouchUpInside;
+			ButtonClose.TouchUpInside += ButtonClose_TouchUpInside;
+		}
+
+		public void RemoveHandlers()
+		{
+			ButtonCheck.TouchUpInside -= ButtonCheck_TouchUpInside;
+			ButtonClose.TouchUpInside -= ButtonClose_TouchUpInside;
 		}
 	}
 }
