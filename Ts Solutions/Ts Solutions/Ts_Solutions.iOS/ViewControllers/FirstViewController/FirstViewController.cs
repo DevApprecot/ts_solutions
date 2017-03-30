@@ -1,5 +1,6 @@
 ﻿using System;
-
+using System.Linq;
+using Ts_Solutions.Network;
 using UIKit;
 
 namespace Ts_Solutions.iOS
@@ -14,8 +15,7 @@ namespace Ts_Solutions.iOS
 		{
 			base.ViewDidLoad();
 			// Perform any additional setup after loading the view, typically from a nib.
-			var l = NavigationController.ViewControllers.Length;
-			Console.WriteLine("test");
+
 		}
 
 		public override void DidReceiveMemoryWarning()

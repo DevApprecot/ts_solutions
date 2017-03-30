@@ -1,4 +1,4 @@
-﻿// WARNING
+// WARNING
 //
 // This file has been generated automatically by Xamarin Studio from the outlets and
 // actions declared in your storyboard file.
@@ -11,11 +11,19 @@ using UIKit;
 
 namespace Ts_Solutions.iOS
 {
-	[Register("FirstViewController")]
-	partial class FirstViewController
-	{
-		void ReleaseDesignerOutlets()
-		{
-		}
-	}
+    [Register ("FirstViewController")]
+    partial class FirstViewController
+    {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton ButtonTemp { get; set; }
+
+        void ReleaseDesignerOutlets ()
+        {
+            if (ButtonTemp != null) {
+                ButtonTemp.Dispose ();
+                ButtonTemp = null;
+            }
+        }
+    }
 }
