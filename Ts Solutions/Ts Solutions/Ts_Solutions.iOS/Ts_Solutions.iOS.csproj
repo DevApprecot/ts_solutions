@@ -156,7 +156,7 @@
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
-    <None Include="Utils\IMPORTANT_COPY_PASTE.cs" />
+    <None Include="Utils\IMPORTANT_COPY_PASTE.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -165,19 +165,18 @@
     <Compile Include="ViewControllers\FirstViewController\FirstViewController.designer.cs">
       <DependentUpon>FirstViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewControllers\BaseViewController\BaseController.cs" />
     <Compile Include="Utils\scrollExtension.cs" />
     <Compile Include="Utils\AnimationManager.cs" />
     <Compile Include="Utils\BadgeBarButtonItem.cs" />
     <Compile Include="Utils\Reachability.cs" />
     <Compile Include="Utils\ViewExtensions.cs" />
     <Compile Include="Utils\IViewController.cs" />
+    <Compile Include="Utils\BaseController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Images\" />
     <Folder Include="ViewControllers\" />
     <Folder Include="ViewControllers\FirstViewController\" />
-    <Folder Include="ViewControllers\BaseViewController\" />
     <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
