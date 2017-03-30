@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Foundation;
+using Ts_Solutions.Model;
 using UIKit;
 
 namespace Ts_Solutions.iOS
@@ -18,6 +19,22 @@ namespace Ts_Solutions.iOS
 		protected StoresTableViewCell(IntPtr handle) : base(handle)
 		{
 			// Note: this .ctor should not contain any initialization logic.
+		}
+
+		public void Update(ServicePoint point)
+		{
+			ImageStore.Image = UIImage.FromBundle("Icons/ic_navbar_icon");
+			ImageStore.Layer.CornerRadius = ImageStore.Frame.Size.Width / 2;
+			ImageStore.Layer.BorderColor = UIColor.FromRGB(237, 237, 237).CGColor;
+			ImageStore.Layer.BorderWidth = 1f;
+			ImageStore.ClipsToBounds = true;
+			LabelName.Text = point.Name;
+			LabelAddress.Text = point.Address;
+			LabelTelephone.Text = point.Phone;
+
+			LabelName.Font = UIFont.BoldSystemFontOfSize(18);
+			LabelAddress.TextColor = UIColor.FromRGB(100, 100, 100);
+			LabelTelephone.TextColor = UIColor.FromRGB(100, 100, 100);
 		}
 	}
 }
