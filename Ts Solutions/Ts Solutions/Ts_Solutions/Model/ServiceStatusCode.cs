@@ -1,7 +1,6 @@
 ﻿using System;
-namespace Ts_Solutions
+namespace Ts_Solutions.Model
 {
-
 	public enum ServiceStatusCode
 	{
 		Cancelled = 0,

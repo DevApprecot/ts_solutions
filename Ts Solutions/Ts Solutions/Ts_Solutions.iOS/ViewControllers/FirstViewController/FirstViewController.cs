@@ -4,7 +4,7 @@ using System.Diagnostics;
 using CoreLocation;
 using Ts_Solutions.Model;
 using Ts_Solutions.Presenter;
-using Ts_Solutions.View;
+using Ts_Solutions.IView;
 using UIKit;
 
 namespace Ts_Solutions.iOS
@@ -35,7 +35,7 @@ namespace Ts_Solutions.iOS
 						, UIBarButtonItemStyle.Plain
 						, (sender, args) =>
 						{
-
+					_presenter?.ChangeViewTypeClicked();
 				})
 				{
 					Enabled=false
@@ -139,7 +139,7 @@ namespace Ts_Solutions.iOS
 			Debug.WriteLine("show status ");
 		}
 
-		public void SwitchView()
+		public void SetList(List<ServicePoint> points)
 		{
 			Debug.WriteLine("switching ");
 		}

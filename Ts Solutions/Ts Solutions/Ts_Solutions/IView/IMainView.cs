@@ -10,8 +10,8 @@ namespace Ts_Solutions.IView
 	public interface IMainView : IBaseView
     {
         void SetMarkers(List<ServicePoint> points);
+		void SetList(List<ServicePoint> points);
         void ShowStatus();
-        void SwitchView();
         void ShowNoNet();
     }
 }
