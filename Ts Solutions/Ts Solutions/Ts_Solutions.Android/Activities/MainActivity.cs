@@ -13,6 +13,8 @@ using Java.Lang;
 using Ts_Solutions.IView;
 using Ts_Solutions.Presenter;
 using Ts_Solutions.Model;
+using Android.Widget;
+using Android.Support.V4.Content;
 
 namespace Ts_Solutions.Droid.Activities
 {
@@ -20,9 +22,10 @@ namespace Ts_Solutions.Droid.Activities
     public class MainActivity : BaseActivity, IMainView, IOnMapReadyCallback
     {
         MainPresenter _presenter;
-        private SupportMapFragment _mapFragment;
-        private RecyclerView _spRecyclerView;
-        private List<ServicePoint> _servicePoints;
+        SupportMapFragment _mapFragment;
+        RecyclerView _spRecyclerView;
+        List<ServicePoint> _servicePoints;
+        ImageView _viewIcon;
 
         protected override int LayoutResource => Resource.Layout.activity_main;
 
@@ -32,12 +35,26 @@ namespace Ts_Solutions.Droid.Activities
             CreatePresenter();
 
             InitViews();
+            AddEventHandlers();
 
             Task.Run(async () => await _presenter.LoadServicePoints());
         }
 
+        protected override void OnDestroy()
+        {
+            RemoveEventHandlers();
+            DisposeItems();
+            base.OnDestroy();
+        }
+
+        public void CreatePresenter()
+        {
+            if (_presenter == null) _presenter = new MainPresenter(this);
+        }
+
         private void InitViews()
         {
+            _viewIcon = FindViewById<ImageView>(Resource.Id.iv_map);
             _mapFragment = SupportFragmentManager.FindFragmentById(Resource.Id.frm_map) as SupportMapFragment;
 
             _spRecyclerView = FindViewById<RecyclerView>(Resource.Id.rv_service_points);
@@ -46,10 +63,9 @@ namespace Ts_Solutions.Droid.Activities
             _spRecyclerView.Visibility = ViewStates.Gone;
         }
 
-        protected override void OnDestroy()
+        private void AddEventHandlers()
         {
-            DisposeItems();
-            base.OnDestroy();
+            _viewIcon.Click += ChangeViewTypeClicked;
         }
 
         private void DisposeItems()
@@ -60,12 +76,20 @@ namespace Ts_Solutions.Droid.Activities
             _spRecyclerView = null;
             _mapFragment.Dispose();
             _mapFragment = null;
+            _viewIcon.SetImageDrawable(null);
+            _viewIcon.Dispose();
         }
 
-        public void CreatePresenter()
+        private void RemoveEventHandlers()
         {
-            if (_presenter == null) _presenter = new MainPresenter(this);
+            _viewIcon.Click -= ChangeViewTypeClicked;
         }
+
+        private void ChangeViewTypeClicked(object sender, EventArgs e)
+        {
+            _presenter.ChangeViewTypeClicked();
+        }
+
 
         public void SetLoading(bool isLoading)
         {
@@ -77,6 +101,7 @@ namespace Ts_Solutions.Droid.Activities
             _servicePoints = points;
             RunOnUiThread(() =>
             {
+                _viewIcon.SetImageDrawable(ContextCompat.GetDrawable(ApplicationContext, Resource.Drawable.ic_map));
                 var adapter = new ServicePointsAdapter(points);
                 _spRecyclerView.SetAdapter(adapter);
             });
@@ -88,10 +113,6 @@ namespace Ts_Solutions.Droid.Activities
         }
 
         public void ShowStatus()
-        {
-        }
-
-        public void SwitchView()
         {
         }
 
@@ -140,6 +161,7 @@ namespace Ts_Solutions.Droid.Activities
             _servicePoints = points;
             RunOnUiThread(() =>
             {
+                _viewIcon.SetImageDrawable(ContextCompat.GetDrawable(ApplicationContext, Resource.Drawable.ic_list));
                 _mapFragment?.GetMapAsync(this);
             });
         }
