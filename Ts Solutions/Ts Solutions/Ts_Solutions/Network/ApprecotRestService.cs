@@ -2,6 +2,7 @@
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Ts_Solutions.Network
@@ -24,7 +25,7 @@ namespace Ts_Solutions.Network
 
         public static ApprecotRestService Instance => _instance;
 
-        public async Task<string> GetAsync(string url)
+        public async Task<string> GetAsync(string url, CancellationToken cancelToken)
         {
             string json;
 
