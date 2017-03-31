@@ -14,6 +14,10 @@ namespace Ts_Solutions.iOS
     partial class StoresTableViewCell
     {
         [Outlet]
+        UIKit.UIButton ButtonDirections { get; set; }
+
+
+        [Outlet]
         UIKit.UIImageView ImageStore { get; set; }
 
 
@@ -30,6 +34,11 @@ namespace Ts_Solutions.iOS
 
         void ReleaseDesignerOutlets ()
         {
+            if (ButtonDirections != null) {
+                ButtonDirections.Dispose ();
+                ButtonDirections = null;
+            }
+
             if (ImageStore != null) {
                 ImageStore.Dispose ();
                 ImageStore = null;

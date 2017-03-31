@@ -30,6 +30,7 @@ namespace Ts_Solutions.iOS
 			LabelName.Text = point.Name;
 			LabelAddress.Text = point.Address;
 			LabelTelephone.Text = point.Phone;
+			ButtonDirections.TintColor=UIColor.FromRGB(239, 60, 57);
 
 			LabelName.Font = UIFont.BoldSystemFontOfSize(18);
 			LabelAddress.TextColor = UIColor.FromRGB(100, 100, 100);

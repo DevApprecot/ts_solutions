@@ -43,9 +43,9 @@
     <resources>
         <image name="Images/TS_Splash.png" width="950" height="713"/>
         <image name="CloseButton" width="24" height="24"/>
-        <image name="Close" width="24" height="24"/>
         <image name="List" width="24" height="24"/>
         <image name="Map" width="24" height="24"/>
         <image name="NavBar" width="22" height="22"/>
+        <image name="Directions" width="24" height="24"/>
     </resources>
 </document>
