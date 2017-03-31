@@ -240,9 +240,10 @@ namespace Ts_Solutions.iOS
 
 		}
 
-		public Task OnConnected()
+		public virtual Task OnConnected()
 		{
-			throw new NotImplementedException();
+			return Task.CompletedTask;
+			//override this in Controllers
 		}
 	}
 }

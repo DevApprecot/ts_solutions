@@ -5,6 +5,8 @@ using Ts_Solutions.Model;
 using Ts_Solutions.Presenter;
 using Ts_Solutions.IView;
 using UIKit;
+using Foundation;
+using System.Threading.Tasks;
 
 namespace Ts_Solutions.iOS
 {
@@ -28,6 +30,7 @@ namespace Ts_Solutions.iOS
 			ButtonCheck.Layer.CornerRadius = 5;
 			ButtonCheck.ClipsToBounds = true;
 			TextCode.Placeholder = "Write your work order here";
+			TextCode.ClearsOnBeginEditing = true;
 			ButtonClose.SetImage(UIImage.FromBundle("CloseButton"), UIControlState.Normal);
 			var noItemsView = NoItemsView.Create(TablePoints);
 			TablePoints.BackgroundView = noItemsView;
@@ -59,7 +62,13 @@ namespace Ts_Solutions.iOS
 			NavigationItem.RightBarButtonItems = _rightIcons;
 			NavigationItem.LeftBarButtonItems = leftIcon;
 			DismissKeyboardOnBackgroundTap();
-			TextCode.ShouldReturn += (textField) => textField.ResignFirstResponder();
+			TextCode.ReturnKeyType = UIReturnKeyType.Done;
+			TextCode.ShouldReturn += (textField) =>
+			{
+				textField.ResignFirstResponder();
+				ButtonCheck.SendActionForControlEvents(UIControlEvent.TouchUpInside);
+				return true;
+			};
 		}
 
 		public override async void ViewWillAppear(bool animate)
@@ -68,14 +77,14 @@ namespace Ts_Solutions.iOS
 			Reachability.ResetInternetEvents();
 			Reachability.ReachabilityChanged += Reachability_ReachabilityChanged;
 			CreatePresenter();
-			AddHandlers();
+            AddHandlers();
 			await _presenter.LoadServicePoints();
 		}
 
 		public override void ViewDidAppear(bool animated)
 		{
 			base.ViewDidAppear(animated);
-			ToggleConnectionIndicator(IsOnline());
+            ToggleConnectionIndicator(IsOnline());
 		}
 
 		public override void ViewWillLayoutSubviews()
@@ -97,9 +106,7 @@ namespace Ts_Solutions.iOS
 
 		public async void Reachability_ReachabilityChanged(object sender, EventArgs e)
 		{
-			ToggleConnectionIndicator(IsOnline());
-			if (IsOnline())
-				await _presenter.LoadServicePoints();
+			await OnConnected();
 		}
 
 		public void SetMarkers(List<ServicePoint> points)
@@ -143,6 +150,20 @@ namespace Ts_Solutions.iOS
 			_rightIcons[0].Image = UIImage.FromBundle(imageName).ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
 		}
 
+		void ButtonCheck_TouchUpInside(object sender, EventArgs e)
+		{
+			TextCode.ResignFirstResponder();
+			if (CheckFields())
+				_presenter.ButtonCheckTapped(TextCode.Text);
+		}
+
+		void ButtonClose_TouchUpInside(object sender, EventArgs e)
+		{
+			TextCode.Text = "";
+			if (ViewStatus.Alpha == 1)
+				ViewStatus.SlideOutFromBottom();
+		}
+
 		public void CallClicked(string phone)
 		{
 			_presenter.Call(phone);
@@ -165,18 +186,29 @@ namespace Ts_Solutions.iOS
 			ButtonClose.TouchUpInside -= ButtonClose_TouchUpInside;
 		}
 
-		void ButtonCheck_TouchUpInside(object sender, EventArgs e)
+		bool CheckFields()
 		{
-			if (string.IsNullOrEmpty(TextCode.Text)) return;
-			TextCode.ResignFirstResponder();
-			_presenter.ButtonCheckTapped(TextCode.Text);
+			var attributes = new UIStringAttributes
+			{
+				ForegroundColor = UIColor.Red
+			};
+
+			var text = "Work order missing!";
+			if (string.IsNullOrEmpty(TextCode.Text))
+				TextCode.AttributedPlaceholder = new NSAttributedString(text, attributes);
+			else
+			{
+				TextCode.Placeholder = "Write your work order here";
+				return true;
+			}
+			return false;
 		}
 
-		void ButtonClose_TouchUpInside(object sender, EventArgs e)
+		public override async Task OnConnected()
 		{
-			TextCode.Text = "";
-			if (ViewStatus.Alpha == 1)
-				ViewStatus.SlideOutFromBottom();
+            ToggleConnectionIndicator(IsOnline());
+			if (IsOnline())
+				await _presenter.LoadServicePoints();
 		}
 	}
 }
