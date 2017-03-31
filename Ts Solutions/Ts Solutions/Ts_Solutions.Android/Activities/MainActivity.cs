@@ -17,6 +17,8 @@ using Android.Widget;
 using Android.Support.V4.Content;
 using Com.Airbnb.Lottie;
 using Android.Content;
+using Ts_Solutions.Droid.Receivers;
+using Android.Net;
 
 namespace Ts_Solutions.Droid.Activities
 {
@@ -29,6 +31,8 @@ namespace Ts_Solutions.Droid.Activities
         List<ServicePoint> _servicePoints;
         ImageView _viewIcon;
         LottieAnimationView _animationView;
+        private RelativeLayout _connection;
+        private ConnectionReceiver _receiver;
 
 
         protected override int LayoutResource => Resource.Layout.activity_main;
@@ -42,6 +46,21 @@ namespace Ts_Solutions.Droid.Activities
             AddEventHandlers();
 
             Task.Run(async () => await _presenter.LoadServicePoints());
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+            _receiver = new ConnectionReceiver(_connection, this);
+            RegisterReceiver(_receiver, new IntentFilter(ConnectivityManager.ConnectivityAction));
+        }
+
+        protected override void OnPause()
+        {
+            base.OnPause();
+
+            UnregisterReceiver(_receiver);
         }
 
         protected override void OnDestroy()
@@ -58,6 +77,7 @@ namespace Ts_Solutions.Droid.Activities
 
         private void InitViews()
         {
+            _connection = FindViewById<RelativeLayout>(Resource.Id.rl_connection);
             _animationView = FindViewById<LottieAnimationView>(Resource.Id.animation_view);
             _viewIcon = FindViewById<ImageView>(Resource.Id.iv_map);
             _mapFragment = SupportFragmentManager.FindFragmentById(Resource.Id.frm_map) as SupportMapFragment;
@@ -82,6 +102,10 @@ namespace Ts_Solutions.Droid.Activities
             _viewIcon.SetImageDrawable(null);
             _viewIcon.Dispose();
             _animationView.Dispose();
+            _receiver.Dispose();
+            _receiver = null;
+            _connection.Dispose();
+            _connection = null;
         }
 
         private void RemoveEventHandlers()
@@ -168,6 +192,11 @@ namespace Ts_Solutions.Droid.Activities
             }
         }
 
+        public override Task OnConnected()
+        {
+            return Task.Run(async () => await _presenter.LoadServicePoints());
+        }
+
         public void SetMarkers(List<ServicePoint> points)
         {
             _servicePoints = points;
@@ -184,9 +213,11 @@ namespace Ts_Solutions.Droid.Activities
         {
             _presenter.Call(phone);
         }
+
         public void ShowStatus(string status)
         {
         }
+
         public void CallNumber(string phone)
         {
             try

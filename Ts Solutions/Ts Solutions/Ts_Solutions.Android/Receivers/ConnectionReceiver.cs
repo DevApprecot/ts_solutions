@@ -13,6 +13,7 @@ using Ts_Solutions.IView;
 using Android.Net;
 using Android.Graphics;
 using Android.Views.Animations;
+using Android.Support.V4.Content;
 
 namespace Ts_Solutions.Droid.Receivers
 {
@@ -37,6 +38,8 @@ namespace Ts_Solutions.Droid.Receivers
                     if (currentNetworkInfo.IsConnectedOrConnecting)
                     {
                         var textView = _connectionView.FindViewById<TextView>(Resource.Id.connection);
+                        var progressBar = _connectionView.FindViewById<ProgressBar>(Resource.Id.progress_bar);
+                        progressBar.Visibility = ViewStates.Gone;
                         textView.SetText(Resource.String.connection_receiver_correct);
                         _connectionView.SetBackgroundColor(Color.ParseColor("#009900"));
 
@@ -58,6 +61,9 @@ namespace Ts_Solutions.Droid.Receivers
                     else
                     {
                         var textView = _connectionView.FindViewById<TextView>(Resource.Id.connection);
+                        var progressBar = _connectionView.FindViewById<ProgressBar>(Resource.Id.progress_bar);
+                        progressBar.Visibility = ViewStates.Visible;
+                        progressBar.IndeterminateDrawable.SetColorFilter(new Color(ContextCompat.GetColor(_connectionView.Context, Resource.Color.progress_color)), PorterDuff.Mode.Multiply);
                         textView.SetText(Resource.String.connection_receiver_error);
                         _connectionView.SetBackgroundColor(Color.ParseColor("#EF6C00"));
                         _connectionView.Visibility = ViewStates.Visible;
@@ -76,6 +82,9 @@ namespace Ts_Solutions.Droid.Receivers
                 {
                     var textView = _connectionView.FindViewById<TextView>(Resource.Id.connection);
                     textView.SetText(Resource.String.connection_receiver_error);
+                    var progressBar = _connectionView.FindViewById<ProgressBar>(Resource.Id.progress_bar);
+                    progressBar.Visibility = ViewStates.Visible;
+                    progressBar.IndeterminateDrawable.SetColorFilter(new Color(ContextCompat.GetColor(_connectionView.Context, Resource.Color.progress_color)), PorterDuff.Mode.Multiply);
                     _connectionView.SetBackgroundColor(Color.ParseColor("#EF6C00"));
 
                     _connectionView.Visibility = ViewStates.Visible;

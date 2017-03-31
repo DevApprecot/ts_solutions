@@ -154,6 +154,7 @@
     <Compile Include="Activities\SplashActivity.cs" />
     <Compile Include="Adapters\ServicePointsAdapter.cs" />
     <Compile Include="ItemDecorators\ItemDecorator.cs" />
+    <Compile Include="Receivers\ConnectionReceiver.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewHolders\ServicePointViewHolder.cs" />
