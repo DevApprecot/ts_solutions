@@ -65,6 +65,11 @@ namespace Ts_Solutions.Presenter
 			}
 		}
 
+		public void ButtonCloseTapped()
+		{
+			_view.HideStatus();
+		}
+
 		public void ButtonCheckTapped(string code)
 		{
 			var rand = new Random();
