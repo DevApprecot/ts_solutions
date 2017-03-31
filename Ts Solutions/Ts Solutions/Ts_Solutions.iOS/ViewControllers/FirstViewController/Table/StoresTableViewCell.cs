@@ -38,7 +38,6 @@ namespace Ts_Solutions.iOS
 			{
 				owner.Call(LabelTelephone.Text);
 			}));
-
 		}
 	}
 }

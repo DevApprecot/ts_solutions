@@ -197,6 +197,18 @@ namespace Ts_Solutions.iOS
 			return false;
 		}
 
+		public void DirectionsClicked(ServicePoint point)
+		{
+			_presenter.DirectionsClicked(point);
+		}
+
+		public void OpenDirections(ServicePoint point)
+		{
+			var url = new NSUrl($"http://maps.apple.com/?daddr={point.Lat},{point.Lon}");
+			if (UIApplication.SharedApplication.CanOpenUrl(url))
+				UIApplication.SharedApplication.OpenUrl(url);
+		}
+
 		public override async Task OnConnected()
 		{
             ToggleConnectionIndicator(IsOnline());
