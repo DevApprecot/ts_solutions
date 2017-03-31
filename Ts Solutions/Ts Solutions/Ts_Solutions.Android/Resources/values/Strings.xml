@@ -8,4 +8,8 @@
   <!-- Main Activity -->
   <string name="work_order">Δώστε κωδικό work order</string>
   <string name="button_check">Check</string>
+  
+  <!-- Connection receiver-->
+  <string name="connection_receiver_error">Waiting for network</string>
+  <string name="connection_receiver_correct">Connected</string>
 </resources>

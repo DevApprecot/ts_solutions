@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Ts_Solutions.Interfaces;
 using Ts_Solutions.IView;
 using Ts_Solutions.Model;
 using Ts_Solutions.Network;
 
 namespace Ts_Solutions.Presenter
 {
-	public class MainPresenter : BasePresenter
+    public class MainPresenter : BasePresenter
     {
+        private const int Timeout = 5000; // milliseconds
+
         private IMainView _view;
-		CancellationTokenSource _cancelTokenSource;
-		ServicePointsViewType _viewType = ServicePointsViewType.Map;
-		List<ServicePoint> _servicePoints;
+		private CancellationTokenSource _cancelTokenSource;
+		private ServicePointsViewType _viewType = ServicePointsViewType.Map;
+        private List<ServicePoint> _servicePoints = new List<ServicePoint>();
 
 		public MainPresenter(IMainView view):base(view)
         {
@@ -26,7 +24,7 @@ namespace Ts_Solutions.Presenter
 		public async Task LoadServicePoints()
         {
 			if (_cancelTokenSource == null)
-				_cancelTokenSource = new CancellationTokenSource();
+				_cancelTokenSource = new CancellationTokenSource(Timeout);
 			
 			_view.SetLoading(true);
 			var response = await(new Api().GetServicePoints(_cancelTokenSource.Token));

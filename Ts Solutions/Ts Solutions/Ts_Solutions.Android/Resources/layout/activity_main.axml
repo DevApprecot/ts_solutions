@@ -60,23 +60,25 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/divider_background" />
+    <include
+        layout="@layout/connection_status_view" />
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <com.airbnb.lottie.LottieAnimationView xmlns:app="http://schemas.android.com/apk/res-auto"
-           android:id="@+id/animation_view"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           app:lottie_fileName="preloader.json"
-           android:layout_gravity="center"
-           android:background="@android:color/transparent"
-           app:lottie_loop="true"
-           app:lottie_autoPlay="true"/>
-       <fragment
-           android:id="@+id/frm_map"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           class="com.google.android.gms.maps.SupportMapFragment" />
+            android:id="@+id/animation_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:lottie_fileName="preloader.json"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true" />
+        <fragment
+            android:id="@+id/frm_map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="com.google.android.gms.maps.SupportMapFragment" />
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_service_points"
             android:layout_width="match_parent"

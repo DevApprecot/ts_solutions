@@ -95,7 +95,7 @@ namespace Ts_Solutions.Droid.Activities
         }
 
 
-        public void SetLoading(bool isLoading)
+        public override void SetLoading(bool isLoading)
         {
             RunOnUiThread(() =>
             {
@@ -112,6 +112,8 @@ namespace Ts_Solutions.Droid.Activities
 
         public void SetList(List<ServicePoint> points)
         {
+            _spRecyclerView.Visibility = ViewStates.Visible; 
+            _mapFragment.View.Visibility = ViewStates.Gone;
             _servicePoints = points;
             RunOnUiThread(() =>
             {
@@ -122,12 +124,7 @@ namespace Ts_Solutions.Droid.Activities
                 _spRecyclerView.SetAdapter(adapter);
             });
         }
-
-        public void ShowMessage(string message)
-        {
-            Console.WriteLine(message);
-        }
-
+        
         public void ShowStatus()
         {
         }
