@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Foundation;
 using ObjCRuntime;
 using Ts_Solutions.Model;
@@ -45,8 +46,21 @@ namespace Ts_Solutions.iOS
 			}
 			catch (Exception exp)
 			{
+				Debug.WriteLine($"Storepoints cell {exp.StackTrace}");
 				return new UITableViewCell();
 			}
+		}
+
+		public override void WillDisplay(UITableView tableView, UITableViewCell cell, NSIndexPath indexPath)
+		{
+			var tmp = cell as StoresTableViewCell;
+			tmp.AddHandlers();
+		}
+
+		public override void CellDisplayingEnded(UITableView tableView, UITableViewCell cell, NSIndexPath indexPath)
+		{
+			var tmp = cell as StoresTableViewCell;
+			tmp.RemoveHandlers();
 		}
 
 		public override nint RowsInSection(UITableView tableview, nint section)

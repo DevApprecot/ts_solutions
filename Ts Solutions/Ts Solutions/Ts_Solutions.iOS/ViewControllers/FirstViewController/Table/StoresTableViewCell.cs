@@ -9,6 +9,8 @@ namespace Ts_Solutions.iOS
 	{
 		public static readonly NSString Key = new NSString("StoresTableViewCell");
 		public static readonly UINib Nib;
+		BaseController _owner;
+		ServicePoint _point;
 
 		static StoresTableViewCell()
 		{
@@ -22,6 +24,8 @@ namespace Ts_Solutions.iOS
 
 		public void Update(ServicePoint point, BaseController owner)
 		{
+			_owner = owner;
+			_point = point;
 			ImageStore.Image = UIImage.FromBundle("NavBar");
 			ImageStore.Layer.CornerRadius = ImageStore.Frame.Size.Width / 2;
 			ImageStore.Layer.BorderColor = UIColor.FromRGB(237, 237, 237).CGColor;
@@ -35,16 +39,27 @@ namespace Ts_Solutions.iOS
 			LabelAddress.TextColor = UIColor.FromRGB(100, 100, 100);
 			LabelTelephone.UserInteractionEnabled = true;
 			ButtonDirections.TintColor = UIColor.FromRGB(239, 60, 57);
-			ButtonDirections.TouchUpInside += (sender, e) => 
-			{
-				var t = owner as FirstViewController;
-				t.DirectionsClicked(point);
-			};
 
 			LabelTelephone.AddGestureRecognizer(new UITapGestureRecognizer(() =>
 			{
 				owner.Call(LabelTelephone.Text);
 			}));
+		}
+
+		public void AddHandlers()
+		{
+			ButtonDirections.TouchUpInside += ButtonDirections_TouchUpInside;
+		}
+
+		public void RemoveHandlers()
+		{
+			ButtonDirections.TouchUpInside -= ButtonDirections_TouchUpInside;
+		}
+
+		void ButtonDirections_TouchUpInside(object sender, EventArgs e)
+		{
+			var t = _owner as FirstViewController;
+			t.DirectionsClicked(_point);
 		}
 	}
 }
