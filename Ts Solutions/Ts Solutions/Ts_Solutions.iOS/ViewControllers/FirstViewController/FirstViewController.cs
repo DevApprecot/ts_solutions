@@ -68,14 +68,14 @@ namespace Ts_Solutions.iOS
 			Reachability.ResetInternetEvents();
 			Reachability.ReachabilityChanged += Reachability_ReachabilityChanged;
 			CreatePresenter();
-            AddHandlers();
+			AddHandlers();
 			await _presenter.LoadServicePoints();
 		}
 
 		public override void ViewDidAppear(bool animated)
 		{
 			base.ViewDidAppear(animated);
-            ToggleConnectionIndicator(IsOnline());
+			ToggleConnectionIndicator(IsOnline());
 		}
 
 		public override void ViewWillLayoutSubviews()
@@ -143,20 +143,6 @@ namespace Ts_Solutions.iOS
 			_rightIcons[0].Image = UIImage.FromBundle(imageName).ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
 		}
 
-		void ButtonCheck_TouchUpInside(object sender, EventArgs e)
-		{
-			if (string.IsNullOrEmpty(TextCode.Text)) return;
-			TextCode.ResignFirstResponder();
-			_presenter.ButtonCheckTapped(TextCode.Text);
-		}
-
-		void ButtonClose_TouchUpInside(object sender, EventArgs e)
-		{
-			TextCode.Text = "";
-			if (ViewStatus.Alpha == 1)
-				ViewStatus.SlideOutFromBottom();
-		}
-
 		public void CallClicked(string phone)
 		{
 			_presenter.Call(phone);
@@ -177,6 +163,20 @@ namespace Ts_Solutions.iOS
 		{
 			ButtonCheck.TouchUpInside -= ButtonCheck_TouchUpInside;
 			ButtonClose.TouchUpInside -= ButtonClose_TouchUpInside;
+		}
+
+		void ButtonCheck_TouchUpInside(object sender, EventArgs e)
+		{
+			if (string.IsNullOrEmpty(TextCode.Text)) return;
+			TextCode.ResignFirstResponder();
+			_presenter.ButtonCheckTapped(TextCode.Text);
+		}
+
+		void ButtonClose_TouchUpInside(object sender, EventArgs e)
+		{
+			TextCode.Text = "";
+			if (ViewStatus.Alpha == 1)
+				ViewStatus.SlideOutFromBottom();
 		}
 	}
 }
