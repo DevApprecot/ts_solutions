@@ -228,8 +228,6 @@ namespace Ts_Solutions.iOS
 			ButtonCheck.TouchUpInside -= ButtonCheck_TouchUpInside;
 			ButtonClose.TouchUpInside -= ButtonClose_TouchUpInside;
 		}
-
-
 	}
 }
 
