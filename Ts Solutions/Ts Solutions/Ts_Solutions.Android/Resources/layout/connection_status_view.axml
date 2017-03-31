@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/connection"
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:textSize="14sp"
+    android:gravity="center"
+    android:visibility="gone"
+    android:text="No internet connection"
+    android:background="#cc0000"
+    android:alpha="0"
+    android:textColor="#f4f4f4" />
