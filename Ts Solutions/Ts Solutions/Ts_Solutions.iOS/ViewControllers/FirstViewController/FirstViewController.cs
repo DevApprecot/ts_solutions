@@ -5,6 +5,7 @@ using Ts_Solutions.Model;
 using Ts_Solutions.Presenter;
 using Ts_Solutions.IView;
 using UIKit;
+using Foundation;
 
 namespace Ts_Solutions.iOS
 {
@@ -58,7 +59,13 @@ namespace Ts_Solutions.iOS
 			NavigationItem.RightBarButtonItems = _rightIcons;
 			NavigationItem.LeftBarButtonItems = leftIcon;
 			DismissKeyboardOnBackgroundTap();
-			TextCode.ShouldReturn += (textField) => textField.ResignFirstResponder();
+			TextCode.ReturnKeyType = UIReturnKeyType.Done;
+			TextCode.ShouldReturn += (textField) =>
+			{
+				textField.ResignFirstResponder();
+				ButtonCheck.SendActionForControlEvents(UIControlEvent.TouchUpInside);
+				return true;
+			};
 		}
 
 		public override async void ViewWillAppear(bool animate)
@@ -144,9 +151,11 @@ namespace Ts_Solutions.iOS
 
 		void ButtonCheck_TouchUpInside(object sender, EventArgs e)
 		{
-			if (string.IsNullOrEmpty(TextCode.Text)) return;
+
 			TextCode.ResignFirstResponder();
-			_presenter.ButtonCheckTapped(TextCode.Text);
+			if (CheckFields())
+				_presenter.ButtonCheckTapped(TextCode.Text);
+			
 		}
 
 		void ButtonClose_TouchUpInside(object sender, EventArgs e)
@@ -176,6 +185,24 @@ namespace Ts_Solutions.iOS
 		{
 			ButtonCheck.TouchUpInside -= ButtonCheck_TouchUpInside;
 			ButtonClose.TouchUpInside -= ButtonClose_TouchUpInside;
+		}
+
+		bool CheckFields()
+		{
+			var attributes = new UIStringAttributes
+			{
+				ForegroundColor = UIColor.Red
+			};
+
+			var text = "Work order missing!";
+			if (string.IsNullOrEmpty(TextCode.Text))
+				TextCode.AttributedPlaceholder = new NSAttributedString(text, attributes);
+			else
+			{
+				TextCode.Placeholder = "Write your work order here";
+				return true;
+			}
+			return false;
 		}
 	}
 }
