@@ -205,7 +205,9 @@ namespace Ts_Solutions.iOS
 
 		public void OpenDirections(ServicePoint point)
 		{
-			var url = new NSUrl($"http://maps.apple.com/?daddr={point.Lat.ToString(CultureInfo.InvariantCulture)},{point.Lon.ToString(CultureInfo.InvariantCulture)}");
+			var uri = new Uri($"http://maps.apple.com/?daddr={point.Lat.ToString(CultureInfo.InvariantCulture)},{point.Lon.ToString(CultureInfo.InvariantCulture)}");
+
+			var url = new NSUrl(uri.GetComponents(UriComponents.HttpRequestUrl, UriFormat.UriEscaped));
 			if (UIApplication.SharedApplication.CanOpenUrl(url))
 				UIApplication.SharedApplication.OpenUrl(url);
 		}
