@@ -14,5 +14,6 @@ namespace Ts_Solutions.IView
         void CallClicked(string phone);
         void CallNumber(string phone);
         void ShowStatus(string status);
+		void HideStatus();
     }
 }

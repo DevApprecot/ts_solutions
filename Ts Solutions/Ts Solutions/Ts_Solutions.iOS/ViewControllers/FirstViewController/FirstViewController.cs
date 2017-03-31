@@ -159,9 +159,7 @@ namespace Ts_Solutions.iOS
 
 		void ButtonClose_TouchUpInside(object sender, EventArgs e)
 		{
-			TextCode.Text = "";
-			if (ViewStatus.Alpha == 1)
-				ViewStatus.SlideOutFromBottom();
+			_presenter.ButtonCloseTapped();
 		}
 
 		public void CallClicked(string phone)
@@ -172,6 +170,13 @@ namespace Ts_Solutions.iOS
 		public void CallNumber(string phone)
 		{
 			this.Call(phone);
+		}
+
+		public void HideStatus()
+		{
+			TextCode.Text = "";
+			if (ViewStatus.Alpha == 1)
+				ViewStatus.SlideOutFromBottom();
 		}
 
 		bool CheckFields()
@@ -210,6 +215,8 @@ namespace Ts_Solutions.iOS
 			ButtonCheck.TouchUpInside -= ButtonCheck_TouchUpInside;
 			ButtonClose.TouchUpInside -= ButtonClose_TouchUpInside;
 		}
+
+
 	}
 }
 
