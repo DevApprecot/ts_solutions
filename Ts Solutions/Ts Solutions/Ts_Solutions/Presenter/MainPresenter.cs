@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Ts_Solutions.IView;
@@ -64,9 +65,22 @@ namespace Ts_Solutions.Presenter
 
 		public void ButtonCheckTapped(string code)
 		{
-			//api service call
-			var result="Here the status from service";
-			_view.ShowStatus(result);
+			var rand = new Random();
+			switch (rand.Next(1, 5))
+			{
+				case 1:
+					_view.ShowStatus("Your item has been received");
+					break;
+				case 2:
+					_view.ShowStatus("Your item is in the service department");
+					break;
+				case 3:
+					_view.ShowStatus("Your item is fixed");
+					break;
+				default:
+					_view.ShowStatus("Work order not found");
+					break;
+			}
 		}
     }
 }

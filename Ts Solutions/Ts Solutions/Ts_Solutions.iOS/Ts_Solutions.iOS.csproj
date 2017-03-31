@@ -167,6 +167,20 @@
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\icon-83.5%402x.png">
       <InProject>false</InProject>
     </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\CloseButton.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\CloseButton.imageset\ic_close.png" />
+    <ImageAsset Include="Resources\Images.xcassets\CloseButton.imageset\ic_close%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\CloseButton.imageset\ic_close%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Close.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Close.imageset\ic_close.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Close.imageset\ic_close%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Close.imageset\ic_close%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\List.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\List.imageset\ic_list%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Map.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Map.imageset\ic_map%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\NavBar.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\NavBar.imageset\ic_navbar_icon%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="Resources\ITunesArtwork" />
@@ -225,7 +239,6 @@
     <Folder Include="ViewControllers\" />
     <Folder Include="ViewControllers\FirstViewController\" />
     <Folder Include="Utils\" />
-    <Folder Include="Resources\Icons\" />
     <Folder Include="ViewControllers\FirstViewController\StoreAnnotation\" />
     <Folder Include="ViewControllers\FirstViewController\StoreAnnotationView\" />
     <Folder Include="ViewControllers\FirstViewController\Delegate\" />
@@ -233,13 +246,14 @@
     <Folder Include="Managers\" />
     <Folder Include="Views\NoItemsView\" />
     <Folder Include="Animations\" />
+    <Folder Include="Resources\Images.xcassets\CloseButton.imageset\" />
+    <Folder Include="Resources\Images.xcassets\Close.imageset\" />
+    <Folder Include="Resources\Images.xcassets\List.imageset\" />
+    <Folder Include="Resources\Images.xcassets\Map.imageset\" />
+    <Folder Include="Resources\Images.xcassets\NavBar.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\TS_Splash.png" />
-    <BundleResource Include="Resources\Icons\ic_navbar_icon%403x.png" />
-    <BundleResource Include="Resources\Icons\ic_list%403x.png" />
-    <BundleResource Include="Resources\Icons\ic_map%403x.png" />
-    <BundleResource Include="Resources\Icons\ic_remove%403x.png" />
     <BundleResource Include="Animations\preloader.json" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

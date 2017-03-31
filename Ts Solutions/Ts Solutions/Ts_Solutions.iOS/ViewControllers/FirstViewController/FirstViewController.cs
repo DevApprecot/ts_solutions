@@ -5,6 +5,8 @@ using Ts_Solutions.Model;
 using Ts_Solutions.Presenter;
 using Ts_Solutions.IView;
 using UIKit;
+using Foundation;
+using System.Threading.Tasks;
 
 namespace Ts_Solutions.iOS
 {
@@ -28,11 +30,13 @@ namespace Ts_Solutions.iOS
 			ButtonCheck.Layer.CornerRadius = 5;
 			ButtonCheck.ClipsToBounds = true;
 			TextCode.Placeholder = "Write your work order here";
+			TextCode.ClearsOnBeginEditing = true;
+			ButtonClose.SetImage(UIImage.FromBundle("CloseButton"), UIControlState.Normal);
 			var noItemsView = NoItemsView.Create(TablePoints);
 			TablePoints.BackgroundView = noItemsView;
 			TablePoints.SeparatorStyle = UITableViewCellSeparatorStyle.None; var leftIcon = new UIBarButtonItem[1]
 			 {
-				new UIBarButtonItem(UIImage.FromBundle("Icons/ic_navbar_icon").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+				new UIBarButtonItem(UIImage.FromBundle("NavBar").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
 						, UIBarButtonItemStyle.Plain
 						, (sender, args) =>
 						{
@@ -44,7 +48,7 @@ namespace Ts_Solutions.iOS
 			 };
 			_rightIcons = new UIBarButtonItem[1]
 			{
-				new UIBarButtonItem(UIImage.FromBundle("Icons/ic_list").ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+				new UIBarButtonItem(UIImage.FromBundle("List").ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
 						, UIBarButtonItemStyle.Plain
 						, (sender, args) =>
 						{
@@ -58,7 +62,13 @@ namespace Ts_Solutions.iOS
 			NavigationItem.RightBarButtonItems = _rightIcons;
 			NavigationItem.LeftBarButtonItems = leftIcon;
 			DismissKeyboardOnBackgroundTap();
-			TextCode.ShouldReturn += (textField) => textField.ResignFirstResponder();
+			TextCode.ReturnKeyType = UIReturnKeyType.Done;
+			TextCode.ShouldReturn += (textField) =>
+			{
+				textField.ResignFirstResponder();
+				ButtonCheck.SendActionForControlEvents(UIControlEvent.TouchUpInside);
+				return true;
+			};
 		}
 
 		public override async void ViewWillAppear(bool animate)
@@ -96,14 +106,12 @@ namespace Ts_Solutions.iOS
 
 		public async void Reachability_ReachabilityChanged(object sender, EventArgs e)
 		{
-			ToggleConnectionIndicator(IsOnline());
-			if (IsOnline())
-				await _presenter.LoadServicePoints();
+			await OnConnected();
 		}
 
 		public void SetMarkers(List<ServicePoint> points)
 		{
-			SetNavBar("Icons/ic_list");
+			SetNavBar("List");
 			TablePoints.Alpha = 0;
 			MapPoints.Alpha = 1;
 			var mapDelegate = new MapDelegate(points);//stores, this, owner);
@@ -129,7 +137,7 @@ namespace Ts_Solutions.iOS
 
 		public void SetList(List<ServicePoint> points)
 		{
-			SetNavBar("Icons/ic_map");
+			SetNavBar("Map");
 			TablePoints.Alpha = 1;
 			MapPoints.Alpha = 0;
 			var source = new StoresTableSource(points, this);
@@ -144,9 +152,9 @@ namespace Ts_Solutions.iOS
 
 		void ButtonCheck_TouchUpInside(object sender, EventArgs e)
 		{
-			if (string.IsNullOrEmpty(TextCode.Text)) return;
 			TextCode.ResignFirstResponder();
-			_presenter.ButtonCheckTapped(TextCode.Text);
+			if (CheckFields())
+				_presenter.ButtonCheckTapped(TextCode.Text);
 		}
 
 		void ButtonClose_TouchUpInside(object sender, EventArgs e)
@@ -164,6 +172,31 @@ namespace Ts_Solutions.iOS
 		public void CallNumber(string phone)
 		{
 			this.Call(phone);
+		}
+
+		bool CheckFields()
+		{
+			var attributes = new UIStringAttributes
+			{
+				ForegroundColor = UIColor.Red
+			};
+
+			var text = "Work order missing!";
+			if (string.IsNullOrEmpty(TextCode.Text))
+				TextCode.AttributedPlaceholder = new NSAttributedString(text, attributes);
+			else
+			{
+				TextCode.Placeholder = "Write your work order here";
+				return true;
+			}
+			return false;
+		}
+
+		public override async Task OnConnected()
+		{
+            ToggleConnectionIndicator(IsOnline());
+			if (IsOnline())
+				await _presenter.LoadServicePoints();
 		}
 
 		public void AddHandlers()
