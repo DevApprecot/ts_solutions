@@ -83,7 +83,7 @@ namespace Ts_Solutions.Droid.Activities
 
         private void InitViews()
         {
-            _content = FindViewById<LinearLayout>(Resource.Id.content);
+            _content = FindViewById<LinearLayout>(Resource.Id.map_list_content);
             _resultsView = FindViewById<RelativeLayout>(Resource.Id.rl_results_view);
             _resultsTxv = FindViewById<TextView>(Resource.Id.tv_status);
             _close = FindViewById<ImageView>(Resource.Id.iv_close);
@@ -107,7 +107,7 @@ namespace Ts_Solutions.Droid.Activities
 
         private void _close_Click(object sender, EventArgs e)
         {
-
+            HideStatus();
         }
 
         private void _checkBtn_Click(object sender, EventArgs e)
@@ -250,7 +250,8 @@ namespace Ts_Solutions.Droid.Activities
 
         public void ShowStatus(string status)
         {
-            var anim = AnimationUtils.LoadAnimation(this, Resource.Animation.translation_results_in);
+            var anim = AnimationUtils.LoadAnimation(this, Resource.Animation.translation_results_in); 
+            _resultsView.Visibility = ViewStates.Invisible;
             anim.AnimationStart += delegate
             {
                 _resultsView.Visibility = ViewStates.Visible;
@@ -260,7 +261,6 @@ namespace Ts_Solutions.Droid.Activities
             {
                 _content.Visibility = ViewStates.Gone;
             };
-
             _resultsView.StartAnimation(anim);
             _resultsTxv.Text = status;
         }
@@ -278,6 +278,21 @@ namespace Ts_Solutions.Droid.Activities
             {
                 Console.WriteLine("Activity not found");
             }
+        }
+
+        public void HideStatus()
+        {
+            var anim = AnimationUtils.LoadAnimation(this, Resource.Animation.translation_results_out);
+            anim.AnimationStart += delegate
+            {
+                _content.Visibility = ViewStates.Visible;
+            };
+
+            anim.AnimationEnd += delegate
+            {
+                _resultsView.Visibility = ViewStates.Gone;
+            };
+            _resultsView.StartAnimation(anim);
         }
     }
 }
