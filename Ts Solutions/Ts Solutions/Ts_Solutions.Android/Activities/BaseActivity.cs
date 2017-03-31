@@ -5,6 +5,7 @@ using Android.Support.V4.Content;
 using Android.Support.V7.App;
 using Android.Views;
 using System;
+using System.Threading.Tasks;
 using Ts_Solutions.IView;
 
 namespace Ts_Solutions.Droid
@@ -29,6 +30,11 @@ namespace Ts_Solutions.Droid
         public virtual void SetLoading(bool isLoading)
         {
             Console.WriteLine(isLoading);
+        }
+
+        public virtual Task OnConnected()
+        {
+            return Task.CompletedTask;
         }
 
         public void ShowMessage(string message)
