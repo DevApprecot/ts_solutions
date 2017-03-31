@@ -12,14 +12,16 @@ namespace Ts_Solutions.Droid
         public TextView Name { get; set; }
         public TextView Address { get; set; }
         public TextView Phone { get; set; }
+        public LinearLayout Call { get; set; }
 
         public ServicePointViewHolder(View itemView, IMainView view) : base (itemView)
         {
             Name = itemView.FindViewById<TextView>(Resource.Id.tv_name);
             Address = itemView.FindViewById<TextView>(Resource.Id.tv_address);
             Phone = itemView.FindViewById<TextView>(Resource.Id.tv_phone);
+            Call = itemView.FindViewById<LinearLayout>(Resource.Id.ll_call);
 
-            Phone.Click += (sender, args) =>
+            Call.Click += (sender, args) =>
             {
                 view.CallClicked(Phone.Text);
             };
