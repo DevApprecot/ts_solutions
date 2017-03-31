@@ -42,13 +42,11 @@ namespace Ts_Solutions.iOS
 				annotationView = myView;
 				annotationView.ContentMode = UIViewContentMode.ScaleAspectFit;
 				annotationView.CanShowCallout = true;
-				annotationView.ClipsToBounds = true;
-				var Imageview = new UIImageView(UIImage.FromBundle("Directions").ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate));
-				Imageview.TintColor = UIColor.FromRGB(239, 60, 57);
-				Imageview.UserInteractionEnabled = true;
-				annotationView.RightCalloutAccessoryView = Imageview;
-				annotationView.UserInteractionEnabled = true;
-				annotationView.RightCalloutAccessoryView.UserInteractionEnabled = true;
+				var button = new UIButton();
+				button.Bounds = new CGRect(0, 0, 22, 22);
+				button.SetImage(UIImage.FromBundle("Directions").ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), UIControlState.Normal);
+				button.TintColor = UIColor.FromRGB(239, 60, 57);
+				annotationView.RightCalloutAccessoryView = button;// UIButton.FromType(UIButtonType.InfoDark);
 			}
 			return myView;
 		}
@@ -57,8 +55,9 @@ namespace Ts_Solutions.iOS
 		{
 			if (control == view.RightCalloutAccessoryView)
 			{
-				Debug.WriteLine("test");
-				(_owner as FirstViewController).DirectionsClicked(_servicePoints[0]);
+				var tmp = mapView.SelectedAnnotations;
+				if (tmp.Length == 1)
+					(_owner as FirstViewController).DirectionsClicked((tmp[0] as StoreAnnotation).Point);
 			}
 		}
 	}

@@ -215,7 +215,6 @@
     <InterfaceDefinition Include="ViewControllers\FirstViewController\StoreAnnotationView\StoreAnnotationView.xib" />
     <InterfaceDefinition Include="ViewControllers\FirstViewController\Table\StoresTableViewCell.xib" />
     <InterfaceDefinition Include="Views\NoItemsView\NoItemsView.xib" />
-    <InterfaceDefinition Include="Views\ButtonDirectionsView\ButtonDirectionsView.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -256,10 +255,6 @@
       <DependentUpon>NoItemsView.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\LoadingOverlay.cs" />
-    <Compile Include="Views\ButtonDirectionsView\ButtonMapView.cs" />
-    <Compile Include="Views\ButtonDirectionsView\ButtonMapView.designer.cs">
-      <DependentUpon>ButtonMapView.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Images\" />
@@ -278,7 +273,6 @@
     <Folder Include="Resources\Images.xcassets\Map.imageset\" />
     <Folder Include="Resources\Images.xcassets\NavBar.imageset\" />
     <Folder Include="Resources\Images.xcassets\Directions.imageset\" />
-    <Folder Include="Views\ButtonDirectionsView\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\TS_Splash.png" />
