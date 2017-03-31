@@ -166,15 +166,15 @@ namespace Ts_Solutions.Droid.Activities
                     _animationView.Visibility = ViewStates.Visible;
                     _spRecyclerView.Visibility = ViewStates.Gone;
                     _mapFragment.View.Visibility = ViewStates.Gone;
-                 }
-             else
-                 _animationView.Visibility = ViewStates.Gone;
+                }
+                else
+                    _animationView.Visibility = ViewStates.Gone;
             });
         }
 
         public void SetList(List<ServicePoint> points)
         {
-            _spRecyclerView.Visibility = ViewStates.Visible; 
+            _spRecyclerView.Visibility = ViewStates.Visible;
             _mapFragment.View.Visibility = ViewStates.Gone;
             _servicePoints = points;
             RunOnUiThread(() =>
@@ -250,7 +250,7 @@ namespace Ts_Solutions.Droid.Activities
 
         public void ShowStatus(string status)
         {
-            var anim = AnimationUtils.LoadAnimation(this, Resource.Animation.translation_results_in); 
+            var anim = AnimationUtils.LoadAnimation(this, Resource.Animation.translation_results_in);
             _resultsView.Visibility = ViewStates.Invisible;
             anim.AnimationStart += delegate
             {
@@ -263,25 +263,6 @@ namespace Ts_Solutions.Droid.Activities
             };
             _resultsView.StartAnimation(anim);
             _resultsTxv.Text = status;
-        }
-        
-        public void HideStatus()
-        {
-
-        }
-
-        public void CallNumber(string phone)
-        {
-            try
-            {
-                var intent = new Intent(Intent.ActionDial);
-                intent.SetData(Android.Net.Uri.Parse($"tel:{phone}"));
-                StartActivityForResult(intent, 7000);
-            }
-            catch (ActivityNotFoundException)
-            {
-                Console.WriteLine("Activity not found");
-            }
         }
 
         public void HideStatus()
@@ -298,5 +279,19 @@ namespace Ts_Solutions.Droid.Activities
             };
             _resultsView.StartAnimation(anim);
         }
-    }
+
+        public void CallNumber(string phone)
+        {
+            try
+            {
+                var intent = new Intent(Intent.ActionDial);
+                intent.SetData(Android.Net.Uri.Parse($"tel:{phone}"));
+                StartActivityForResult(intent, 7000);
+            }
+            catch (ActivityNotFoundException)
+            {
+                Console.WriteLine("Activity not found");
+            }
+        }
+    }   
 }
