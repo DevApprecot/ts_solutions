@@ -174,18 +174,6 @@ namespace Ts_Solutions.iOS
 			this.Call(phone);
 		}
 
-		public void AddHandlers()
-		{
-			ButtonCheck.TouchUpInside += ButtonCheck_TouchUpInside;
-			ButtonClose.TouchUpInside += ButtonClose_TouchUpInside;
-		}
-
-		public void RemoveHandlers()
-		{
-			ButtonCheck.TouchUpInside -= ButtonCheck_TouchUpInside;
-			ButtonClose.TouchUpInside -= ButtonClose_TouchUpInside;
-		}
-
 		bool CheckFields()
 		{
 			var attributes = new UIStringAttributes
@@ -209,6 +197,18 @@ namespace Ts_Solutions.iOS
             ToggleConnectionIndicator(IsOnline());
 			if (IsOnline())
 				await _presenter.LoadServicePoints();
+		}
+
+		public void AddHandlers()
+		{
+			ButtonCheck.TouchUpInside += ButtonCheck_TouchUpInside;
+			ButtonClose.TouchUpInside += ButtonClose_TouchUpInside;
+		}
+
+		public void RemoveHandlers()
+		{
+			ButtonCheck.TouchUpInside -= ButtonCheck_TouchUpInside;
+			ButtonClose.TouchUpInside -= ButtonClose_TouchUpInside;
 		}
 	}
 }

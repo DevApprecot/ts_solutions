@@ -22,7 +22,7 @@ namespace Ts_Solutions.iOS
 
 		public void Update(ServicePoint point, BaseController owner)
 		{
-			ImageStore.Image = UIImage.FromBundle("Icons/ic_navbar_icon");
+			ImageStore.Image = UIImage.FromBundle("NavBar");
 			ImageStore.Layer.CornerRadius = ImageStore.Frame.Size.Width / 2;
 			ImageStore.Layer.BorderColor = UIColor.FromRGB(237, 237, 237).CGColor;
 			ImageStore.Layer.BorderWidth = 1f;
