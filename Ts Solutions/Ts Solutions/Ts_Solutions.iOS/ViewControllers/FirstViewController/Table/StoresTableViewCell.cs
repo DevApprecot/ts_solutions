@@ -34,6 +34,13 @@ namespace Ts_Solutions.iOS
 			LabelName.Font = UIFont.BoldSystemFontOfSize(18);
 			LabelAddress.TextColor = UIColor.FromRGB(100, 100, 100);
 			LabelTelephone.UserInteractionEnabled = true;
+			ButtonDirections.TintColor = UIColor.FromRGB(239, 60, 57);
+			ButtonDirections.TouchUpInside += (sender, e) => 
+			{
+				var t = owner as FirstViewController;
+				t.DirectionsClicked(point);
+			};
+
 			LabelTelephone.AddGestureRecognizer(new UITapGestureRecognizer(() =>
 			{
 				owner.Call(LabelTelephone.Text);
