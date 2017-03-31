@@ -4,5 +4,6 @@
 	{
 		void SetLoading(bool isLoading);
 		void ShowMessage(string message);
+		bool IsOnline();
 	}
 }

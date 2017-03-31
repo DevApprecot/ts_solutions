@@ -5,7 +5,8 @@ namespace Ts_Solutions.Model
 	{
 		Cancelled = 0,
 		Success = 1,
-		MissingParameters = -1
+		MissingParameters = -1,
+		Offline = -11
 	}
 
 }

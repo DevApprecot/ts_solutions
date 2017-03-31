@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using CoreLocation;
 using Ts_Solutions.Model;
 using Ts_Solutions.Presenter;
@@ -29,8 +28,10 @@ namespace Ts_Solutions.iOS
 			ButtonCheck.Layer.CornerRadius = 5;
 			ButtonCheck.ClipsToBounds = true;
 			TextCode.Placeholder = "Write your work order here";
-			var leftIcon = new UIBarButtonItem[1]
-			{
+			var noItemsView = NoItemsView.Create(TablePoints);
+			TablePoints.BackgroundView = noItemsView;
+			TablePoints.SeparatorStyle = UITableViewCellSeparatorStyle.None; var leftIcon = new UIBarButtonItem[1]
+			 {
 				new UIBarButtonItem(UIImage.FromBundle("Icons/ic_navbar_icon").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
 						, UIBarButtonItemStyle.Plain
 						, (sender, args) =>
@@ -40,7 +41,7 @@ namespace Ts_Solutions.iOS
 				{
 					Enabled=false
 				}
-			};
+			 };
 			_rightIcons = new UIBarButtonItem[1]
 			{
 				new UIBarButtonItem(UIImage.FromBundle("Icons/ic_list").ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
@@ -93,9 +94,11 @@ namespace Ts_Solutions.iOS
 				_presenter = new MainPresenter(this);
 		}
 
-		public void Reachability_ReachabilityChanged(object sender, EventArgs e)
+		public async void Reachability_ReachabilityChanged(object sender, EventArgs e)
 		{
 			ToggleConnectionIndicator(IsOnline());
+			if (IsOnline())
+				await _presenter.LoadServicePoints();
 		}
 
 		public void SetMarkers(List<ServicePoint> points)
@@ -119,12 +122,14 @@ namespace Ts_Solutions.iOS
 
 		public void ShowStatus(string status)
 		{
-			Debug.WriteLine("show status ");
+			LableStatus.Text = status;
+			if (ViewStatus.Alpha == 0)
+				ViewStatus.SlideInFromBottom();
 		}
 
 		public void SetList(List<ServicePoint> points)
 		{
-            SetNavBar("Icons/ic_map");
+			SetNavBar("Icons/ic_map");
 			TablePoints.Alpha = 1;
 			MapPoints.Alpha = 0;
 			var source = new StoresTableSource(points, this);
@@ -139,9 +144,9 @@ namespace Ts_Solutions.iOS
 
 		void ButtonCheck_TouchUpInside(object sender, EventArgs e)
 		{
-			
-			if (ViewStatus.Alpha == 0)
-				ViewStatus.SlideInFromBottom();
+			if (string.IsNullOrEmpty(TextCode.Text)) return;
+			TextCode.ResignFirstResponder();
+			_presenter.ButtonCheckTapped(TextCode.Text);
 		}
 
 		void ButtonClose_TouchUpInside(object sender, EventArgs e)
