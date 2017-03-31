@@ -19,6 +19,7 @@ using Com.Airbnb.Lottie;
 using Android.Content;
 using Ts_Solutions.Droid.Receivers;
 using Android.Net;
+using Android.Views.Animations;
 
 namespace Ts_Solutions.Droid.Activities
 {
@@ -31,6 +32,9 @@ namespace Ts_Solutions.Droid.Activities
         List<ServicePoint> _servicePoints;
         ImageView _viewIcon;
         private Button _checkBtn;
+        private EditText _orderId;
+        private TextView _resultsTxv;
+        private LinearLayout _content;
         LottieAnimationView _animationView;
         private RelativeLayout _connection, _resultsView;
         private ConnectionReceiver _receiver;
@@ -79,6 +83,11 @@ namespace Ts_Solutions.Droid.Activities
 
         private void InitViews()
         {
+            _content = FindViewById<LinearLayout>(Resource.Id.map_list_content);
+            _resultsView = FindViewById<RelativeLayout>(Resource.Id.rl_results_view);
+            _resultsTxv = FindViewById<TextView>(Resource.Id.tv_status);
+            _close = FindViewById<ImageView>(Resource.Id.iv_close);
+            _orderId = FindViewById<EditText>(Resource.Id.edt_order_id);
             _connection = FindViewById<RelativeLayout>(Resource.Id.rl_connection);
             _animationView = FindViewById<LottieAnimationView>(Resource.Id.animation_view);
             _viewIcon = FindViewById<ImageView>(Resource.Id.iv_map);
@@ -93,15 +102,31 @@ namespace Ts_Solutions.Droid.Activities
         {
             _viewIcon.Click += ChangeViewTypeClicked;
             _checkBtn.Click += _checkBtn_Click;
+            _close.Click += _close_Click;
+        }
+
+        private void _close_Click(object sender, EventArgs e)
+        {
+            HideStatus();
         }
 
         private void _checkBtn_Click(object sender, EventArgs e)
         {
-            _presenter.ButtonCheckTapped();
+            _presenter.ButtonCheckTapped(_orderId.Text);
         }
 
         private void DisposeItems()
         {
+            _content.Dispose();
+            _content = null;
+            _close.Dispose();
+            _close = null;
+            _resultsView.Dispose();
+            _resultsView = null;
+            _resultsTxv.Dispose();
+            _resultsTxv = null;
+            _orderId.Dispose();
+            _orderId = null;
             _checkBtn.Dispose();
             _checkBtn = null;
             _presenter = null;
@@ -122,6 +147,8 @@ namespace Ts_Solutions.Droid.Activities
         private void RemoveEventHandlers()
         {
             _viewIcon.Click -= ChangeViewTypeClicked;
+            _checkBtn.Click -= _checkBtn_Click;
+            _close.Click -= _close_Click;
         }
 
         private void ChangeViewTypeClicked(object sender, EventArgs e)
@@ -139,15 +166,15 @@ namespace Ts_Solutions.Droid.Activities
                     _animationView.Visibility = ViewStates.Visible;
                     _spRecyclerView.Visibility = ViewStates.Gone;
                     _mapFragment.View.Visibility = ViewStates.Gone;
-                 }
-             else
-                 _animationView.Visibility = ViewStates.Gone;
+                }
+                else
+                    _animationView.Visibility = ViewStates.Gone;
             });
         }
 
         public void SetList(List<ServicePoint> points)
         {
-            _spRecyclerView.Visibility = ViewStates.Visible; 
+            _spRecyclerView.Visibility = ViewStates.Visible;
             _mapFragment.View.Visibility = ViewStates.Gone;
             _servicePoints = points;
             RunOnUiThread(() =>
@@ -158,10 +185,6 @@ namespace Ts_Solutions.Droid.Activities
                 var adapter = new ServicePointsAdapter(points, this);
                 _spRecyclerView.SetAdapter(adapter);
             });
-        }
-        
-        public void ShowStatus()
-        {
         }
 
         public async void OnMapReady(GoogleMap googleMap)
@@ -227,6 +250,34 @@ namespace Ts_Solutions.Droid.Activities
 
         public void ShowStatus(string status)
         {
+            var anim = AnimationUtils.LoadAnimation(this, Resource.Animation.translation_results_in);
+            _resultsView.Visibility = ViewStates.Invisible;
+            anim.AnimationStart += delegate
+            {
+                _resultsView.Visibility = ViewStates.Visible;
+            };
+
+            anim.AnimationEnd += delegate
+            {
+                _content.Visibility = ViewStates.Gone;
+            };
+            _resultsView.StartAnimation(anim);
+            _resultsTxv.Text = status;
+        }
+
+        public void HideStatus()
+        {
+            var anim = AnimationUtils.LoadAnimation(this, Resource.Animation.translation_results_out);
+            anim.AnimationStart += delegate
+            {
+                _content.Visibility = ViewStates.Visible;
+            };
+
+            anim.AnimationEnd += delegate
+            {
+                _resultsView.Visibility = ViewStates.Gone;
+            };
+            _resultsView.StartAnimation(anim);
         }
 
         public void CallNumber(string phone)
@@ -242,5 +293,5 @@ namespace Ts_Solutions.Droid.Activities
                 Console.WriteLine("Activity not found");
             }
         }
-    }
+    }   
 }
