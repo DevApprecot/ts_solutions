@@ -36,7 +36,7 @@ namespace Ts_Solutions.iOS
 			TablePoints.BackgroundView = noItemsView;
 			TablePoints.SeparatorStyle = UITableViewCellSeparatorStyle.None; var leftIcon = new UIBarButtonItem[1]
 			 {
-				new UIBarButtonItem(UIImage.FromBundle("Icons/ic_navbar_icon").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+				new UIBarButtonItem(UIImage.FromBundle("NavBar").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
 						, UIBarButtonItemStyle.Plain
 						, (sender, args) =>
 						{
