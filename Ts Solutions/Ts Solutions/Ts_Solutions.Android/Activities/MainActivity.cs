@@ -95,7 +95,7 @@ namespace Ts_Solutions.Droid.Activities
         }
 
 
-        public void SetLoading(bool isLoading)
+        public override void SetLoading(bool isLoading)
         {
             RunOnUiThread(() =>
             {
@@ -124,12 +124,7 @@ namespace Ts_Solutions.Droid.Activities
                 _spRecyclerView.SetAdapter(adapter);
             });
         }
-
-        public void ShowMessage(string message)
-        {
-            Console.WriteLine(message);
-        }
-
+        
         public void ShowStatus()
         {
         }
@@ -175,8 +170,6 @@ namespace Ts_Solutions.Droid.Activities
 
         public void SetMarkers(List<ServicePoint> points)
         {
-            _spRecyclerView.Visibility = ViewStates.Gone;
-            _mapFragment.View.Visibility = ViewStates.Visible;
             _servicePoints = points;
             RunOnUiThread(() =>
             {
@@ -207,5 +200,6 @@ namespace Ts_Solutions.Droid.Activities
                 Console.WriteLine("Activity not found");
             }
         }
+        
     }
 }
