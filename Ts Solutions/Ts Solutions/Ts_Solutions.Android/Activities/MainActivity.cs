@@ -265,6 +265,10 @@ namespace Ts_Solutions.Droid.Activities
             _resultsTxv.Text = status;
         }
         
+        public void HideStatus()
+        {
+
+        }
 
         public void CallNumber(string phone)
         {
