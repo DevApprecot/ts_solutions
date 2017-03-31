@@ -1,14 +1,9 @@
-﻿using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using Ts_Solutions.Interfaces;
-using Ts_Solutions.IView;
+﻿using Ts_Solutions.IView;
 
 namespace Ts_Solutions.Presenter
 {
-	public class BasePresenter
+    public class BasePresenter
 	{
-		private readonly IConnectionManager _connectionManager;
 		private readonly IBaseView _view;
 
 		public BasePresenter(IBaseView view)
@@ -21,6 +16,5 @@ namespace Ts_Solutions.Presenter
 			_view.SetLoading(false);
 			_view.ShowMessage(message);
 		}
-}
-
+    }
 }
