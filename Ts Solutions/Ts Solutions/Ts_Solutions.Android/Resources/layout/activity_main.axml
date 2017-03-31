@@ -37,11 +37,11 @@
   <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LineaLayout
-    android:id="@+id/content"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <LinearLayout
+      android:id="@+id/content"
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
       <LinearLayout
           android:orientation="horizontal"
           android:layout_width="match_parent"
@@ -93,7 +93,7 @@
             android:layout_height="match_parent"
             android:background="@color/divider_background" />
       </FrameLayout>
-    </LineaLayout>
+    </LinearLayout>
     <include
       layout="@layout/fragment_results_view" />
   </FrameLayout>
