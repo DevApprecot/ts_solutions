@@ -200,6 +200,5 @@ namespace Ts_Solutions.Droid.Activities
                 Console.WriteLine("Activity not found");
             }
         }
-        
     }
 }
