@@ -24,8 +24,10 @@ namespace Ts_Solutions.Presenter
 
 		public async Task LoadServicePoints()
         {
-			if (_cancelTokenSource == null)
-				_cancelTokenSource = new CancellationTokenSource(Timeout);
+            if (_cancelTokenSource != null)
+                _cancelTokenSource.Cancel();
+
+		    _cancelTokenSource = new CancellationTokenSource(Timeout);
 			
 			_view.SetLoading(true);
 			var response = await(new Api().GetServicePoints(_cancelTokenSource.Token));

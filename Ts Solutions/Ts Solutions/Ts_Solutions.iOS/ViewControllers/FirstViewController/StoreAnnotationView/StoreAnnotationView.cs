@@ -30,7 +30,7 @@ namespace Ts_Solutions.iOS
 		public void UpdateView(ServicePoint point)
 		{
 			BackgroundColor = UIColor.Clear;
-			ImageStore.Image = UIImage.FromBundle("Icons/ic_navbar_icon");
+			ImageStore.Image = UIImage.FromBundle("NavBar");
 			ImageStore.ContentMode = UIViewContentMode.ScaleAspectFit;
 			ImageStore.Layer.CornerRadius = ImageStore.Frame.Size.Width / 2;
 			ImageStore.Layer.MasksToBounds = true;
