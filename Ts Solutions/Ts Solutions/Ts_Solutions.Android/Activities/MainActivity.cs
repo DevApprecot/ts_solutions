@@ -30,9 +30,11 @@ namespace Ts_Solutions.Droid.Activities
         RecyclerView _spRecyclerView;
         List<ServicePoint> _servicePoints;
         ImageView _viewIcon;
+        private Button _checkBtn;
         LottieAnimationView _animationView;
-        private RelativeLayout _connection;
+        private RelativeLayout _connection, _resultsView;
         private ConnectionReceiver _receiver;
+        private ImageView _close;
 
 
         protected override int LayoutResource => Resource.Layout.activity_main;
@@ -84,15 +86,24 @@ namespace Ts_Solutions.Droid.Activities
             _spRecyclerView = FindViewById<RecyclerView>(Resource.Id.rv_service_points);
             _spRecyclerView.SetLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.Vertical, false));
             _spRecyclerView.AddItemDecoration(new ItemDecorator(1));
+            _checkBtn = FindViewById<Button>(Resource.Id.btn_check);
         }
 
         private void AddEventHandlers()
         {
             _viewIcon.Click += ChangeViewTypeClicked;
+            _checkBtn.Click += _checkBtn_Click;
+        }
+
+        private void _checkBtn_Click(object sender, EventArgs e)
+        {
+            _presenter.ButtonCheckTapped();
         }
 
         private void DisposeItems()
         {
+            _checkBtn.Dispose();
+            _checkBtn = null;
             _presenter = null;
             _servicePoints = null;
             _spRecyclerView.Dispose();
