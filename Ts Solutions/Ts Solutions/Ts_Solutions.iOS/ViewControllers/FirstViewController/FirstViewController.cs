@@ -159,9 +159,7 @@ namespace Ts_Solutions.iOS
 
 		void ButtonClose_TouchUpInside(object sender, EventArgs e)
 		{
-			TextCode.Text = "";
-			if (ViewStatus.Alpha == 1)
-				ViewStatus.SlideOutFromBottom();
+			_presenter.ButtonCloseTapped();
 		}
 
 		public void CallClicked(string phone)
@@ -172,6 +170,13 @@ namespace Ts_Solutions.iOS
 		public void CallNumber(string phone)
 		{
 			this.Call(phone);
+		}
+
+		public void HideStatus()
+		{
+			TextCode.Text = "";
+			if (ViewStatus.Alpha == 1)
+				ViewStatus.SlideOutFromBottom();
 		}
 
 		bool CheckFields()
@@ -192,6 +197,18 @@ namespace Ts_Solutions.iOS
 			return false;
 		}
 
+		public void DirectionsClicked(ServicePoint point)
+		{
+			_presenter.DirectionsClicked(point);
+		}
+
+		public void OpenDirections(ServicePoint point)
+		{
+			var url = new NSUrl($"http://maps.apple.com/?daddr={point.Lat},{point.Lon}");
+			if (UIApplication.SharedApplication.CanOpenUrl(url))
+				UIApplication.SharedApplication.OpenUrl(url);
+		}
+
 		public override async Task OnConnected()
 		{
             ToggleConnectionIndicator(IsOnline());
@@ -210,6 +227,8 @@ namespace Ts_Solutions.iOS
 			ButtonCheck.TouchUpInside -= ButtonCheck_TouchUpInside;
 			ButtonClose.TouchUpInside -= ButtonClose_TouchUpInside;
 		}
+
+
 	}
 }
 

@@ -65,6 +65,16 @@ namespace Ts_Solutions.Presenter
 			}
 		}
 
+		public void ButtonCloseTapped()
+		{
+			_view.HideStatus();
+		}
+
+		public void DirectionsClicked(ServicePoint point)
+		{
+			_view.OpenDirections(point);
+		}
+
 		public void ButtonCheckTapped(string code)
 		{
 			var rand = new Random();

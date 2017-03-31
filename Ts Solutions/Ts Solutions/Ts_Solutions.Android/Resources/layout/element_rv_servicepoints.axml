@@ -5,44 +5,53 @@
     android:layout_height="wrap_content"
     android:background="@android:color/white"
     android:padding="16dp">
-
-  <ImageView
-    android:layout_width="56dp"
-    android:layout_height="56dp"
-    android:scaleType="fitCenter"
-    android:adjustViewBounds="true"
-    android:layout_gravity="center"
-    android:layout_marginRight="16dp"
-    android:src="@drawable/ic_toolbar_logo" />
-
-  <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <TextView 
-      android:id="@+id/tv_name"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:textColor="@android:color/black"
-      android:gravity="left" />
-
-    <TextView
-      android:id="@+id/tv_address"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:textColor="@android:color/black"
-      android:alpha="0.62"
-      android:gravity="left" />
-
-    <TextView
-      android:id="@+id/tv_phone"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:textColor="@android:color/black"
-      android:alpha="0.62"
-      android:gravity="left" />
-    
-  </LinearLayout>
-  
+    <ImageView
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:layout_gravity="center"
+        android:layout_marginRight="16dp"
+        android:src="@drawable/ic_toolbar_logo" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:gravity="left" />
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:alpha="0.62"
+            android:gravity="left" />
+      <LinearLayout
+        android:id="@+id/ll_call"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center"
+            android:layout_marginRight="4dp"
+            android:tint="@color/primary"
+            android:src="@drawable/ic_call" />
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary"
+            android:layout_gravity="left|center"
+            android:alpha="0.62"
+            android:gravity="left" />
+      </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

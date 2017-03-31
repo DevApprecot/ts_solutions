@@ -34,13 +34,21 @@
                 android:src="@drawable/ic_list" />
         </RelativeLayout>
     </android.support.design.widget.AppBarLayout>
+  <FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:minHeight="?attr/actionBarSize"
-        android:background="@android:color/white"
-        android:padding="8dp">
+      android:id="@+id/map_list_content"
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+      <LinearLayout
+          android:orientation="horizontal"
+          android:layout_width="match_parent"
+          android:layout_height="?attr/actionBarSize"
+          android:minHeight="?attr/actionBarSize"
+          android:background="@android:color/white"
+          android:padding="8dp">
         <EditText
             android:id="@+id/edt_order_id"
             android:layout_height="match_parent"
@@ -55,16 +63,16 @@
             android:text="@string/button_check"
             android:background="@android:color/transparent"
             android:textColor="@color/primary" />
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/divider_background" />
-    <include
-        layout="@layout/connection_status_view" />
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+      </LinearLayout>
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:background="@color/divider_background" />
+      <include
+          layout="@layout/connection_status_view" />
+      <FrameLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
         <com.airbnb.lottie.LottieAnimationView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/animation_view"
             android:layout_width="match_parent"
@@ -84,5 +92,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/divider_background" />
-    </FrameLayout>
+      </FrameLayout>
+    </LinearLayout>
+    <include
+      layout="@layout/fragment_results_view" />
+  </FrameLayout>
+  
+    
 </LinearLayout>
