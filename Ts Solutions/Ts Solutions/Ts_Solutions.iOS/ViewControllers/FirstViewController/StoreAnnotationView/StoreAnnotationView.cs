@@ -29,11 +29,11 @@ namespace Ts_Solutions.iOS
 
 		public void UpdateView(ServicePoint point)
 		{
-			BackgroundColor = UIColor.Clear;
+			BackgroundColor = UIColor.Black;
 			ImageStore.Image = UIImage.FromBundle("NavBar");
 			ImageStore.ContentMode = UIViewContentMode.ScaleAspectFit;
 			ImageStore.Layer.CornerRadius = ImageStore.Frame.Size.Width / 2;
-			ImageStore.Layer.MasksToBounds = true;
+			//ImageStore.Layer.MasksToBounds = true;
 			ImageStore.BackgroundColor = UIColor.White;
 		}
 
