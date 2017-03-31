@@ -111,7 +111,7 @@ namespace Ts_Solutions.iOS
 
 		public void SetMarkers(List<ServicePoint> points)
 		{
-			SetNavBar("Icons/ic_list");
+			SetNavBar("List");
 			TablePoints.Alpha = 0;
 			MapPoints.Alpha = 1;
 			var mapDelegate = new MapDelegate(points);//stores, this, owner);
