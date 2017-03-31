@@ -1,18 +1,20 @@
 ﻿using System;
+using System.Diagnostics;
 using CoreGraphics;
 using Foundation;
+using Ts_Solutions.IView;
 using UIKit;
 
 namespace Ts_Solutions.iOS
 {
 
-	public abstract class BaseController : UIViewController
+	public abstract class BaseController : UIViewController, IBaseView
 	{
 
-		protected NSBundle languageBundle;
 		protected UIView ViewToCenterOnKeyboardShown;
 		protected UIScrollView ScrollToCenterOnKeyboardShown;
 		ReconnectingView _reconnect;
+		LoadingOverlay _loadingOverlay;
 		NSObject _keyboardShowObserver;
 		NSObject _keyboardHideObserver;
 
@@ -189,10 +191,7 @@ namespace Ts_Solutions.iOS
 			return UIInterfaceOrientationMask.All;
 		}
 
-		public void ShowToast(string message, bool success = false, bool withButton = false, BaseController owner = null, int delay = 2000)
-		{
-			
-		}
+
 
 		public void ToggleConnectionIndicator(bool internetState)
 		{
@@ -212,5 +211,32 @@ namespace Ts_Solutions.iOS
 				_reconnect?.Hide();
 		}
 
+		public void SetLoading(bool isLoading)
+		{
+			InvokeOnMainThread(() =>
+			{
+				if (isLoading)
+				{
+					var bounds = UIScreen.MainScreen.Bounds;
+					if (_loadingOverlay == null)
+						_loadingOverlay = new LoadingOverlay(bounds);
+					View.Add(_loadingOverlay);
+				}
+				else
+					_loadingOverlay?.Hide();
+				
+			});
+		}
+
+		public void ShowMessage(string message)
+		{
+			Debug.WriteLine(message);
+		}
+
+		//old one
+		public void ShowToast(string message, bool success = false, bool withButton = false, BaseController owner = null, int delay = 2000)
+		{
+
+		}
 	}
 }

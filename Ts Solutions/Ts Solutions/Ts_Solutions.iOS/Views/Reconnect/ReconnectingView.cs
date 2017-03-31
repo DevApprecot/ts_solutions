@@ -24,9 +24,9 @@ namespace Ts_Solutions.iOS
 			//v.LabelInternet.Font = UIFont.SystemFontOfSize(ConstantsiOS.FontTextSize);
 			v.LabelInternet.TextColor = UIColor.White;
 			if(NavBarHidden)
-				v.Frame = new CoreGraphics.CGRect(0, 20, UIScreen.MainScreen.Bounds.Width, 30);
+				v.Frame = new CoreGraphics.CGRect(0, 20, UIScreen.MainScreen.Bounds.Width, 46);
 			else
-				v.Frame = new CoreGraphics.CGRect(0, 64, UIScreen.MainScreen.Bounds.Width, 30);
+				v.Frame = new CoreGraphics.CGRect(0, 64, UIScreen.MainScreen.Bounds.Width, 46);
 			v.BackgroundColor = UIColor.DarkGray;
 
 			return v;

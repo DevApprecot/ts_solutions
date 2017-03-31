@@ -15,11 +15,11 @@ namespace Ts_Solutions.iOS
 		{
 		}
 
-		public static NoItemsView Create(BaseController owner)
+		public static NoItemsView Create(UIView view)
 		{
 			var arr = NSBundle.MainBundle.LoadNib("NoItemsView", null, null);
 			var v = Runtime.GetNSObject<NoItemsView>(arr.ValueAt(0));
-			v.Frame = new CoreGraphics.CGRect(0, 0, owner.View.Bounds.Width, owner.View.Bounds.Height);
+			v.Frame = new CoreGraphics.CGRect(view.Frame.X, view.Frame.Y, view.Bounds.Width, view.Bounds.Height);
 			return v;
 		}
 	}

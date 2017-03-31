@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using CoreLocation;
 using Ts_Solutions.Model;
 using Ts_Solutions.Presenter;
@@ -9,7 +8,7 @@ using UIKit;
 
 namespace Ts_Solutions.iOS
 {
-	public partial class FirstViewController : BaseController, IViewController, IMainView
+	public partial class FirstViewController : BaseController, IMainView
 	{
 		MainPresenter _presenter;
 		UIBarButtonItem[] _rightIcons;
@@ -29,8 +28,10 @@ namespace Ts_Solutions.iOS
 			ButtonCheck.Layer.CornerRadius = 5;
 			ButtonCheck.ClipsToBounds = true;
 			TextCode.Placeholder = "Write your work order here";
-			var leftIcon = new UIBarButtonItem[1]
-			{
+			var noItemsView = NoItemsView.Create(TablePoints);
+			TablePoints.BackgroundView = noItemsView;
+			TablePoints.SeparatorStyle = UITableViewCellSeparatorStyle.None; var leftIcon = new UIBarButtonItem[1]
+			 {
 				new UIBarButtonItem(UIImage.FromBundle("Icons/ic_navbar_icon").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
 						, UIBarButtonItemStyle.Plain
 						, (sender, args) =>
@@ -40,7 +41,7 @@ namespace Ts_Solutions.iOS
 				{
 					Enabled=false
 				}
-			};
+			 };
 			_rightIcons = new UIBarButtonItem[1]
 			{
 				new UIBarButtonItem(UIImage.FromBundle("Icons/ic_list").ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
@@ -66,6 +67,7 @@ namespace Ts_Solutions.iOS
 			Reachability.ResetInternetEvents();
 			Reachability.ReachabilityChanged += Reachability_ReachabilityChanged;
 			CreatePresenter();
+            AddHandlers();
 			await _presenter.LoadServicePoints();
 		}
 
@@ -73,8 +75,6 @@ namespace Ts_Solutions.iOS
 		{
 			base.ViewDidAppear(animated);
             ToggleConnectionIndicator(IsOnline());
-			ButtonCheck.TouchUpInside += ButtonCheck_TouchUpInside;
-			ButtonClose.TouchUpInside += ButtonClose_TouchUpInside;
 		}
 
 		public override void ViewWillLayoutSubviews()
@@ -85,8 +85,7 @@ namespace Ts_Solutions.iOS
 		public override void ViewDidDisappear(bool animated)
 		{
 			base.ViewDidDisappear(animated);
-			ButtonCheck.TouchUpInside -= ButtonCheck_TouchUpInside;
-			ButtonClose.TouchUpInside -= ButtonClose_TouchUpInside;
+			RemoveHandlers();
 		}
 
 		private void CreatePresenter()
@@ -136,19 +135,6 @@ namespace Ts_Solutions.iOS
 			var source = new StoresTableSource(points, this);
 			TablePoints.Source = source;
 			TablePoints.ReloadData();
-			var noItemsView = NoItemsView.Create(this);
-			TablePoints.BackgroundView = noItemsView;
-			TablePoints.SeparatorStyle = UITableViewCellSeparatorStyle.None;
-		}
-
-		public void SetLoading(bool isLoading)
-		{
-			Debug.WriteLine("loading " + isLoading);
-		}
-
-		public void ShowMessage(string message)
-		{
-			Debug.WriteLine("message " + message);
 		}
 
 		void SetNavBar(string imageName)
@@ -158,24 +144,38 @@ namespace Ts_Solutions.iOS
 
 		void ButtonCheck_TouchUpInside(object sender, EventArgs e)
 		{
+			if (string.IsNullOrEmpty(TextCode.Text)) return;
 			TextCode.ResignFirstResponder();
-			_presenter?.ButtonCheckTapped(TextCode.Text);
+			_presenter.ButtonCheckTapped(TextCode.Text);
 		}
 
 		void ButtonClose_TouchUpInside(object sender, EventArgs e)
 		{
+			TextCode.Text = "";
 			if (ViewStatus.Alpha == 1)
 				ViewStatus.SlideOutFromBottom();
 		}
 
 		public void CallClicked(string phone)
 		{
-			throw new NotImplementedException();
+			_presenter.Call(phone);
 		}
 
 		public void CallNumber(string phone)
 		{
-			throw new NotImplementedException();
+			this.Call(phone);
+		}
+
+		public void AddHandlers()
+		{
+			ButtonCheck.TouchUpInside += ButtonCheck_TouchUpInside;
+			ButtonClose.TouchUpInside += ButtonClose_TouchUpInside;
+		}
+
+		public void RemoveHandlers()
+		{
+			ButtonCheck.TouchUpInside -= ButtonCheck_TouchUpInside;
+			ButtonClose.TouchUpInside -= ButtonClose_TouchUpInside;
 		}
 	}
 }

@@ -1,6 +1,5 @@
 using Android.App;
 using Android.OS;
-using Android.Widget;
 using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
 using Microsoft.Azure.Mobile.Crashes;
