@@ -115,7 +115,7 @@ namespace Ts_Solutions.iOS
 			SetNavBar("List");
 			TablePoints.Alpha = 0;
 			MapPoints.Alpha = 1;
-			var mapDelegate = new MapDelegate(points);//stores, this, owner);
+			var mapDelegate = new MapDelegate(points, this);//stores, this, owner);
 			MapPoints.Delegate = mapDelegate;
 			MapPoints.RemoveAnnotations(MapPoints.Annotations);
 			if (points != null)
