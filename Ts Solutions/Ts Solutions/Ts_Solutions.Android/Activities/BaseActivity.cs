@@ -13,29 +13,6 @@ namespace Ts_Solutions.Droid
     {
         protected abstract int LayoutResource { get; }
 
-        public bool IsOnline()
-        {
-            using (var manager = GetSystemService(ConnectivityService) as Android.Net.ConnectivityManager)
-            {
-                var netInfo = manager.ActiveNetworkInfo;
-
-                if (netInfo != null && netInfo.IsConnectedOrConnecting)
-                    return true;
-
-                return false;
-            }
-        }
-
-        public virtual void SetLoading(bool isLoading)
-        {
-            Console.WriteLine(isLoading);
-        }
-
-        public void ShowMessage(string message)
-        {
-            Console.WriteLine(message);
-        }
-
         protected override void OnCreate(Bundle bundle)
         {
             if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
@@ -57,6 +34,29 @@ namespace Ts_Solutions.Droid
             Window.DecorView.Dispose();
             Window.Dispose();
             base.Dispose();
+        }
+
+        public bool IsOnline()
+        {
+            using (var manager = GetSystemService(ConnectivityService) as Android.Net.ConnectivityManager)
+            {
+                var netInfo = manager.ActiveNetworkInfo;
+
+                if (netInfo != null && netInfo.IsConnectedOrConnecting)
+                    return true;
+
+                return false;
+            }
+        }
+
+        public virtual void SetLoading(bool isLoading)
+        {
+            Console.WriteLine(isLoading);
+        }
+
+        public void ShowMessage(string message)
+        {
+            Console.WriteLine(message);
         }
     }
 }
