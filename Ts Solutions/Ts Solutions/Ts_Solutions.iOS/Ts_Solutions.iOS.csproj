@@ -167,20 +167,48 @@
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\icon-83.5%402x.png">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\CloseButton.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\CloseButton.imageset\ic_close.png" />
-    <ImageAsset Include="Resources\Images.xcassets\CloseButton.imageset\ic_close%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\CloseButton.imageset\ic_close%403x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\Close.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\Close.imageset\ic_close.png" />
-    <ImageAsset Include="Resources\Images.xcassets\Close.imageset\ic_close%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\Close.imageset\ic_close%403x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\List.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\List.imageset\ic_list%403x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\Map.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\Map.imageset\ic_map%403x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\NavBar.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\NavBar.imageset\ic_navbar_icon%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\CloseButton.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\CloseButton.imageset\ic_close.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\CloseButton.imageset\ic_close%402x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\CloseButton.imageset\ic_close%403x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Close.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Close.imageset\ic_close.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Close.imageset\ic_close%402x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Close.imageset\ic_close%403x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\List.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\List.imageset\ic_list%403x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Map.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Map.imageset\ic_map%403x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\NavBar.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\NavBar.imageset\ic_navbar_icon%403x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="Resources\ITunesArtwork" />
