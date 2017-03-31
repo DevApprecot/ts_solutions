@@ -7,6 +7,7 @@ using Ts_Solutions.IView;
 using UIKit;
 using Foundation;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace Ts_Solutions.iOS
 {
@@ -204,7 +205,7 @@ namespace Ts_Solutions.iOS
 
 		public void OpenDirections(ServicePoint point)
 		{
-			var url = new NSUrl($"http://maps.apple.com/?daddr={point.Lat},{point.Lon}");
+			var url = new NSUrl($"http://maps.apple.com/?daddr={point.Lat.ToString(CultureInfo.InvariantCulture)},{point.Lon.ToString(CultureInfo.InvariantCulture)}");
 			if (UIApplication.SharedApplication.CanOpenUrl(url))
 				UIApplication.SharedApplication.OpenUrl(url);
 		}
