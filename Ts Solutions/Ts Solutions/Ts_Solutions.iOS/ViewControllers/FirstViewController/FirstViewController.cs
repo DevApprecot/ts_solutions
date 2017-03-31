@@ -6,6 +6,7 @@ using Ts_Solutions.Presenter;
 using Ts_Solutions.IView;
 using UIKit;
 using Foundation;
+using System.Threading.Tasks;
 
 namespace Ts_Solutions.iOS
 {
@@ -29,6 +30,7 @@ namespace Ts_Solutions.iOS
 			ButtonCheck.Layer.CornerRadius = 5;
 			ButtonCheck.ClipsToBounds = true;
 			TextCode.Placeholder = "Write your work order here";
+			TextCode.ClearsOnBeginEditing = true;
 			ButtonClose.SetImage(UIImage.FromBundle("CloseButton"), UIControlState.Normal);
 			var noItemsView = NoItemsView.Create(TablePoints);
 			TablePoints.BackgroundView = noItemsView;
@@ -104,9 +106,7 @@ namespace Ts_Solutions.iOS
 
 		public async void Reachability_ReachabilityChanged(object sender, EventArgs e)
 		{
-			ToggleConnectionIndicator(IsOnline());
-			if (IsOnline())
-				await _presenter.LoadServicePoints();
+			await OnConnected();
 		}
 
 		public void SetMarkers(List<ServicePoint> points)
@@ -152,11 +152,9 @@ namespace Ts_Solutions.iOS
 
 		void ButtonCheck_TouchUpInside(object sender, EventArgs e)
 		{
-
 			TextCode.ResignFirstResponder();
 			if (CheckFields())
 				_presenter.ButtonCheckTapped(TextCode.Text);
-			
 		}
 
 		void ButtonClose_TouchUpInside(object sender, EventArgs e)
@@ -204,6 +202,13 @@ namespace Ts_Solutions.iOS
 				return true;
 			}
 			return false;
+		}
+
+		public override async Task OnConnected()
+		{
+            ToggleConnectionIndicator(IsOnline());
+			if (IsOnline())
+				await _presenter.LoadServicePoints();
 		}
 	}
 }
