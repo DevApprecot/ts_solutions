@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Ts_Solutions.Model;
 using System.Threading;
 using System.Diagnostics;
+using ApprecotTemplate.Core.Models;
 
 namespace Ts_Solutions.Network
 {
