@@ -293,5 +293,13 @@ namespace Ts_Solutions.Droid.Activities
                 Console.WriteLine("Activity not found");
             }
         }
+
+        public void DirectionsClicked(ServicePoint point)
+        {
+        }
+
+        public void OpenDirections(ServicePoint point)
+        {
+        }
     }   
 }

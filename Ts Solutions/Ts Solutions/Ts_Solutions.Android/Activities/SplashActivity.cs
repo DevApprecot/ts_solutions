@@ -24,7 +24,6 @@ namespace Ts_Solutions.Droid.Activities
             Task.Run(async () =>
             {
                 await Task.Delay(1000);
-                
             }).ContinueWith((t)=> {
                 StartActivity(new Android.Content.Intent(this, typeof(MainActivity)));
                 Finish();
