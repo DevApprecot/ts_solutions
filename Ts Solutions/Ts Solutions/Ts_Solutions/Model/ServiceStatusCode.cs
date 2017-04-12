@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Ts_Solutions.Model
+namespace ApprecotTemplate.Core.Models
 {
 	public enum ServiceStatusCode
 	{

@@ -200,9 +200,15 @@
     <ImageAsset Include="Resources\Images.xcassets\Directions.imageset\Contents.json">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\Directions.imageset\ic_directions.png" />
-    <ImageAsset Include="Resources\Images.xcassets\Directions.imageset\ic_directions_2x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\Directions.imageset\ic_directions_3x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Directions.imageset\ic_directions.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Directions.imageset\ic_directions_2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Directions.imageset\ic_directions_3x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="Resources\ITunesArtwork" />
