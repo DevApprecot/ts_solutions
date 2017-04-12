@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Ts_Solutions.Model;
 using System.Diagnostics;
 using Newtonsoft.Json.Linq;
+using Ts_Solutions.Core.Models;
 
 namespace Ts_Solutions.Network
 {

@@ -1,4 +1,5 @@
 ﻿using System;
+using Ts_Solutions.Core.Models;
 using Ts_Solutions.Model;
 
 namespace Ts_Solutions

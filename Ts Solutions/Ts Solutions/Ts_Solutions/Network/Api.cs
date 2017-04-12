@@ -3,10 +3,10 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Ts_Solutions.Model;
+using Ts_Solutions.Core.Models;
 using System.Threading;
 using System.Diagnostics;
-using ApprecotTemplate.Core.Models;
+using Ts_Solutions.Model;
 
 namespace Ts_Solutions.Network
 {
