@@ -2543,8 +2543,8 @@ namespace Ts_Solutions.Droid
 			// aapt resource value: 0x7f0a0034
 			public const int bottom = 2131361844;
 			
-			// aapt resource value: 0x7f0a0086
-			public const int btn_check = 2131361926;
+			// aapt resource value: 0x7f0a0085
+			public const int btn_check = 2131361925;
 			
 			// aapt resource value: 0x7f0a0058
 			public const int buttonPanel = 2131361880;
@@ -2621,8 +2621,8 @@ namespace Ts_Solutions.Droid
 			// aapt resource value: 0x7f0a0073
 			public const int edit_query = 2131361907;
 			
-			// aapt resource value: 0x7f0a0085
-			public const int edt_order_id = 2131361925;
+			// aapt resource value: 0x7f0a0084
+			public const int edt_order_id = 2131361924;
 			
 			// aapt resource value: 0x7f0a002d
 			public const int end = 2131361837;
@@ -2732,8 +2732,8 @@ namespace Ts_Solutions.Droid
 			// aapt resource value: 0x7f0a000f
 			public const int lottie_layer_name = 2131361807;
 			
-			// aapt resource value: 0x7f0a0084
-			public const int map_list_content = 2131361924;
+			// aapt resource value: 0x7f0a0086
+			public const int map_list_content = 2131361926;
 			
 			// aapt resource value: 0x7f0a00ba
 			public const int masked = 2131361978;
