@@ -21,6 +21,7 @@ using Ts_Solutions.Droid.Receivers;
 using Android.Net;
 using Android.Views.Animations;
 using System.Globalization;
+using Ts_Solutions.Droid.Utils;
 
 namespace Ts_Solutions.Droid.Activities
 {
@@ -113,6 +114,7 @@ namespace Ts_Solutions.Droid.Activities
 
         private async void _checkBtn_Click(object sender, EventArgs e)
         {
+            _checkBtn.HideKeyboard();
             await _presenter.ButtonCheckTapped(_orderId.Text);
         }
 
@@ -175,8 +177,6 @@ namespace Ts_Solutions.Droid.Activities
 
         public void SetList(List<ServicePoint> points)
         {
-            _spRecyclerView.Visibility = ViewStates.Visible;
-            _mapFragment.View.Visibility = ViewStates.Gone;
             _servicePoints = points;
             RunOnUiThread(() =>
             {
@@ -222,7 +222,6 @@ namespace Ts_Solutions.Droid.Activities
                 }
                 catch (IllegalStateException)
                 {
-                    //_myMap.MoveCamera(CameraUpdateFactory.NewLatLngZoom(new LatLng(_searchModel.UserLat, _searchModel.UserLon), 11));
                 }
             }
         }
@@ -255,6 +254,7 @@ namespace Ts_Solutions.Droid.Activities
             anim.AnimationStart += delegate
             {
                 _content.Visibility = ViewStates.Visible;
+                _mapFragment.View.Visibility = ViewStates.Visible;
             };
 
             anim.AnimationEnd += delegate

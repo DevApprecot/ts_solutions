@@ -4,36 +4,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:visibility="gone"
-    android:background="@color/divider_background">
-
-  <ImageView
-    android:id="@+id/iv_close"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="8dp"
-    android:src="@drawable/ic_close"
-    android:adjustViewBounds="true"
-    android:scaleType="fitCenter"
-    android:layout_alignParentRight="true"
-    android:layout_alignParentTop="true"/>
-  
-  <ImageView 
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:alpha="0.2"
-    android:src="@drawable/ic_toolbar_logo"
-    android:adjustViewBounds="true"
-    android:scaleType="fitCenter"
-    android:layout_centerInParent="true"/>
-
-  <TextView
-    android:id="@+id/tv_status"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textColor="@android:color/black"
-    android:textSize="18sp"
-    android:padding="16dp"
-    android:layout_centerVertical="true"
-    android:gravity="center"/>
-  
+    android:background="@android:color/white">
+    <ImageView
+        android:id="@+id/iv_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:src="@drawable/ic_close"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="right" />
+    <LinearLayout
+        android:id="@+id/rl_results_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:layout_centerInParent="true">
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@drawable/ic_toolbar_logo"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            android:alpha="1" />
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/abc_text_size_title_material"
+            android:gravity="center"
+            android:text="Unit Received"
+            android:layout_centerInParent="true" />
+    </LinearLayout>
 </RelativeLayout>
