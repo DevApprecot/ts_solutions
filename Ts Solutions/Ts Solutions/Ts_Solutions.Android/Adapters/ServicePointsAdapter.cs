@@ -36,6 +36,7 @@ namespace Ts_Solutions.Droid.Adapters
             vh.Name.Text = _servicePoints[position].Name;
             vh.Address.Text = _servicePoints[position].Address;
             vh.Phone.Text = _servicePoints[position].Phone;
+            vh.ServicePoint = _servicePoints[position];
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

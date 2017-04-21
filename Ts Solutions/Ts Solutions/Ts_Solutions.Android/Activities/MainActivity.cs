@@ -20,6 +20,7 @@ using Android.Content;
 using Ts_Solutions.Droid.Receivers;
 using Android.Net;
 using Android.Views.Animations;
+using System.Globalization;
 
 namespace Ts_Solutions.Droid.Activities
 {
@@ -296,10 +297,28 @@ namespace Ts_Solutions.Droid.Activities
 
         public void DirectionsClicked(ServicePoint point)
         {
+            _presenter.DirectionsClicked(point);
         }
 
         public void OpenDirections(ServicePoint point)
         {
+            var stringlat = point.Lat.ToString(CultureInfo.InvariantCulture);
+            var stringlon = point.Lon.ToString(CultureInfo.InvariantCulture);
+
+
+            var format = "geo:0,0?q=" + stringlat + ", " + stringlon + "(" + point.Name + ", " + point.Address + ")";
+            var uri = Android.Net.Uri.Parse(format);
+
+            try
+            {
+                Intent intent = new Intent(Intent.ActionView, uri);
+                intent.SetFlags(ActivityFlags.ClearTop);
+                StartActivity(intent);
+            }
+            catch (ActivityNotFoundException e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
         }
     }   
 }
