@@ -8,6 +8,7 @@
   <!-- Main Activity -->
   <string name="work_order">Δώστε κωδικό work order</string>
   <string name="button_check">Check</string>
+  <string name="word_order_not_found">Δε βρέθηκε παραγγελία με αυτό τον κωδικό.</string>
   
   <!-- Connection receiver-->
   <string name="connection_receiver_error">Waiting for network</string>

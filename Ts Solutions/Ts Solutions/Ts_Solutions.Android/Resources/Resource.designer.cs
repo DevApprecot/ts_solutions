@@ -3440,11 +3440,11 @@ namespace Ts_Solutions.Droid
 			// aapt resource value: 0x7f070010
 			public const int common_signin_button_text_long = 2131165200;
 			
-			// aapt resource value: 0x7f070040
-			public const int connection_receiver_correct = 2131165248;
+			// aapt resource value: 0x7f070041
+			public const int connection_receiver_correct = 2131165249;
 			
-			// aapt resource value: 0x7f07003f
-			public const int connection_receiver_error = 2131165247;
+			// aapt resource value: 0x7f070040
+			public const int connection_receiver_error = 2131165248;
 			
 			// aapt resource value: 0x7f07003c
 			public const int google_api_key = 2131165244;
@@ -3472,6 +3472,9 @@ namespace Ts_Solutions.Droid
 			
 			// aapt resource value: 0x7f070025
 			public const int status_bar_notification_info_overflow = 2131165221;
+			
+			// aapt resource value: 0x7f07003f
+			public const int word_order_not_found = 2131165247;
 			
 			// aapt resource value: 0x7f07003d
 			public const int work_order = 2131165245;

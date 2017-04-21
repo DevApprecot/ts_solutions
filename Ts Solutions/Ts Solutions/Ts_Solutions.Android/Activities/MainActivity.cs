@@ -111,9 +111,9 @@ namespace Ts_Solutions.Droid.Activities
             HideStatus();
         }
 
-        private void _checkBtn_Click(object sender, EventArgs e)
+        private async void _checkBtn_Click(object sender, EventArgs e)
         {
-            _presenter.ButtonCheckTapped(_orderId.Text);
+            await _presenter.ButtonCheckTapped(_orderId.Text);
         }
 
         private void DisposeItems()
@@ -249,23 +249,6 @@ namespace Ts_Solutions.Droid.Activities
             _presenter.Call(phone);
         }
 
-        public void ShowStatus(string status)
-        {
-            var anim = AnimationUtils.LoadAnimation(this, Resource.Animation.translation_results_in);
-            _resultsView.Visibility = ViewStates.Invisible;
-            anim.AnimationStart += delegate
-            {
-                _resultsView.Visibility = ViewStates.Visible;
-            };
-
-            anim.AnimationEnd += delegate
-            {
-                _content.Visibility = ViewStates.Gone;
-            };
-            _resultsView.StartAnimation(anim);
-            _resultsTxv.Text = status;
-        }
-
         public void HideStatus()
         {
             var anim = AnimationUtils.LoadAnimation(this, Resource.Animation.translation_results_out);
@@ -319,6 +302,40 @@ namespace Ts_Solutions.Droid.Activities
             {
                 Console.WriteLine(e.StackTrace);
             }
+        }
+
+        public override void ShowMessage(string message)
+        {
+            var anim = AnimationUtils.LoadAnimation(this, Resource.Animation.translation_results_in);
+            _resultsView.Visibility = ViewStates.Invisible;
+            anim.AnimationStart += delegate
+            {
+                _resultsView.Visibility = ViewStates.Visible;
+            };
+
+            anim.AnimationEnd += delegate
+            {
+                _content.Visibility = ViewStates.Gone;
+            };
+            _resultsView.StartAnimation(anim);
+            _resultsTxv.SetText(Resource.String.word_order_not_found);
+        }
+
+        public void ShowStatus(WorkStatus status)
+        {
+            var anim = AnimationUtils.LoadAnimation(this, Resource.Animation.translation_results_in);
+            _resultsView.Visibility = ViewStates.Invisible;
+            anim.AnimationStart += delegate
+            {
+                _resultsView.Visibility = ViewStates.Visible;
+            };
+
+            anim.AnimationEnd += delegate
+            {
+                _content.Visibility = ViewStates.Gone;
+            };
+            _resultsView.StartAnimation(anim);
+            _resultsTxv.Text = status.Text;
         }
     }   
 }

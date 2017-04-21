@@ -37,7 +37,7 @@ namespace Ts_Solutions.Droid
             return Task.CompletedTask;
         }
 
-        public void ShowMessage(string message)
+        public virtual void ShowMessage(string message)
         {
             Console.WriteLine(message);
         }
