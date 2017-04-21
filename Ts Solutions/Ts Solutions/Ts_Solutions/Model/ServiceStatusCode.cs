@@ -6,7 +6,7 @@ namespace Ts_Solutions.Core.Models
 		Cancelled = 0,
 		Success = 1,
 		MissingParameters = -1,
-		Offline = -11
+		Offline = -11,
+		WorkOrderNotExist = -13
 	}
-
 }
