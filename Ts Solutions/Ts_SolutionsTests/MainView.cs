@@ -10,7 +10,8 @@ namespace Ts_SolutionsTests
 {
     public class MainView : IMainView
     {
-        public bool Success { get; set; }
+        public bool SuccessList { get; set; }
+        public bool SuccessTimeout { get; set; }
 
         public void CallClicked(string phone)
         {
@@ -53,13 +54,20 @@ namespace Ts_SolutionsTests
         public void SetMarkers(List<ServicePoint> points)
         {
             if (points != null && points.Count > 0)
-                Success = true;
+            {
+                SuccessList = true;
+                SuccessTimeout = false;
+            }
             else
-                Success = false;
+            {
+                SuccessList = true;
+                SuccessTimeout = false;
+            }
         }
 
         public void ShowMessage(string message)
         {
+            SuccessTimeout = true;
         }
 
         public void ShowStatus(string status)

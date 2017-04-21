@@ -18,8 +18,19 @@ namespace Ts_SolutionsTests
             var presenter = new MainPresenter(view);
 
             await presenter.LoadServicePoints();
-            Assert.IsTrue(view.Success);
+            Assert.IsTrue(view.SuccessList);
         }
-        
+
+        [Test]
+        public async Task ShouldLoadServiceTimeout()
+        {
+            var view = new MainView();
+            var presenter = new MainPresenter(view);
+
+            presenter.Timeout = 10;
+
+            await presenter.LoadServicePoints();
+            Assert.IsTrue(view.SuccessTimeout);
+        }
     }
 }
