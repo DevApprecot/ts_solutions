@@ -46,6 +46,27 @@ namespace Ts_Solutions.Presenter
                 OnError(response.GetFailureCode());
         }
 
+		public async Task CheckWorkStatus(string code)
+		{
+			if (_cancelTokenSource != null)
+				_cancelTokenSource.Cancel();
+
+			_cancelTokenSource = new CancellationTokenSource(Timeout);
+
+			_view.SetLoading(true);
+			var response = await (new Api().GetWorkStatus(code, _cancelTokenSource.Token));
+
+			if (response.EnsureSuccess())
+			{
+				_view.SetLoading(false);
+				var workStatus = response.Data as WorkStatus;
+				_view.ShowStatus(workStatus);
+
+			}
+			else
+				OnError(response.GetFailureCode());
+		}
+
         public void Call(string phone)
         {
             _view.CallNumber(phone);
@@ -75,24 +96,9 @@ namespace Ts_Solutions.Presenter
 			_view.OpenDirections(point);
 		}
 
-		public void ButtonCheckTapped(string code)
+		public async Task ButtonCheckTapped(string code)
 		{
-			var rand = new Random();
-			switch (rand.Next(1, 5))
-			{
-				case 1:
-					_view.ShowStatus("Your item has been received");
-					break;
-				case 2:
-					_view.ShowStatus("Your item is in the service department");
-					break;
-				case 3:
-					_view.ShowStatus("Your item is fixed");
-					break;
-				default:
-					_view.ShowStatus("Work order not found");
-					break;
-			}
+			await CheckWorkStatus(code);
 		}
     }
 }

@@ -74,6 +74,37 @@ namespace Ts_Solutions.Network
             return response;
         }
 
+		public async Task<ServiceResponse> GetWorkStatus(string code, CancellationToken cancelToken)
+		{
+			var payload = $"/{code}";
+			var response =
+				await
+				ApprecotRestService.Instance.GetAsync($"{ApiUrls.BaseAddress}{ApiUrls.WorkStatus}{payload}", cancelToken).ConfigureAwait(false);
+
+			if (response.EnsureSuccess())
+			{
+				try
+				{
+					var obj = JObject.Parse(response.Json);
+
+					var stores = JsonConvert.DeserializeObject<WorkStatus>(obj.ToString());
+
+					if (stores != null) response.Data = stores;
+				}
+				catch (FormatException e)
+				{
+					Debug.WriteLine(e.Message);
+					response.StatusCode = (int)ServiceStatusCode.MissingParameters;
+				}
+				catch (Exception e)
+				{
+					Debug.WriteLine(e.Message);
+					response.StatusCode = (int)ServiceStatusCode.MissingParameters;
+				}
+			}
+			return response;
+		}
+
 		private ServiceResponse ErrorStatusCode(ServiceResponse serviceResponse)
 		{
 			serviceResponse.StatusCode = (int)ServiceStatusCode.MissingParameters;

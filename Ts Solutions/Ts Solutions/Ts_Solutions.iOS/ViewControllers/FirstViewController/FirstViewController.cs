@@ -35,7 +35,9 @@ namespace Ts_Solutions.iOS
 			ButtonClose.SetImage(UIImage.FromBundle("CloseButton"), UIControlState.Normal);
 			var noItemsView = NoItemsView.Create(TablePoints);
 			TablePoints.BackgroundView = noItemsView;
-			TablePoints.SeparatorStyle = UITableViewCellSeparatorStyle.None; var leftIcon = new UIBarButtonItem[1]
+			TablePoints.BackgroundView.Alpha = 0;
+			TablePoints.SeparatorStyle = UITableViewCellSeparatorStyle.None;
+			var leftIcon = new UIBarButtonItem[1]
 			 {
 				new UIBarButtonItem(UIImage.FromBundle("NavBar").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
 						, UIBarButtonItemStyle.Plain
@@ -124,21 +126,29 @@ namespace Ts_Solutions.iOS
 				var annotations = new List<StoreAnnotation>();
 				foreach (var st in points)
 				{
-					annotations.Add(new StoreAnnotation(st.Street, new CLLocationCoordinate2D(st.Lat, st.Lon), st));
-					MapPoints.AddAnnotations(new StoreAnnotation(st.Street, new CLLocationCoordinate2D(st.Lat, st.Lon), st));
+					annotations.Add(new StoreAnnotation($"{st.Street} {st.StreetNumber}", new CLLocationCoordinate2D(st.Lat, st.Lon), st));
+					MapPoints.AddAnnotations(new StoreAnnotation($"{st.Street} {st.StreetNumber}", new CLLocationCoordinate2D(st.Lat, st.Lon), st));
 				};
 			}
 		}
 
-		public void ShowStatus(string status)
+		public void ShowStatus(WorkStatus status)
 		{
-			LableStatus.Text = status;
+			LableStatus.Text = status.Text;
 			if (ViewStatus.Alpha == 0)
 				ViewStatus.SlideInFromBottom();
 		}
 
 		public void SetList(List<ServicePoint> points)
 		{
+			if (points == null || points.Count == 0)
+			{
+				TablePoints.BackgroundView.Alpha = 1;
+			}
+			else
+			{
+				TablePoints.BackgroundView.Alpha = 0;
+			}
 			SetNavBar("Map");
 			TablePoints.Alpha = 1;
 			MapPoints.Alpha = 0;
