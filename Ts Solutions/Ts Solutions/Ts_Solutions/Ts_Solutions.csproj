@@ -51,6 +51,7 @@
     <Compile Include="Model\StatusCode.cs" />
     <Compile Include="Model\ApiUrls.cs" />
     <Compile Include="Model\UrlServices.cs" />
+    <Compile Include="Model\WorkStatus.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

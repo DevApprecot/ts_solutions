@@ -15,7 +15,7 @@ namespace Ts_Solutions.IView
         void CallNumber(string phone);
 		void DirectionsClicked(ServicePoint point);
 		void OpenDirections(ServicePoint point);
-        void ShowStatus(string status);
+		void ShowStatus(WorkStatus status);
 		void HideStatus();
     }
 }

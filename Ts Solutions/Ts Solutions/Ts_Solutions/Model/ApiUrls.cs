@@ -16,5 +16,6 @@ namespace Ts_Solutions
 		public const string Endpoints = "/config";
 
 		public const string ServicePoints = "/stores/all";
+		public const string WorkStatus = "/workorders/code";
 	}
 }
