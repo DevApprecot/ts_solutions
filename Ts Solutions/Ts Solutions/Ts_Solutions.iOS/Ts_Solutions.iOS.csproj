@@ -221,6 +221,7 @@
     <InterfaceDefinition Include="ViewControllers\FirstViewController\StoreAnnotationView\StoreAnnotationView.xib" />
     <InterfaceDefinition Include="ViewControllers\FirstViewController\Table\StoresTableViewCell.xib" />
     <InterfaceDefinition Include="Views\NoItemsView\NoItemsView.xib" />
+    <InterfaceDefinition Include="ViewControllers\SplashViewController\SplashViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -261,6 +262,10 @@
       <DependentUpon>NoItemsView.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\LoadingOverlay.cs" />
+    <Compile Include="ViewControllers\SplashViewController\SplashViewController.cs" />
+    <Compile Include="ViewControllers\SplashViewController\SplashViewController.designer.cs">
+      <DependentUpon>SplashViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Images\" />
@@ -279,6 +284,7 @@
     <Folder Include="Resources\Images.xcassets\Map.imageset\" />
     <Folder Include="Resources\Images.xcassets\NavBar.imageset\" />
     <Folder Include="Resources\Images.xcassets\Directions.imageset\" />
+    <Folder Include="ViewControllers\SplashViewController\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\TS_Splash.png" />

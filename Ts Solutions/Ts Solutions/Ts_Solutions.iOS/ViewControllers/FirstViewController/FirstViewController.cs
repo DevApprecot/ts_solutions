@@ -75,6 +75,7 @@ namespace Ts_Solutions.iOS
 		public override async void ViewWillAppear(bool animate)
 		{
 			base.ViewWillAppear(animate);
+			NavigationController.SetNavigationBarHidden(false, true);
 			Reachability.ResetInternetEvents();
 			Reachability.ReachabilityChanged += Reachability_ReachabilityChanged;
 			CreatePresenter();

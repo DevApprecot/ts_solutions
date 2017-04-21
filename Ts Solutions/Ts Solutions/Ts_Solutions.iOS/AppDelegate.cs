@@ -34,7 +34,7 @@ namespace Ts_Solutions.iOS
 			Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
 			// Add the Navigation Controller and initialize it
-			var navController = new UINavigationController(new FirstViewController());
+			var navController = new UINavigationController(new SplashViewController());
 			Window.RootViewController = navController;
 
 			////// set our root view controller with the sidebar menu as the apps root view controller
