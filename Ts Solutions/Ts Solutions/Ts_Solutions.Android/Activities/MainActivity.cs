@@ -21,6 +21,7 @@ using Ts_Solutions.Droid.Receivers;
 using Android.Net;
 using Android.Views.Animations;
 using System.Globalization;
+using Ts_Solutions.Droid.Utils;
 
 namespace Ts_Solutions.Droid.Activities
 {
@@ -113,6 +114,7 @@ namespace Ts_Solutions.Droid.Activities
 
         private async void _checkBtn_Click(object sender, EventArgs e)
         {
+            _checkBtn.HideKeyboard();
             await _presenter.ButtonCheckTapped(_orderId.Text);
         }
 
