@@ -130,7 +130,6 @@ namespace Ts_Solutions.Droid.Activities
                 return;
             }
             await _presenter.ButtonCheckTapped(_orderId.Text);
-            _checkBtn.Enabled = true;
         }
 
         private void DisposeItems()
@@ -332,6 +331,7 @@ namespace Ts_Solutions.Droid.Activities
 
             anim.AnimationEnd += delegate
             {
+                _checkBtn.Enabled = true;
                 _content.Visibility = ViewStates.Gone;
             };
             _resultsView.StartAnimation(anim);
@@ -349,6 +349,7 @@ namespace Ts_Solutions.Droid.Activities
 
             anim.AnimationEnd += delegate
             {
+                _checkBtn.Enabled = true;
                 _content.Visibility = ViewStates.Gone;
             };
             _resultsView.StartAnimation(anim);

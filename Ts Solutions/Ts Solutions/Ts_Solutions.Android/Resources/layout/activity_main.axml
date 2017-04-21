@@ -34,15 +34,7 @@
                 android:src="@drawable/ic_list" />
         </RelativeLayout>
     </android.support.design.widget.AppBarLayout>
-  <FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
     <LinearLayout
-      android:id="@+id/map_list_content"
-      android:orientation="vertical"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
-      <LinearLayout
           android:orientation="horizontal"
           android:layout_width="match_parent"
           android:layout_height="?attr/actionBarSize"
@@ -64,7 +56,15 @@
             android:background="@android:color/transparent"
             android:textColor="@color/primary" />
       </LinearLayout>
-      <View
+    <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+      <LinearLayout
+        android:id="@+id/map_list_content"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <View
           android:layout_width="match_parent"
           android:layout_height="1dp"
           android:background="@color/divider_background" />
