@@ -19,7 +19,7 @@ namespace Ts_Solutions.Model
 		public string City { get; set; }
 		[JsonProperty(PropertyName = "street")]
 		public string Street { get; set; }
-		[JsonProperty(PropertyName = "stree_number")]
+		[JsonProperty(PropertyName = "street_number")]
 		public string StreetNumber { get; set; }
 		[JsonProperty(PropertyName = "post_code")]
 		public int PostCode { get; set; }
