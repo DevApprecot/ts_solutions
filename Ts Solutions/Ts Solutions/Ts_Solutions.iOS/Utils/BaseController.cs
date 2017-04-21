@@ -229,7 +229,7 @@ namespace Ts_Solutions.iOS
 			});
 		}
 
-		public void ShowMessage(string message)
+		public virtual void ShowMessage(string message)
 		{
 			Debug.WriteLine(message);
 		}

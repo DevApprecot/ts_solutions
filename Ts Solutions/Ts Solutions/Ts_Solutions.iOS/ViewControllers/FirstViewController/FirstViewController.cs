@@ -162,11 +162,11 @@ namespace Ts_Solutions.iOS
 			_rightIcons[0].Image = UIImage.FromBundle(imageName).ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
 		}
 
-		void ButtonCheck_TouchUpInside(object sender, EventArgs e)
+		async void ButtonCheck_TouchUpInside(object sender, EventArgs e)
 		{
 			TextCode.ResignFirstResponder();
 			if (CheckFields())
-				_presenter.ButtonCheckTapped(TextCode.Text);
+				await _presenter.ButtonCheckTapped(TextCode.Text);
 		}
 
 		void ButtonClose_TouchUpInside(object sender, EventArgs e)
@@ -221,6 +221,13 @@ namespace Ts_Solutions.iOS
 			var url = new NSUrl(uri.GetComponents(UriComponents.HttpRequestUrl, UriFormat.UriEscaped));
 			if (UIApplication.SharedApplication.CanOpenUrl(url))
 				UIApplication.SharedApplication.OpenUrl(url);
+		}
+
+		public override void ShowMessage(string message)
+		{
+			LableStatus.Text = message;
+			if (ViewStatus.Alpha == 0)
+				ViewStatus.SlideInFromBottom();
 		}
 
 		public override async Task OnConnected()

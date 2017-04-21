@@ -31,7 +31,7 @@ namespace Ts_Solutions.iOS
 			ImageStore.Layer.BorderColor = UIColor.FromRGB(237, 237, 237).CGColor;
 			ImageStore.Layer.BorderWidth = 1f;
 			ImageStore.ClipsToBounds = true;
-			LabelName.Text = point.Country;
+			LabelName.Text = $"{point.City}";
 			LabelAddress.Text = $"{point.Street} {point.StreetNumber}";
 			LabelTelephone.Text = point.Phone;
 			LabelTelephone.TextColor = UIColor.FromRGB(0, 122, 255);
