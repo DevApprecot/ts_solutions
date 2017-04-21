@@ -22,6 +22,7 @@ namespace Ts_Solutions.iOS
 			Reachability.ResetInternetEvents();
 			Reachability.ReachabilityChanged += Reachability_ReachabilityChanged;
 			CreatePresenter();
+			TranslationExtension.SetLanguage("en");
 			await _presenter.LoadUrlServices();
 		}
 
