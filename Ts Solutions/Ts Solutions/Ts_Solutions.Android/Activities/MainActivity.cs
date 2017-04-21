@@ -239,7 +239,6 @@ namespace Ts_Solutions.Droid.Activities
                 }
                 catch (IllegalStateException)
                 {
-                    //_myMap.MoveCamera(CameraUpdateFactory.NewLatLngZoom(new LatLng(_searchModel.UserLat, _searchModel.UserLon), 11));
                 }
             }
         }

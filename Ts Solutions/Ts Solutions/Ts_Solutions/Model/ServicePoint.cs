@@ -23,7 +23,7 @@ namespace Ts_Solutions.Model
 		public string StreetNumber { get; set; }
 		[JsonProperty(PropertyName = "post_code")]
 		public int PostCode { get; set; }
-		[JsonProperty(PropertyName = "phone")]
+		[JsonProperty(PropertyName = "phone_number")]
 		public string Phone { get; set; }
 		[JsonProperty(PropertyName = "map_latitude")]
 		public double Lat { get; set; }

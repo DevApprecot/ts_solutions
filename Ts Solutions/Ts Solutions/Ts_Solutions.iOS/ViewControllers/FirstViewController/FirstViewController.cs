@@ -187,6 +187,8 @@ namespace Ts_Solutions.iOS
 		public void HideStatus()
 		{
 			TextCode.Text = "";
+			TextCode.Placeholder = "";
+			TextCode.Placeholder = "Write your work order here";
 			if (ViewStatus.Alpha == 1)
 				ViewStatus.SlideOutFromBottom();
 		}
@@ -198,7 +200,7 @@ namespace Ts_Solutions.iOS
 				ForegroundColor = UIColor.Red
 			};
 
-			var text = "Work order missing!";
+			var text = "Write your work order here";
 			if (string.IsNullOrEmpty(TextCode.Text))
 				TextCode.AttributedPlaceholder = new NSAttributedString(text, attributes);
 			else
