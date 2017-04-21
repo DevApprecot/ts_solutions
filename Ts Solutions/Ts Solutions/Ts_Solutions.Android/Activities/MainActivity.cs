@@ -177,8 +177,6 @@ namespace Ts_Solutions.Droid.Activities
 
         public void SetList(List<ServicePoint> points)
         {
-            _spRecyclerView.Visibility = ViewStates.Visible;
-            _mapFragment.View.Visibility = ViewStates.Gone;
             _servicePoints = points;
             RunOnUiThread(() =>
             {
@@ -257,6 +255,7 @@ namespace Ts_Solutions.Droid.Activities
             anim.AnimationStart += delegate
             {
                 _content.Visibility = ViewStates.Visible;
+                _mapFragment.View.Visibility = ViewStates.Visible;
             };
 
             anim.AnimationEnd += delegate
