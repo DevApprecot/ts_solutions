@@ -15,6 +15,6 @@ namespace Ts_Solutions
 
 		public const string Endpoints = "/config";
 
-		public const string NewPassword = "/stores/all";
+		public const string ServicePoints = "/stores/all";
 	}
 }

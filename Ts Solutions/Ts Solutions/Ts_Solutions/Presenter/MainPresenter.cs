@@ -10,7 +10,7 @@ namespace Ts_Solutions.Presenter
 {
     public class MainPresenter : BasePresenter
     {
-        private const int Timeout = 5000; // milliseconds
+        private const int Timeout = 10000; // milliseconds
 
         private IMainView _view;
 		private CancellationTokenSource _cancelTokenSource;

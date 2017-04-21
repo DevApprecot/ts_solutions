@@ -124,8 +124,8 @@ namespace Ts_Solutions.iOS
 				var annotations = new List<StoreAnnotation>();
 				foreach (var st in points)
 				{
-					annotations.Add(new StoreAnnotation(st.Name, new CLLocationCoordinate2D(st.Lat, st.Lon), st));
-					MapPoints.AddAnnotations(new StoreAnnotation(st.Name, new CLLocationCoordinate2D(st.Lat, st.Lon), st));
+					annotations.Add(new StoreAnnotation(st.Street, new CLLocationCoordinate2D(st.Lat, st.Lon), st));
+					MapPoints.AddAnnotations(new StoreAnnotation(st.Street, new CLLocationCoordinate2D(st.Lat, st.Lon), st));
 				};
 			}
 		}

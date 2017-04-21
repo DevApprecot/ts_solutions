@@ -9,22 +9,27 @@ namespace Ts_Solutions.Model
 {
 	public class ServicePoint
 	{
-		[JsonProperty(PropertyName = "id")]
+	  	[JsonProperty(PropertyName = "id")]
 		public int Id { get; set; }
-		[JsonProperty(PropertyName = "name")]
-		public string Name { get; set; }
-		[JsonProperty(PropertyName = "address")]
-		public string Address { get; set; }
+		[JsonProperty(PropertyName = "country_id")]
+		public int CountryId { get; set; }
+		[JsonProperty(PropertyName = "country")]
+		public string Country { get; set; }
+		[JsonProperty(PropertyName = "city")]
+		public string City { get; set; }
+		[JsonProperty(PropertyName = "street")]
+		public string Street { get; set; }
+		[JsonProperty(PropertyName = "stree_number")]
+		public string StreetNumber { get; set; }
+		[JsonProperty(PropertyName = "post_code")]
+		public int PostCode { get; set; }
 		[JsonProperty(PropertyName = "phone")]
 		public string Phone { get; set; }
-		[JsonProperty(PropertyName = "lat")]
+		[JsonProperty(PropertyName = "map_latitude")]
 		public double Lat { get; set; }
-		[JsonProperty(PropertyName = "lon")]
+		[JsonProperty(PropertyName = "map_longitude")]
 		public double Lon { get; set; }
-		//public string Manager { get; set; }
-		//public int AddressNumber { get; set; }
-		//public string City { get; set; }
-		//public string Country { get; set; }
-		//public string PostalCode { get; set; }
+		[JsonProperty(PropertyName = "is_active")]
+		public int Active { get; set; }
 	}
 }
