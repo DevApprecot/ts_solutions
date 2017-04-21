@@ -201,9 +201,9 @@ namespace Ts_Solutions.Droid.Activities
                     {
                         googleMap.AddMarker(new MarkerOptions()
                         .SetPosition(coordinate1)
-                        .SetTitle((i + 1) + ". " + _servicePoints[i].Name)
+                        .SetTitle((i + 1) + ". " + _servicePoints[i].Country)
                         .SetIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.ic_toolbar_logo))
-                        .SetSnippet(_servicePoints[i].Address));
+                        .SetSnippet($"{_servicePoints[i].Street} {_servicePoints[i].StreetNumber}"));
                     }
                     catch (ArgumentOutOfRangeException)
                     {
@@ -306,7 +306,7 @@ namespace Ts_Solutions.Droid.Activities
             var stringlon = point.Lon.ToString(CultureInfo.InvariantCulture);
 
 
-            var format = "geo:0,0?q=" + stringlat + ", " + stringlon + "(" + point.Name + ", " + point.Address + ")";
+            var format = "geo:0,0?q=" + stringlat + ", " + stringlon + "(" + point.Country + ", " + $"{point.Street} {point.StreetNumber}" + ")";
             var uri = Android.Net.Uri.Parse(format);
 
             try
