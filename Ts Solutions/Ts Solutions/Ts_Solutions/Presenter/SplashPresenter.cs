@@ -37,6 +37,8 @@ namespace Ts_Solutions.Presenters
 			}
 			else
 				OnError(response.GetFailureCode());
+
+            _view.SetLoading(false);
 		}
 
 		private void SetupEndpoints(UrlServices endpoints)
