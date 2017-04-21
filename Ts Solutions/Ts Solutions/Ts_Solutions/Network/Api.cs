@@ -12,6 +12,37 @@ namespace Ts_Solutions.Network
 {
     public class Api
     {
+
+		public async Task<ServiceResponse> GetUrlServices(CancellationToken cancelToken)
+		{
+			var response =
+			  await
+				ApprecotRestService.Instance.GetAsync($"{ApiUrls.BaseAddress}{ApiUrls.Endpoints}", cancelToken).
+				  ConfigureAwait(false);
+
+			if (response.EnsureSuccess())
+			{
+				try
+				{
+					var obj = JObject.Parse(response.Json);
+
+					var urls = JsonConvert.DeserializeObject<UrlServices>(obj.ToString());
+					if (urls != null) response.Data = urls;
+				}
+				catch (FormatException e)
+				{
+					Debug.WriteLine(e.Message);
+					response.StatusCode = (int)ServiceStatusCode.MissingParameters;
+				}
+				catch (Exception e)
+				{
+					Debug.WriteLine(e.Message);
+					response.StatusCode = (int)ServiceStatusCode.MissingParameters;
+				}
+			}
+			return response;
+		}
+
         public async Task<ServiceResponse> GetServicePoints(CancellationToken cancelToken)
 		{
             var response =

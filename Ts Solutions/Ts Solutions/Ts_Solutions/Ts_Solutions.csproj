@@ -49,6 +49,8 @@
     <Compile Include="Presenter\BasePresenter.cs" />
     <Compile Include="IView\IBaseView.cs" />
     <Compile Include="Model\StatusCode.cs" />
+    <Compile Include="Model\ApiUrls.cs" />
+    <Compile Include="Model\UrlServices.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
