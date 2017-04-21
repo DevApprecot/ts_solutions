@@ -22,6 +22,7 @@ using Android.Net;
 using Android.Views.Animations;
 using System.Globalization;
 using Ts_Solutions.Droid.Utils;
+using Android.Graphics;
 
 namespace Ts_Solutions.Droid.Activities
 {
@@ -102,9 +103,15 @@ namespace Ts_Solutions.Droid.Activities
 
         private void AddEventHandlers()
         {
+            _mapFragment.View.Click += MapClicked;
             _viewIcon.Click += ChangeViewTypeClicked;
             _checkBtn.Click += _checkBtn_Click;
             _close.Click += _close_Click;
+        }
+
+        private void MapClicked(object sender, EventArgs e)
+        {
+            _mapFragment.View.HideKeyboard();
         }
 
         private void _close_Click(object sender, EventArgs e)
@@ -114,41 +121,50 @@ namespace Ts_Solutions.Droid.Activities
 
         private async void _checkBtn_Click(object sender, EventArgs e)
         {
+            _checkBtn.Enabled = false;
             _checkBtn.HideKeyboard();
+            if(string.IsNullOrEmpty(_orderId.Text))
+            {
+                _orderId.SetHintTextColor(new Color(ContextCompat.GetColor(this, Resource.Color.primary)));
+                _checkBtn.Enabled = true;
+                return;
+            }
             await _presenter.ButtonCheckTapped(_orderId.Text);
+            _checkBtn.Enabled = true;
         }
 
         private void DisposeItems()
         {
-            _content.Dispose();
+            _content?.Dispose();
             _content = null;
-            _close.Dispose();
+            _close?.Dispose();
             _close = null;
-            _resultsView.Dispose();
+            _resultsView?.Dispose();
             _resultsView = null;
-            _resultsTxv.Dispose();
+            _resultsTxv?.Dispose();
             _resultsTxv = null;
-            _orderId.Dispose();
+            _orderId?.Dispose();
             _orderId = null;
-            _checkBtn.Dispose();
+            _checkBtn?.Dispose();
             _checkBtn = null;
             _presenter = null;
             _servicePoints = null;
-            _spRecyclerView.Dispose();
+            _spRecyclerView?.Dispose();
             _spRecyclerView = null;
-            _mapFragment.Dispose();
+            _mapFragment?.Dispose();
             _mapFragment = null;
-            _viewIcon.SetImageDrawable(null);
+            _viewIcon?.SetImageDrawable(null);
             _viewIcon.Dispose();
-            _animationView.Dispose();
-            _receiver.Dispose();
+            _animationView?.Dispose();
+            _receiver?.Dispose();
             _receiver = null;
-            _connection.Dispose();
+            _connection?.Dispose();
             _connection = null;
         }
 
         private void RemoveEventHandlers()
         {
+            _mapFragment.View.Click -= MapClicked;
             _viewIcon.Click -= ChangeViewTypeClicked;
             _checkBtn.Click -= _checkBtn_Click;
             _close.Click -= _close_Click;
@@ -156,6 +172,7 @@ namespace Ts_Solutions.Droid.Activities
 
         private void ChangeViewTypeClicked(object sender, EventArgs e)
         {
+            _viewIcon.HideKeyboard();
             _presenter.ChangeViewTypeClicked();
         }
 
