@@ -47,7 +47,7 @@ namespace Ts_Solutions.Network
 		{
             var response =
                 await
-                    ApprecotRestService.Instance.GetAsync("http://www.anaxoft.com/ts/ts_sample.php", cancelToken).ConfigureAwait(false);
+				ApprecotRestService.Instance.GetAsync($"{ApiUrls.BaseAddress}{ApiUrls.ServicePoints}", cancelToken).ConfigureAwait(false);
 
 			if (response.EnsureSuccess())
 			{
@@ -56,7 +56,7 @@ namespace Ts_Solutions.Network
 					var obj = JObject.Parse(response.Json);
 
 
-					var stores = JsonConvert.DeserializeObject<List<ServicePoint>>(obj["service_points"].ToString());
+					var stores = JsonConvert.DeserializeObject<List<ServicePoint>>(obj["stores"].ToString());
 
 					if (stores != null) response.Data = stores;
 				}
