@@ -4,6 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+  <include
+    layout="@layout/connection_status_view" />
     <ImageView
         android:id="@+id/iv_splash"
         android:layout_width="match_parent"
