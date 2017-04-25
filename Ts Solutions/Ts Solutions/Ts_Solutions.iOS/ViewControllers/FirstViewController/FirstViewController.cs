@@ -23,6 +23,7 @@ namespace Ts_Solutions.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+			LableStatus.Font = UIFont.SystemFontOfSize(21);
 			View.BackgroundColor = UIColor.FromRGB(237, 237, 237);
 			ConstTopText.Constant = 8 + NavigationController.NavigationBar.Frame.Height + 20;
 			ButtonCheck.BackgroundColor = UIColor.FromRGB(239, 60, 57);
@@ -227,7 +228,7 @@ namespace Ts_Solutions.iOS
 
 		public override void ShowMessage(string message)
 		{
-			LableStatus.Text = message;
+			LableStatus.Text = TranslationExtension.LanguageBundle.LocalizedString(message, "");
 			if (ViewStatus.Alpha == 0)
 				ViewStatus.SlideInFromBottom();
 		}

@@ -209,6 +209,8 @@
     <ImageAsset Include="Resources\Images.xcassets\Directions.imageset\ic_directions_3x.png">
       <InProject>false</InProject>
     </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Launcher.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Launcher.imageset\ic_launcher.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="Resources\ITunesArtwork" />
@@ -266,6 +268,7 @@
     <Compile Include="ViewControllers\SplashViewController\SplashViewController.designer.cs">
       <DependentUpon>SplashViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\TranslationExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Images\" />
@@ -285,10 +288,15 @@
     <Folder Include="Resources\Images.xcassets\NavBar.imageset\" />
     <Folder Include="Resources\Images.xcassets\Directions.imageset\" />
     <Folder Include="ViewControllers\SplashViewController\" />
+    <Folder Include="Resources\el.lproj\" />
+    <Folder Include="Resources\en.lproj\" />
+    <Folder Include="Resources\Images.xcassets\Launcher.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\TS_Splash.png" />
     <BundleResource Include="Animations\preloader.json" />
+    <BundleResource Include="Resources\el.lproj\Localizable.strings" />
+    <BundleResource Include="Resources\en.lproj\Localizable.strings" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
