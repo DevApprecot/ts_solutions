@@ -7,7 +7,7 @@ namespace Ts_Solutions
 		//public const string BaseAddress = "https://anaxoft.com/ts_production/api";
 
 		//development branch
-		public const string BaseAddress = "https://anaxoft.com/ts_development/api";
+		public const string BaseAddress = "https://anaxoft.com/ts_production/api";
 
 		public static string ServicesEndpoint = string.Empty;
 		public static string UserImagesEndpoint = string.Empty;
