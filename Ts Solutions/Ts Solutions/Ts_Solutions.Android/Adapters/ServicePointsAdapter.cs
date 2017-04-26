@@ -33,7 +33,7 @@ namespace Ts_Solutions.Droid.Adapters
             var vh = holder as ServicePointViewHolder;
             if (vh == null) return;
 
-            vh.Name.Text = _servicePoints[position].Country;
+            vh.Name.Text = _servicePoints[position].City;
             vh.Address.Text = $"{_servicePoints[position].Street} {_servicePoints[position].StreetNumber}";
             vh.Phone.Text = _servicePoints[position].Phone;
             vh.ServicePoint = _servicePoints[position];

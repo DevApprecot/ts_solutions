@@ -217,7 +217,7 @@ namespace Ts_Solutions.Droid.Activities
                     {
                         googleMap.AddMarker(new MarkerOptions()
                         .SetPosition(coordinate1)
-                        .SetTitle((i + 1) + ". " + _servicePoints[i].Country)
+                        .SetTitle((i + 1) + ". " + _servicePoints[i].City)
                         .SetIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.ic_toolbar_logo))
                         .SetSnippet($"{_servicePoints[i].Street} {_servicePoints[i].StreetNumber}"));
                     }
