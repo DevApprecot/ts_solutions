@@ -32,7 +32,7 @@ namespace Ts_Solutions.iOS
 			ButtonCheck.Layer.CornerRadius = 5;
 			ButtonCheck.ClipsToBounds = true;
 			TextCode.Placeholder = "Write your work order here";
-			TextCode.ClearsOnBeginEditing = true;
+			//TextCode.ClearsOnBeginEditing = true;
 			ButtonClose.SetImage(UIImage.FromBundle("CloseButton"), UIControlState.Normal);
 			var noItemsView = NoItemsView.Create(TablePoints);
 			TablePoints.BackgroundView = noItemsView;
